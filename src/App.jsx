@@ -1,12 +1,14 @@
-import './input.css'
-
+import Footer from './components/common/Footer';
+import Header from './components/common/Header';
+import './tailwind.css'
 
 
 function App() {
   return (
-    <div className="bg-red-500 text-[100px] text-black">
-      <h1>Tailwind + normilize test Checker</h1>
-    </div>
+    <>
+      <Header />
+      <Footer />
+    </>
   );
 }
 
