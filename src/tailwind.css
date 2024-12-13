@@ -4,6 +4,10 @@
 
 @layer utilities {
   .social-Networks-Links {
-    @apply max-w-8; /* Tailwind классы */
+    @apply max-w-8;
+  }
+
+  .max-section-screen {
+    @apply max-w-screen-xl;
   }
 }
