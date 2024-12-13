@@ -8,16 +8,16 @@ export default function SocialLinks() {
       </a>
       <a href="#">
         <img
-          className="max-w-11"
-          src="./assets/telegram_black.png"
-          alt="telegram_icon"
+          className="social-Networks-Links"
+          src="../src/assets/telegram_black.png"
+          alt="telegram icon"
         />
       </a>
       <a href="#">
-        <img className="max-w-11" src="#" alt="networc_icon" />
+        <img className="social-Networks-Links" src="../src/assets/support_img.png" alt="support icon" />
       </a>
       <a href="#">
-        <img className="max-w-11" src="#" alt="networc_icon" />
+        <img className="social-Networks-Links" src="../src/assets/x_logo_img.png" alt="X icon" />
       </a>
     </div>
   );

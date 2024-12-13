@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .social-Networks-Links {
+    @apply max-w-8; /* Tailwind классы */
+  }
+}

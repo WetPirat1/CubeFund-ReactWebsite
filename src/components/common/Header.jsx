@@ -1,19 +1,19 @@
 import React from "react";
 import SocialLinks from "../ui/SocialLinks";
 import TelegramLink from "../ui/TelegramLink";
-
+import Logo_nav from "../../assets/Logo_nav";
 
 export default function Header() {
   return (
-    <header className=" max-w-5xl mx-auto">
-      <nav className="flex justify-between">
+    <header className=" max-w-5xl mx-auto mt-8">
+      <nav className="flex justify-between mb-8">
         <a href="#">
-          <img src="#" alt="logo" />
+          <Logo_nav />
         </a>
         <SocialLinks />
       </nav>
 
-      <div className="text-center">
+      <div className="text-center mt-60">
         <h1 className="text-5xl mb-5">Cube Fund Invest</h1>
         <TelegramLink />
       </div>
