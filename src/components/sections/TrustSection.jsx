@@ -1,4 +1,3 @@
-import React from "react";
 export default function TrustSection() {
   return (
     <section className="max-section-screen mx-auto flex justify-between gap-20 mb-60">
