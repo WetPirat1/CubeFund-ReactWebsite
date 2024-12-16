@@ -1,5 +1,7 @@
+
 import React from "react";
 import FloatingSquares from "../ui/FloatingSquares";
+
 export default function TrustSection() {
   return (
     <section className="relative">
