@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Footer from "./components/common/Footer";
 import Header from "./components/common/Header";
+import Hero from "./components/sections/Hero";
 import HowWorks from "./components/sections/HowWorks";
 import TrustSection from "./components/sections/TrustSection";
 import FloatingSquares from "./components/ui/FloatingSquares";
@@ -17,27 +18,16 @@ function App() {
         <Route
           path="/"
           element={
-            <div className="relative">
-              <FloatingSquares />
               <TelegramBotBanner />
               <Header />
-
-              <div className="relative">
-                <TrustSection />
-                <FloatingSquares overflowEnabled={true} />
-                <HowWorks />
-                <FloatingSquares overflowEnabled={true} />
-              </div>
-
+              <TrustSection />
+              <HowWorks />
               <Footer />
-            </div>
           }
         />
 
         {/* Страница 404 (без Header, Footer и других компонентов) */}
         <Route path="*" element={<PageNotFound />} />
-        
-
       </Routes>
     </Router>
   );
