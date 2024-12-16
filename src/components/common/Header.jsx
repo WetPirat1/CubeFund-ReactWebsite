@@ -7,7 +7,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="w-full bg-white shadow-md z-50">
+    <header className="w-full bg-white z-50">
       {/* Хедер для устройств больше мобильного */}
       <nav className="hidden md:flex justify-between items-center max-w-5xl mx-auto p-4">
         <a href="/">
@@ -31,7 +31,7 @@ export default function Header() {
 
       {/* Ссылки для мобильного меню */}
       {menuOpen && (
-        <div className="flex flex-col gap-4 p-4 bg-white shadow-lg rounded-md md:hidden fixed top-16 left-0 w-full z-50">
+        <div className="flex flex-col items-center gap-4 p-4 bg-white shadow-lg rounded-md md:hidden fixed top-16 left-0 w-full z-50">
           <SocialLinks />
         </div>
       )}
