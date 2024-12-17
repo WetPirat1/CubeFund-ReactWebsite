@@ -18,7 +18,7 @@ function App() {
           path="/"
           element={
             <>
-              <TelegramBotBanner />
+              {/* <TelegramBotBanner /> */}
               <Header />
               <Hero />
               <TrustSection />
