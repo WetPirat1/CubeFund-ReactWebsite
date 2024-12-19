@@ -10,7 +10,7 @@ export default function Footer() {
           <h3 className="text-2xl font-semibold">Cube Fund Invest</h3>
         </div>
 
-        <div className="flex gap-10 items-center justify-center max-md:flex flex-col gap-5">
+        <div className="flex gap-10 items-center justify-center max-md:flex max-md:flex-col max-md:gap-5">
           <div className="flex max-lg:order-2">
             <a
               className="text-2xl block mb-4 max-md:mx-auto"
