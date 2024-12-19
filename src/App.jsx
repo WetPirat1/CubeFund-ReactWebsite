@@ -2,13 +2,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Footer from "./components/common/Footer";
 import Header from "./components/common/Header";
-import Hero from "./components/sections/Hero";
-import HowWorks from "./components/sections/HowWorks";
-import TrustSection from "./components/sections/TrustSection";
-import FloatingSquares from "./components/ui/FloatingSquares";
+import HeroSection from "./components/sections/HeroSection";
+import AdvantagesSection from "./components/sections/AdvantagesSection";
+import SloganSection from "./components/sections/SloganSection";
 import TelegramBotBanner from "./components/ui/TelegramBotBanner";
 import PageNotFound from "./components/PageNotFound";
 import "./tailwind.css";
+import InvestmentSteps from "./components/sections/HowToInvestSection";
 
 function App() {
   return (
@@ -18,11 +18,15 @@ function App() {
         <Route
           path="/"
           element={
-              <TelegramBotBanner />
+            <>
+              {/* <TelegramBotBanner /> */}
               <Header />
-              <TrustSection />
-              <HowWorks />
+              <HeroSection />
+              <SloganSection />
+              <AdvantagesSection />
+              <InvestmentSteps />
               <Footer />
+            </>
           }
         />
 
