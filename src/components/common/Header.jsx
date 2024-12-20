@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo_nav from "../../assets/Logo_nav";
+import Logo_nav from "../../assets/Logo_nav.svg"; // Keep the import as-is
 import BurgerMenu from "../../assets/BurgerMenu";
 import CrossNav from "../../assets/CrossNav";
 
@@ -10,8 +10,8 @@ export default function Header() {
     <header className="bg-white z-50">
       {/* Десктоп-навигация */}
       <nav className="hidden md:flex justify-between items-center max-w-5xl mx-auto p-4">
-        <a href="/">
-          <Logo_nav />
+        <a className="h-14" href="/">
+          <img src={Logo_nav} alt="Logo" className="h-full te-blue-600" /> {/* Correctly using the logo component */}
         </a>
 
         <div className="flex gap-10 items-center md:justify-start justify-center">
@@ -62,7 +62,7 @@ export default function Header() {
       {/* Мобильная навигация */}
       <nav className="flex md:hidden justify-between items-center p-4 fixed top-0 left-[13%] w-[70%] bg-white z-50 shadow-xl rounded-3xl mt-6">
         <a href="/">
-          <Logo_nav />
+          <img src={Logo_nav} alt="Logo" /> {/* Correctly using the logo component */}
         </a>
         <button
           className="text-3xl text-blue-500"
