@@ -9,6 +9,7 @@ import TelegramBotBanner from "./components/ui/TelegramBotBanner";
 import PageNotFound from "./components/PageNotFound";
 import "./tailwind.css";
 import InvestmentSteps from "./components/sections/HowToInvestSection";
+import FAQSection from "./components/sections/FAQSection";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <SloganSection />
               <AdvantagesSection />
               <InvestmentSteps />
+              <FAQSection />
               <Footer />
             </>
           }
