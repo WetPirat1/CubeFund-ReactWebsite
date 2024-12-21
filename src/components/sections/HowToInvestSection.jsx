@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import TelegramLink from "../ui/TelegramLink";
+import FloatingSquares from "../ui/FloatingSquares";
 
 export default function HowToInvest() {
   const fadeInFromLeft = {
@@ -24,7 +25,9 @@ export default function HowToInvest() {
       >
         How to invest?
       </motion.h2>
-      <div className="relative">
+
+      <div className="relative z-0">
+        <FloatingSquares />
         <div className="absolute top-0 left-1/2 w-1 bg-gray-200 h-full transform -translate-x-1/2 hidden md:block" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-20 items-center relative">
           {/* Step 1 */}
@@ -61,7 +64,7 @@ export default function HowToInvest() {
               Connect wallet
             </p>
             <img
-              src="./src/assets/connectWallet-img.png"
+              src="./src/assets/sections/InvestSectionConWalletImg.png"
               alt="Connect wallet"
               className="rounded-md z-40 w-[80%] sm:w-[60%] md:w-auto"
             />
@@ -82,7 +85,7 @@ export default function HowToInvest() {
               Select a coin and the amount you want to invest
             </p>
             <img
-              src="./src/assets/selectCoin-img.png"
+              src="./src/assets/sections/InvestSectionSelectCoinImg.png"
               alt="Select coin"
               className="rounded-md z-40 w-[80%] sm:w-[60%] md:w-auto"
             />
@@ -105,7 +108,7 @@ export default function HowToInvest() {
               Select investment period
             </p>
             <img
-              src="./src/assets/selectPeriod-img.png"
+              src="./src/assets/sections/InvestSectionSelectPeriodImg.png"
               alt="Select period"
               className="rounded-md z-40 w-[80%] sm:w-[60%] md:w-auto"
             />
@@ -126,7 +129,7 @@ export default function HowToInvest() {
               Click the Invest button
             </p>
             <img
-              src="./src/assets/investBtn-img.png"
+              src="./src/assets/sections/InvestSectionInvestBtnImg.png"
               alt="Invest button"
               className="rounded-md z-40 w-[80%] sm:w-[60%] md:w-auto"
             />
@@ -149,7 +152,7 @@ export default function HowToInvest() {
               Confirm the action in the wallet
             </p>
             <img
-              src="./src/assets/confirmAction.png"
+              src="./src/assets/sections/InvestSectionConfirmActionImg.png"
               alt="Confirm action"
               className="rounded-md z-40 w-[80%] sm:w-[60%] md:w-auto"
             />
