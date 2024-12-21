@@ -18,7 +18,7 @@ export default function TelegramLink({
       {showIcon && (
         <img
           className="ml-1 max-w-5"
-          src="../src/assets/telegram_light_link.png"
+          src="../src/assets/icons/telegramLightIcon.png"
           alt="telegram icon"
         />
       )}

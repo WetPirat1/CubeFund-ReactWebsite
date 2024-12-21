@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CrossNav() {
+export default function CrossNavIcon() {
   return (
     <svg
       width="19"
