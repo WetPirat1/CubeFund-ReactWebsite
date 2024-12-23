@@ -1,6 +1,29 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import FloatingSquares from "../ui/FloatingSquares";
+
+
+const sectionsData = [
+  {
+    title: "Easy to use",
+    description:
+      "Easy to use app that helps you to invest right from your smartphone anywhere and anytime.",
+    image: "./src/assets/sections/AdvantSectionWorksImg.png",
+  },
+  {
+    title: "Blockchain Based",
+    description:
+      "Secure and decentralized blockchain technology at your fingertips.",
+    image: "./src/assets/sections/BlockchainImg.png",
+  },
+  {
+    title: "Telegram integration",
+    description: "Stay connected with seamless Telegram integration.",
+    image: "./src/assets/sections/TelegramImg.png",
+  },
+];
+
 
 const sectionsData = [
   {
@@ -32,14 +55,19 @@ export default function AdvantagesSection() {
   };
 
   return (
-    <section className="relative flex flex-col items-center gap-2">
+    <section className="relative flex flex-col items-center gap-10">
+      {/* Floating Squares */}
+      <div className="absolute inset-0 pointer-events-none z-[-1]">
+        <FloatingSquares />
+      </div>
+
+      {/* Sections */}
       {sectionsData.map((section, index) => {
         const { ref } = useInView({
           threshold: 0.7,
           triggerOnce: false,
           onChange: (inView, entry) => onScroll(entry, index),
         });
-
         return (
           <div
             ref={ref}
