@@ -3,6 +3,28 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import FloatingSquares from "../ui/FloatingSquares";
 
+
+const sectionsData = [
+  {
+    title: "Easy to use",
+    description:
+      "Easy to use app that helps you to invest right from your smartphone anywhere and anytime.",
+    image: "./src/assets/sections/AdvantSectionWorksImg.png",
+  },
+  {
+    title: "Blockchain Based",
+    description:
+      "Secure and decentralized blockchain technology at your fingertips.",
+    image: "./src/assets/sections/BlockchainImg.png",
+  },
+  {
+    title: "Telegram integration",
+    description: "Stay connected with seamless Telegram integration.",
+    image: "./src/assets/sections/TelegramImg.png",
+  },
+];
+
+
 const sectionsData = [
   {
     title: "Easy to use",
@@ -46,7 +68,6 @@ export default function AdvantagesSection() {
           triggerOnce: false,
           onChange: (inView, entry) => onScroll(entry, index),
         });
-
         return (
           <div
             ref={ref}
