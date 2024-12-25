@@ -18,8 +18,11 @@ export default function SloganSection() {
             Trust. Invest. <span className="bg-[#3AC1FF]">Grow.</span>
           </h2>
           <p className="text-3xl max-w-[80%] leading-[50px] max-sm:leading-[70px] max-sm:mx-auto max-sm:text-xl max-sm:max-w-[90%]">
-            Trust your assets to professionals Invest in crypto and value your
-            time Grow with CUBE
+            Trust your assets to professionals
+            <br></br>
+            Invest in crypto and value your time
+            <br></br>
+            Grow with CUBE
           </p>
         </div>
       </div>

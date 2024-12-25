@@ -8,39 +8,18 @@ const sectionsData = [
   {
     title: "Easy to use",
     description:
-      "Easy to use app that helps you to invest right from your smartphone anywhere and anytime.",
+      "Easy to use app that helps you to invest right from your smartphone anywhere and anytime",
     image: "./src/assets/sections/AdvantSectionWorksImg.png",
   },
   {
     title: "Blockchain Based",
     description:
-      "Secure and decentralized blockchain technology at your fingertips.",
+      "Secure and decentralized blockchain technology at your fingertips",
     image: "./src/assets/sections/BlockchainImg.png",
   },
   {
     title: "Telegram integration",
-    description: "Stay connected with seamless Telegram integration.",
-    image: "./src/assets/sections/TelegramImg.png",
-  },
-];
-
-
-const sectionsData = [
-  {
-    title: "Easy to use",
-    description:
-      "Easy to use app that helps you to invest right from your smartphone anywhere and anytime.",
-    image: "./src/assets/sections/AdvantSectionWorksImg.png",
-  },
-  {
-    title: "Blockchain Based",
-    description:
-      "Secure and decentralized blockchain technology at your fingertips.",
-    image: "./src/assets/sections/BlockchainImg.png",
-  },
-  {
-    title: "Telegram integration",
-    description: "Stay connected with seamless Telegram integration.",
+    description: "Stay connected with seamless Telegram integration",
     image: "./src/assets/sections/TelegramImg.png",
   },
 ];
@@ -88,7 +67,7 @@ export default function AdvantagesSection() {
                   alt={section.title}
                 />
                 <h2 className="text-4xl font-bold mb-4">{section.title}</h2>
-                <p className="text-2xl max-w-lg">{section.description}</p>
+                <p className="text-2xl font-light max-w-lg">{section.description}</p>
               </motion.div>
             )}
           </div>

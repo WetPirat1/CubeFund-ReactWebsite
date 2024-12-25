@@ -30,7 +30,7 @@ export default function CustomizedAccordions() {
   const iconStyle = (isExpanded) => ({
     transition: 'transform 0.5s ease',
     transform: isExpanded ? 'rotate(45deg)' : 'rotate(0deg)',
-    fontSize: '24px', // Увеличено с дефолтного размера
+    fontSize: '32px',
   });
 
   const panelContent = (isExpanded) => ({
