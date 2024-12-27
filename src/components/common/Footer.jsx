@@ -1,7 +1,10 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import Logo_footer from "../../assets/icons/LogoFooterIcon";
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-white py-6">
       <div className="max-w-6xl mx-auto px-4 flex justify-between items-center max-md:flex-col gap-10 my-10">
@@ -20,7 +23,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Blog
+              {t("navFooter.Blog")}
             </a>
           </div>
 

@@ -10,6 +10,7 @@ import PageNotFound from "./components/PageNotFound";
 import "./tailwind.css";
 import InvestmentSteps from "./components/sections/HowToInvestSection";
 import FAQSection from "./components/sections/FAQSection";
+import "./components/i18n"; // Import i18n configuration
 
 function App() {
   return (
