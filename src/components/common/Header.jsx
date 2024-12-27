@@ -1,8 +1,17 @@
 import React, { useState } from "react";
-import Logo_nav from "../../assets/icons/LogoNavIcon.jsx";
+import { useTranslation } from "react-i18next"; // Подключение i18next
+import Logo_nav from "../../assets/icons/LogoNavIcon.jsx"; // Логотип
+import BurgerMenu from "../../assets/icons/BurgerMenuIcon";
+import CrossNavIcon from "../../assets/icons/CrossNavIcon";
+
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { t, i18n } = useTranslation(); // Инициализация перевода
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng); // Смена языка
+  };
 
   return (
     <header className="bg-white z-50">
@@ -12,13 +21,14 @@ export default function Header() {
           <img src={Logo_nav} alt="Logo" className="h-full te-blue-600" />
         </a>
         <div className="flex gap-10 items-center md:justify-start justify-center">
+          {/* Переводимый текст */}
           <a
             className="text-xl md:block block mb-4 md:mb-0"
             href="https://t.me/cube_fund"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Blog
+            {t("navFooter.Blog")} {}
           </a>
           <a
             href="https://t.me/cube_fund"
@@ -53,6 +63,22 @@ export default function Header() {
               alt="X icon"
             />
           </a>
+
+          {/* Смена языка (десктоп) */}
+          <div className="flex items-center gap-2">
+            <button
+              className="text-sm text-blue-500"
+              onClick={() => changeLanguage("en")}
+            >
+              EN
+            </button>
+            <button
+              className="text-sm text-blue-500"
+              onClick={() => changeLanguage("ru")}
+            >
+              RU
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -92,7 +118,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Blog
+            {t("navFooter.Blog")} {}
           </a>
           <a
             href="https://t.me/cube_fund"
@@ -127,6 +153,22 @@ export default function Header() {
               alt="X icon"
             />
           </a>
+
+          {/* Смена языка (мобильная версия) */}
+          <div className="flex items-center gap-2">
+            <button
+              className="text-sm text-blue-500"
+              onClick={() => changeLanguage("en")}
+            >
+              EN
+            </button>
+            <button
+              className="text-sm text-blue-500"
+              onClick={() => changeLanguage("ru")}
+            >
+              RU
+            </button>
+          </div>
         </div>
       )}
     </header>
