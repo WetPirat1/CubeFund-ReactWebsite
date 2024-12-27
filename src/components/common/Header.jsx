@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { useTranslation } from "react-i18next"; // Подключение i18next
 
 export default function Header() {
@@ -79,7 +80,7 @@ export default function Header() {
       </nav>
 
       {/* Мобильная навигация */}
-      <nav className="flex md:hidden justify-between items-center p-4 fixed top-0 left-[13%] w-[70%] bg-white z-50 shadow-xl rounded-3xl mt-6">
+      <nav className="flex md:hidden justify-between items-center p-4 fixed top-0 left-[5%] w-[90%] bg-white z-50 shadow-xl rounded-3xl mt-6">
         <a href="/">
           <img src="" alt="Logo" />
         </a>
@@ -107,7 +108,7 @@ export default function Header() {
 
       {/* Мобильное выпадающее меню */}
       {menuOpen && (
-        <div className="flex flex-col items-center gap-4 p-4 bg-white shadow-xl rounded-b-3xl md:hidden fixed top-16 left-[13%] w-[70%] z-50">
+        <div className="flex flex-col items-center gap-4 p-4 bg-white shadow-xl rounded-b-3xl md:hidden fixed top-24 left-[5%] w-[90%] z-50">
           <a
             className="text-xl md:block block mb-4 md:mb-0"
             href="https://t.me/cube_fund"
