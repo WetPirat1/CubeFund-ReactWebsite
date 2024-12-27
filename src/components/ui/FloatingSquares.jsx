@@ -8,7 +8,7 @@ export default function FloatingSquares() {
         const positionX = Math.random() * 90; // Ограничиваем, чтобы квадраты не выходили за границы
         const positionY = Math.random() * 90;
         const delay = Math.random() * 5; // Задержка анимации
-        const duration = Math.random() * 10 + 5; // Продолжительность анимации
+        const duration = Math.random() * 10 + 2; // Продолжительность анимации
 
         return (
           <div
