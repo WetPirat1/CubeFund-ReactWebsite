@@ -79,9 +79,9 @@ export default function Header() {
       </nav>
 
       {/* Мобильная навигация */}
-      <nav className="flex md:hidden justify-between items-center p-4 fixed top-0 left-[5%] w-[90%] bg-white z-50 shadow-xl rounded-3xl mt-6">
+      <nav className="flex md:hidden justify-between items-center p-4 fixed top-0 left-[5%] w-[90%] bg-white z-50 shadow-xl rounded-t-3xl mt-6">
         <a href="/">
-          <img src="./src/assets/icons/LogoIcon.png" alt="Logo" />
+          <img className="h-11" src="./src/assets/icons/LogoIcon.png" alt="Logo" />
         </a>
         <button
           className="relative w-8 h-4 flex flex-col justify-between items-center group"
