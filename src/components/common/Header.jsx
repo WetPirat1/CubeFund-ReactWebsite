@@ -73,9 +73,11 @@ export default function Header() {
           {/* Смена языка (десктоп) */}
           <div className="flex items-center gap-2">
             <button
+
               className={`text-sm text-gray-500 ${
                 currentLanguage === "en" ? "font-semibold text-black" : ""
               }`}
+
               onClick={() => changeLanguage("en")}
             >
               ENG
@@ -84,9 +86,11 @@ export default function Header() {
             <span>/</span>
 
             <button
+
               className={`text-sm text-gray-500 ${
                 currentLanguage === "ru" ? "font-semibold text-black" : ""
               }`}
+
               onClick={() => changeLanguage("ru")}
             >
               RU
@@ -96,7 +100,7 @@ export default function Header() {
       </nav>
 
       {/* Мобильная навигация */}
-      <nav className="flex md:hidden justify-between items-center p-4 fixed top-0 left-[5%] w-[90%] bg-white z-50 shadow-xl rounded-3xl mt-6">
+      <nav className={`flex md:hidden justify-between items-center p-4 fixed top-0 left-[5%] w-[90%] bg-white z-50 shadow-xl rounded-3xl mt-6 transition-all duration-300 transform ${menuOpen ? "rounded-b-none" : ""}`}>
         <a href="/">
           <img
             className="h-11"
@@ -128,10 +132,12 @@ export default function Header() {
 
       {/* Мобильное выпадающее меню */}
       <div
+
         className={`flex flex-col items-center gap-4 p-4 bg-white shadow-xl rounded-b-3xl md:hidden fixed top-20 left-[5%] w-[90%] z-50 border-b-none transition-all duration-300 transform ${
           menuOpen
             ? "opacity-100 scale-100"
             : "opacity-0 scale-95 pointer-events-none"
+
         }`}
       >
         <a
@@ -179,9 +185,11 @@ export default function Header() {
         {/* Смена языка (мобильная версия) */}
         <div className="flex items-center gap-2 mt-6">
           <button
+
             className={`text-sm text-gray-500 ${
               currentLanguage === "en" ? "font-semibold text-black" : ""
             }`}
+
             onClick={() => changeLanguage("en")}
           >
             ENG
@@ -190,9 +198,11 @@ export default function Header() {
           <span>/</span>
 
           <button
+
             className={`text-sm text-gray-500 ${
               currentLanguage === "ru" ? "font-semibold text-black" : ""
             }`}
+
             onClick={() => changeLanguage("ru")}
           >
             RU
