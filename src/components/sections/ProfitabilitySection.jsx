@@ -4,7 +4,6 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 import FloatingSquares from "../ui/FloatingSquares";
 import CubeLogo from '../../assets/favicons/android-chrome-512x512.png'
 
-// Регистрируем компоненты Chart.js
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -16,7 +15,6 @@ ChartJS.register(
 );
 
 export default function ProfitabilitySection() {
-  // Замокапленные данные
   const mockData = [
     { date: '2024-01-01', dailyReturn: 1.2 },
     { date: '2024-01-02', dailyReturn: -0.5 },
@@ -28,25 +26,23 @@ export default function ProfitabilitySection() {
   const [data, setData] = useState(mockData);
 
   useEffect(() => {
-    // Если будете подключать API, замените setData на fetch запрос
-    // setData(mockData) используется только для демонстрации
     setData(mockData);
   }, []);
 
-  // Функция для преобразования даты в нужный формат
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    const options = { year: 'numeric', month: 'long', day: '2-digit' };
-    return date.toLocaleDateString('en-US', options); // Формат: "01 January 2024"
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Месяцы начинаются с 0
+    const year = date.getFullYear();
+    return `${day}.${month}.${year}`; // Формат: "dd.mm.yyyy"
   };
 
-  // Настройка данных для Chart.js
   const chartData = {
-    labels: data.map(item => formatDate(item.date)), // Преобразуем дату в новый формат
+    labels: data.map(item => formatDate(item.date)),
     datasets: [
       {
         label: 'Daily Return (%)',
-        data: data.map(item => item.dailyReturn), // Данные о доходности
+        data: data.map(item => item.dailyReturn),
         fill: false,
         borderColor: '#8884d8',
         tension: 0.1
@@ -70,13 +66,13 @@ export default function ProfitabilitySection() {
       x: {
         title: {
           display: true,
-          text: 'Date'
+          text: ''
         }
       },
       y: {
         title: {
           display: true,
-          text: 'Daily Return (%)'
+          text: ''
         },
         ticks: {
           callback: (value) => `${value}%`
@@ -86,7 +82,7 @@ export default function ProfitabilitySection() {
   };
 
   return (
-    <div className="relative p-16 flex flex-col lg:flex-row justify-center items-center">
+        <div className="relative p-16 flex flex-col lg:flex-row justify-center items-center">
       {/* Блок с текстом */}
       <div className="ml-16 w-full lg:w-[30%] mb-8 lg:mb-0">
         <FloatingSquares overflowEnabled={true} />
@@ -97,15 +93,11 @@ export default function ProfitabilitySection() {
                 {/* Логотип и текст */}
                 <span className=''>CUBE</span>
                 <img src={CubeLogo} alt="Cube Logo" className="h-16 mb-2" />
-
             </div>
-
             {/* Текст "Profitability" под логотипом */}
             <span className=" font-thin">Profitability</span>
         </div>
-
         </div>
-
       {/* Chart */}
       <div className="ml-10 w-full lg:w-[70%]"> {/* Установлено 70% ширины */}
         {/* Контейнер с размытым фоном для графика */}
