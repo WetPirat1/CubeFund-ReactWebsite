@@ -16,9 +16,9 @@ export default function Footer() {
         </div>
 
         <div className="flex gap-10 items-center justify-center max-md:flex max-md:flex-col max-md:gap-5">
-          <div className="flex max-lg:order-2">
+          <div className="flex text-center max-lg:order-2">
             <a
-              className="text-2xl block mb-4 text-gray-400 max-md:mx-auto"
+              className="text-2xl block mb-4  text-center text-gray-400 max-md:mx-auto"
               href="https://t.me/cube_fund"
               target="_blank"
               rel="noopener noreferrer"

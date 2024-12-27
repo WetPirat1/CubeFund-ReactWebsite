@@ -4,6 +4,7 @@ import Logo_nav from "../../assets/icons/LogoNavIcon.jsx"; // Логотип
 import BurgerMenu from "../../assets/icons/BurgerMenuIcon";
 import CrossNavIcon from "../../assets/icons/CrossNavIcon";
 
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { t, i18n } = useTranslation(); // Инициализация перевода
@@ -19,7 +20,6 @@ export default function Header() {
         <a className="h-14" href="/">
           <img src={Logo_nav} alt="Logo" className="h-full te-blue-600" />
         </a>
-
         <div className="flex gap-10 items-center md:justify-start justify-center">
           {/* Переводимый текст */}
           <a
@@ -88,10 +88,24 @@ export default function Header() {
           <img src={Logo_nav} alt="Logo" />
         </a>
         <button
-          className="text-3xl text-blue-500"
+          className="relative w-8 h-4 flex flex-col justify-between items-center group"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          {menuOpen ? <CrossNavIcon /> : <BurgerMenu />}
+          <span
+            className={`block w-6 h-0.5 bg-black transform transition-all duration-300 ${
+              menuOpen ? "-rotate-45 translate-y-2" : ""
+            }`}
+          ></span>
+          <span
+            className={`block w-6 h-0.5 bg-black transform transition-all duration-300 ${
+              menuOpen ? "opacity-0" : ""
+            }`}
+          ></span>
+          <span
+            className={`block w-6 h-0.5 bg-black transform transition-all duration-300 ${
+              menuOpen ? "rotate-45 -translate-y-2 " : ""
+            }`}
+          ></span>
         </button>
       </nav>
 

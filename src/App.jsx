@@ -10,6 +10,7 @@ import PageNotFound from "./components/PageNotFound";
 import "./tailwind.css";
 import InvestmentSteps from "./components/sections/HowToInvestSection";
 import FAQSection from "./components/sections/FAQSection";
+import ProfitabilitySection from "./components/sections/ProfitabilitySection";
 import "./components/i18n"; // Import i18n configuration
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
               <Header />
               <HeroSection />
               <SloganSection />
+              <ProfitabilitySection />
               <AdvantagesSection />
               <InvestmentSteps />
               <FAQSection />
