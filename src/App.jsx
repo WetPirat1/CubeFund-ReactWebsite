@@ -22,7 +22,7 @@ function App() {
           path="/"
           element={
             <>
-              {/* <TelegramBotBanner /> */}
+              <TelegramBotBanner />
               <Header />
               <HeroSection />
               <SloganSection />
