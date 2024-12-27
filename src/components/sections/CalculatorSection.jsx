@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import FloatingSquares from "../ui/FloatingSquares";
 import { div } from "framer-motion/client";
 
+
 export default function DepositCalculator() {
   const [amount, setAmount] = useState(1000);
   const [duration, setDuration] = useState(3);
@@ -96,4 +97,5 @@ export default function DepositCalculator() {
     </div>
   );
 }
+
 

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import FloatingSquares from "../ui/FloatingSquares";
-
 import { useTranslation } from "react-i18next"; // Импортируем i18next
 
 const sectionsData = [
