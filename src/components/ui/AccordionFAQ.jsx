@@ -1,6 +1,8 @@
 import * as React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function CustomizedAccordions() {
+  const { t } = useTranslation();
   const [expanded, setExpanded] = React.useState(null);
 
   const handleChange = (panel) => () => {
@@ -30,7 +32,7 @@ export default function CustomizedAccordions() {
   const iconStyle = (isExpanded) => ({
     transition: "transform 0.5s ease",
     transform: isExpanded ? "rotate(45deg)" : "rotate(0deg)",
-    fontSize: "24px", // Увеличено с дефолтного размера
+    fontSize: "24px", // Увеличено с дефолтного размер
   });
 
   const panelContent = (isExpanded) => ({
@@ -43,6 +45,7 @@ export default function CustomizedAccordions() {
 
   return (
     <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+
       {/* Panel 1 */}
       <div style={accordionStyle}>
         <div style={headerStyle} onClick={handleChange("panel1")}>
@@ -104,8 +107,10 @@ export default function CustomizedAccordions() {
             here
           </a>
           .
+=======
+
         </div>
-      </div>
+      ))}
     </div>
   );
 }

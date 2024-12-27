@@ -1,7 +1,10 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import Logo_footer from "../../assets/icons/LogoFooterIcon";
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-white py-6">
       <div className="max-w-6xl mx-auto px-4 flex justify-between items-center max-md:flex-col gap-10 my-10">
@@ -13,14 +16,14 @@ export default function Footer() {
         </div>
 
         <div className="flex gap-10 items-center justify-center max-md:flex max-md:flex-col max-md:gap-5">
-          <div className="flex max-lg:order-2">
+          <div className="flex text-center max-lg:order-2">
             <a
-              className="text-2xl block mb-4 text-gray-400 max-md:mx-auto"
+              className="text-2xl block mb-4  text-center text-gray-400 max-md:mx-auto"
               href="https://t.me/cube_fund"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Blog
+              {t("navFooter.Blog")}
             </a>
           </div>
 

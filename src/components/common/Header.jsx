@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 
-import BurgerMenu from "../../assets/icons/BurgerMenuIcon";
-import CrossNavIcon from "../../assets/icons/CrossNavIcon";
+import { useTranslation } from "react-i18next"; // Подключение i18next
+import Logo_nav from "../../assets/icons/LogoNavIcon.jsx"; // Логотип
+
+
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { t, i18n } = useTranslation(); // Инициализация перевода
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng); // Смена языка
+  };
 
   return (
     <header className="bg-white z-50">
@@ -14,15 +21,15 @@ export default function Header() {
           <img src="./src/assets/icons/logoNavIcon.png" alt="Logo" className="h-full te-blue-600" />{" "}
           {/* Correctly using the logo component */}
         </a>
-
         <div className="flex gap-10 items-center md:justify-start justify-center">
+          {/* Переводимый текст */}
           <a
             className="text-xl md:block block mb-4 md:mb-0"
             href="https://t.me/cube_fund"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Blog
+            {t("navFooter.Blog")} {}
           </a>
           <a
             href="https://t.me/cube_fund"
@@ -57,20 +64,51 @@ export default function Header() {
               alt="X icon"
             />
           </a>
+
+          {/* Смена языка (десктоп) */}
+          <div className="flex items-center gap-2">
+            <button
+              className="text-sm text-blue-500"
+              onClick={() => changeLanguage("en")}
+            >
+              EN
+            </button>
+            <button
+              className="text-sm text-blue-500"
+              onClick={() => changeLanguage("ru")}
+            >
+              RU
+            </button>
+          </div>
         </div>
       </nav>
 
       {/* Мобильная навигация */}
       <nav className="flex md:hidden justify-between items-center p-4 fixed top-0 left-[5%] w-[90%] bg-white z-50 shadow-xl rounded-3xl mt-6">
         <a href="/">
+
           <img src='./src/assets/icons/logoNavIcon.png' alt="Logo" />{""}
           {/* Correctly using the logo component */}
         </a>
         <button
-          className="text-3xl text-blue-500"
+          className="relative w-8 h-4 flex flex-col justify-between items-center group"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          {menuOpen ? <CrossNavIcon /> : <BurgerMenu />}
+          <span
+            className={`block w-6 h-0.5 bg-black transform transition-all duration-300 ${
+              menuOpen ? "-rotate-45 translate-y-2" : ""
+            }`}
+          ></span>
+          <span
+            className={`block w-6 h-0.5 bg-black transform transition-all duration-300 ${
+              menuOpen ? "opacity-0" : ""
+            }`}
+          ></span>
+          <span
+            className={`block w-6 h-0.5 bg-black transform transition-all duration-300 ${
+              menuOpen ? "rotate-45 -translate-y-2 " : ""
+            }`}
+          ></span>
         </button>
       </nav>
 
@@ -83,7 +121,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Blog
+            {t("navFooter.Blog")} {}
           </a>
           <a
             href="https://t.me/cube_fund"
@@ -118,6 +156,22 @@ export default function Header() {
               alt="X icon"
             />
           </a>
+
+          {/* Смена языка (мобильная версия) */}
+          <div className="flex items-center gap-2">
+            <button
+              className="text-sm text-blue-500"
+              onClick={() => changeLanguage("en")}
+            >
+              EN
+            </button>
+            <button
+              className="text-sm text-blue-500"
+              onClick={() => changeLanguage("ru")}
+            >
+              RU
+            </button>
+          </div>
         </div>
       )}
     </header>

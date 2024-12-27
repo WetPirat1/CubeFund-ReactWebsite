@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import FloatingSquares from "../ui/FloatingSquares";
 
+
 const sectionsData = [
   {
     title: "Easy to use",
@@ -19,12 +20,14 @@ const sectionsData = [
   {
     title: "Telegram integration",
     description: "Stay connected with seamless Telegram integration.",
+
     image: "./src/assets/sections/TelegramImg.png",
   },
 ];
 
 export default function AdvantagesSection() {
   const [currentSection, setCurrentSection] = useState(0);
+  const { t } = useTranslation(); // Хук для перевода
 
   const onScroll = (entry, index) => {
     if (entry.isIntersecting) {
@@ -64,12 +67,14 @@ export default function AdvantagesSection() {
                 <img
                   className="mb-6 sm:mb-10 w-48 sm:w-52 h-auto"
                   src={section.image}
-                  alt={section.title}
+                  alt={t(section.title)} // Перевод заголовка
                 />
+
                 <h2 className="text-2xl sm:text-4xl font-bold mb-4">
                   {section.title}
                 </h2>
                 <p className="text-lg sm:text-2xl">{section.description}</p>
+
               </motion.div>
             )}
           </div>

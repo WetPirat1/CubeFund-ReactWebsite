@@ -1,0 +1,82 @@
+{
+  "navFooter": {
+    "Blog": "Blog"
+  },
+  "hero": {
+    "heroSection.title": "Cube Fund Invest"
+  },
+  "telegram": {
+    "linkText": "Launch on Telegram"
+  },
+  "sloganSection": {
+    "title": "Trust. Invest. Grow.",
+    "description": "Trust your assets to professionals Invest in crypto and value your time Grow with CUBE"
+  },
+  "advantagesSections": {
+    "easyToUse": {
+      "title": "Easy to use",
+      "description": "Easy to use app that helps you to invest right from your smartphone anywhere and anytime."
+    },
+    "blockchainBased": {
+      "title": "Blockchain Based",
+      "description": "Secure and decentralized blockchain technology at your fingertips."
+    },
+    "telegramIntegration": {
+      "title": "Telegram integration",
+      "description": "Stay connected with seamless Telegram integration."
+    }
+  },
+  "howToInvest": {
+    "title": "How to invest?",
+    "steps": [
+      {
+        "title": "Step 1",
+        "description": "Open the bot in Telegram",
+        "image": "./src/assets/sections/InvestSectionConWalletImg.png"
+      },
+      {
+        "title": "Step 2",
+        "description": "Connect wallet",
+        "image": "./src/assets/sections/InvestSectionConWalletImg.png"
+      },
+      {
+        "title": "Step 3",
+        "description": "Select a coin and the amount you want to invest",
+        "image": "./src/assets/sections/InvestSectionSelectCoinImg.png"
+      },
+      {
+        "title": "Step 4",
+        "description": "Select investment period",
+        "image": "./src/assets/sections/InvestSectionSelectPeriodImg.png"
+      },
+      {
+        "title": "Step 5",
+        "description": "Click the Invest button",
+        "image": "./src/assets/sections/InvestSectionInvestBtnImg.png"
+      },
+      {
+        "title": "Step 6",
+        "description": "Confirm the action in the wallet",
+        "image": "./src/assets/sections/InvestSectionConfirmActionImg.png"
+      }
+    ]
+  },
+  "accordion": {
+    "panel1": {
+      "title": "Who are we?",
+      "content": "We are an investment platform specializing in managing crypto assets. Stable income is ensured by our strategies based on mathematical trading models, whose efficiency has been proven over time."
+    },
+    "panel2": {
+      "title": "How do the payments work?",
+      "content": "You can withdraw your funds upon the completion of the investment term through the 'History' section by clicking the 'Withdraw' button."
+    },
+    "panel3": {
+      "title": "What happens to the money?",
+      "content": "Your investments are diversified across portfolios through smart contracts. Fund returns are automatically processed upon the expiration of the investment period."
+    },
+    "panel4": {
+      "title": "How can I contact support?",
+      "content": "Customer support is available 24/7 via the Telegram chat <a href='https://t.me/CUBE_Fund_Support' className='underline hover:text-gray-700 transition-colors'>here</a>."
+    }
+  }
+}
