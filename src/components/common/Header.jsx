@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next"; // Подключение i18next
 
 export default function Header() {
@@ -9,10 +9,16 @@ export default function Header() {
     i18n.changeLanguage(lng); // Смена языка
   };
 
+  const currentLanguage = i18n.language; // Текущий язык
+
   return (
     <header className="bg-white z-50">
       {/* Десктоп-навигация */}
-      <nav className="hidden md:flex justify-between items-center max-w-5xl mx-auto p-4">
+      <nav
+        className={`hidden md:flex justify-between items-center max-w-5xl mx-auto p-4 ${
+          menuOpen ? "rounded-b-none" : "rounded-b-3xl"
+        }`}
+      >
         <a className="h-14" href="/">
           <img src="./src/assets/icons/LogoIcon.png" alt="Logo" className="h-full te-blue-600" />
         </a>
@@ -24,7 +30,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {t("navFooter.Blog")} {}
+            {t("navFooter.Blog")}
           </a>
           <a
             href="https://t.me/cube_fund"
@@ -63,13 +69,16 @@ export default function Header() {
           {/* Смена языка (десктоп) */}
           <div className="flex items-center gap-2">
             <button
-              className="text-sm text-blue-500"
+              className={`text-sm text-gray-500 ${currentLanguage === "en" ? "font-semibold text-black" : ""}`}
               onClick={() => changeLanguage("en")}
             >
-              EN
+              ENG
             </button>
+
+            <span>/</span>
+
             <button
-              className="text-sm text-blue-500"
+              className={`text-sm text-gray-500 ${currentLanguage === "ru" ? "font-semibold text-black" : ""}`}
               onClick={() => changeLanguage("ru")}
             >
               RU
@@ -79,7 +88,7 @@ export default function Header() {
       </nav>
 
       {/* Мобильная навигация */}
-      <nav className="flex md:hidden justify-between items-center p-4 fixed top-0 left-[5%] w-[90%] bg-white z-50 shadow-xl rounded-t-3xl mt-6">
+      <nav className="flex md:hidden justify-between items-center p-4 fixed top-0 left-[5%] w-[90%] bg-white z-50 shadow-xl rounded-3xl mt-6">
         <a href="/">
           <img className="h-11" src="./src/assets/icons/LogoIcon.png" alt="Logo" />
         </a>
@@ -106,67 +115,72 @@ export default function Header() {
       </nav>
 
       {/* Мобильное выпадающее меню */}
-      {menuOpen && (
-        <div className="flex flex-col items-center gap-4 p-4 bg-white shadow-xl rounded-b-3xl md:hidden fixed top-24 left-[5%] w-[90%] z-50">
-          <a
-            className="text-xl md:block block mb-4 md:mb-0"
-            href="https://t.me/cube_fund"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {t("navFooter.Blog")} {}
-          </a>
-          <a
-            href="https://t.me/cube_fund"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              className="social-Networks-Links"
-              src="../src/assets/icons/telegramBlackIcon.png"
-              alt="telegram icon"
-            />
-          </a>
-          <a
-            href="https://t.me/cube_fund"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              className="social-Networks-Links"
-              src="../src/assets/icons/supportIcon.png"
-              alt="support icon"
-            />
-          </a>
-          <a
-            href="https://t.me/cube_fund"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              className="social-Networks-Links"
-              src="../src/assets/icons/xLogoIcon.png"
-              alt="X icon"
-            />
-          </a>
+      <div
+        className={`flex flex-col items-center gap-4 p-4 bg-white shadow-xl rounded-b-3xl md:hidden fixed top-20 left-[5%] w-[90%] z-50 border-b-none transition-all duration-300 transform ${
+          menuOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
+        }`}
+      >
+        <a
+          className="text-xl md:block block mb-4 md:mb-0"
+          href="https://t.me/cube_fund"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {t("navFooter.Blog")}
+        </a>
+        <a
+          href="https://t.me/cube_fund"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            className="social-Networks-Links"
+            src="../src/assets/icons/telegramBlackIcon.png"
+            alt="telegram icon"
+          />
+        </a>
+        <a
+          href="https://t.me/cube_fund"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            className="social-Networks-Links"
+            src="../src/assets/icons/supportIcon.png"
+            alt="support icon"
+          />
+        </a>
+        <a
+          href="https://t.me/cube_fund"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            className="social-Networks-Links"
+            src="../src/assets/icons/xLogoIcon.png"
+            alt="X icon"
+          />
+        </a>
 
-          {/* Смена языка (мобильная версия) */}
-          <div className="flex items-center gap-2">
-            <button
-              className="text-sm text-blue-500"
-              onClick={() => changeLanguage("en")}
-            >
-              EN
-            </button>
-            <button
-              className="text-sm text-blue-500"
-              onClick={() => changeLanguage("ru")}
-            >
-              RU
-            </button>
-          </div>
+        {/* Смена языка (мобильная версия) */}
+        <div className="flex items-center gap-2 mt-6">
+          <button
+            className={`text-sm text-gray-500 ${currentLanguage === "en" ? "font-semibold text-black" : ""}`}
+            onClick={() => changeLanguage("en")}
+          >
+            ENG
+          </button>
+
+          <span>/</span>
+
+          <button
+            className={`text-sm text-gray-500 ${currentLanguage === "ru" ? "font-semibold text-black" : ""}`}
+            onClick={() => changeLanguage("ru")}
+          >
+            RU
+          </button>
         </div>
-      )}
+      </div>
     </header>
   );
 }
