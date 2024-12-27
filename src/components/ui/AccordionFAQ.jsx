@@ -51,7 +51,7 @@ export default function CustomizedAccordions() {
           <div
             style={headerStyle}
             onClick={handleChange(`panel${num}`)}
-            className="hover:bg-gray-200" // Adding hover effect for background color
+            className="hover:bg-blue-100" // Adding hover effect for background color
           >
             <span>{t(`accordion.panel${num}.title`)}</span>
             <span style={iconStyle(expanded === `panel${num}`)}>+</span>

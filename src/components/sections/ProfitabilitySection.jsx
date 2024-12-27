@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import FloatingSquares from "../ui/FloatingSquares";
-import CubeLogo from '../../assets/favicons/android-chrome-512x512.png'
+import CubeLogo from '../../assets/favicons/android-chrome-512x512.png';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 ChartJS.register(
   CategoryScale,
@@ -21,20 +23,32 @@ export default function ProfitabilitySection() {
     { date: '2024-01-03', dailyReturn: 2.3 },
     { date: '2024-01-04', dailyReturn: -0.8 },
     { date: '2024-01-05', dailyReturn: 1.5 },
+    { date: '2024-01-06', dailyReturn: 0.3 },
+    { date: '2024-01-07', dailyReturn: 1.8 },
+    { date: '2024-01-08', dailyReturn: -0.4 },
+    { date: '2024-01-09', dailyReturn: 2.5 },
+    { date: '2024-01-10', dailyReturn: 1.0 },
+    { date: '2024-01-11', dailyReturn: -0.2 }
   ];
 
-  const [data, setData] = useState(mockData);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    setData(mockData);
+    // Function to select 7 random entries from the mock data
+    const getRandomEntries = (data, count) => {
+      const shuffled = [...data].sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, count);
+    };
+
+    setData(getRandomEntries(mockData, 7));
   }, []);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Месяцы начинаются с 0
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const year = date.getFullYear();
-    return `${day}.${month}.${year}`; // Формат: "dd.mm.yyyy"
+    return `${day}.${month}.${year}`;
   };
 
   const chartData = {
@@ -82,40 +96,40 @@ export default function ProfitabilitySection() {
   };
 
   return (
-        <div className="relative p-16 flex flex-col lg:flex-row justify-center items-center">
-      {/* Блок с текстом */}
-      <div className="ml-16 w-full lg:w-[30%] mb-8 lg:mb-0">
+    <div className="relative flex flex-col lg:flex-row justify-center items-center min-h-screen p-6">
+      {/* Text Block */}
+      <div className="flex flex-col items-center text-center lg:items-start lg:text-left mb-8 lg:mb-0 lg:mr-8 max-w-lg">
         <FloatingSquares overflowEnabled={true} />
-        
-        {/* Text */}
-        <div className="text-left font-light text-6xl mb-10">
-            <div className="flex items-center justify-start space-x-2"> 
-                {/* Логотип и текст */}
-                <span className=''>CUBE</span>
-                <img src={CubeLogo} alt="Cube Logo" className="h-16 mb-2" />
-            </div>
-            {/* Текст "Profitability" под логотипом */}
-            <span className=" font-thin">Profitability</span>
-        </div>
-        </div>
-      {/* Chart */}
-      <div className="ml-10 w-full lg:w-[70%]"> {/* Установлено 70% ширины */}
-        {/* Контейнер с размытым фоном для графика */}
-        <div
-          className="shadow-s"
-          style={{
-            background: 'rgba(255, 255, 255, 0.0)', // Прозрачный фон
-            backdropFilter: 'blur(8px)', // Эффект размытия
-            borderRadius: '1px'
-          }}
-        >
-          {/* Увеличиваем размер графика */}
-          <div style={{ height: '500px', width: '100%' }}> {/* Увеличена высота и добавлена ширина */}
-            {/* График с размерами */}
-            <Line data={chartData} options={options} height={500} width={700} />
+        <div className="text-6xl mb-6">
+          <div className="flex items-center justify-center lg:justify-start space-x-2">
+            <span className="font-medium">CUBE</span>
+            <img src={CubeLogo} alt="Cube Logo" className="h-16 mb-2" />
           </div>
+          <span className="font-light">Profitability</span>
+        </div>
+        {/* Link "Learn More" */}
+        <a
+          target='_blank'
+          href='https://www.bybit.com/copyTrade/trade-center/detail?leaderMark=rwj0pR7CZoOs22QjgrHnCA%3D%3D&copyFrom=Search'
+          className='hover:underline border items-center flex justify-center border-black border py-2 px-4 backdrop-blur-lg hover:text-slate-950 transition-colors ml-1 rounded-lg text-slate-700 text-md'>
+          Learn more
+          <span className='text-md'> 
+            <FontAwesomeIcon icon={faArrowRight} className='ml-3 text-sm' />  
+          </span>
+        </a>
+      </div>
+
+      {/* Chart Section */}
+      <div className="flex justify-center items-center w-full max-w-3xl lg:max-w-4xl relative">
+        <div 
+          className="absolute inset-0 backdrop-blur-lg rounded-lg"
+          style={{ zIndex: -1 }} 
+        />
+        <div style={{ height: '100%', width: '100%' }}>
+          <Line data={chartData} options={options} />
         </div>
       </div>
+
     </div>
   );
 }
