@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import FloatingSquares from "../ui/FloatingSquares";
 import { div } from "framer-motion/client";
 
-
 export default function DepositCalculator() {
   const [amount, setAmount] = useState(1000);
   const [duration, setDuration] = useState(3);
@@ -66,31 +65,28 @@ export default function DepositCalculator() {
         </button>
       </div>
 
-        {/* Result Section */}
-        <div className="text-center mt-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-          <div>
-            <div className="flex items-center gap-2 justify-center sm:justify-start">
-              <img
-                className="w-9 h-9"
-                src="./src/assets/icons/LogoIcon.png"
-                alt=""
-              />
-              <p className="text-xl mb-2">Вы получите</p>
-            </div>
-            <p className="text-4xl font-bold">
-              +{(calculateTotal() - amount).toFixed(2)}{" "}
-              <span className="text-xl font-thin">USDT</span>
-            </p>
+      {/* Result Section */}
+      <div className="text-center mt-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+        <div>
+          <div className="flex items-center gap-2 justify-center sm:justify-start">
+            <img
+              className="w-9 h-9"
+              src="./src/assets/icons/LogoIcon.png"
+              alt=""
+            />
+            <p className="text-xl mb-2">Вы получите</p>
           </div>
-          <div>
-            <p className="text-lg">
-              {amount} USDT = <span>{calculateTotal()} USDT</span>
-            </p>
-          </div>
+          <p className="text-4xl font-bold">
+            +{(calculateTotal() - amount).toFixed(2)}{" "}
+            <span className="text-xl font-thin">USDT</span>
+          </p>
         </div>
-      </section>
-    </div>
+        <div>
+          <p className="text-lg">
+            {amount} USDT = <span>{calculateTotal()} USDT</span>
+          </p>
+        </div>
+      </div>
+    </section>
   );
 }
-
-
