@@ -30,7 +30,7 @@ export default function DepositCalculator() {
           type="number"
           value={amount}
           onChange={handleAmountChange}
-          className="w-full p-3 border border-gray-300 rounded text-center text-lg"
+          className="w-full p-3 border border-gray-300 rounded text-center text-lg transition-all duration-300 ease-in-out focus:ring-2 focus:ring-blue-500 transform focus:scale-105" // Smooth focus animation
           min="0"
         />
       </div>
@@ -39,7 +39,7 @@ export default function DepositCalculator() {
       <div className="flex flex-wrap justify-between gap-2 mb-6">
         <button
           onClick={() => handleDurationChange(3, 12)}
-          className={`px-4 py-2 flex-grow rounded-xl text-lg font-medium text-center ${
+          className={`px-4 py-2 flex-grow rounded-xl text-lg font-medium text-center transition-all duration-300 ease-in-out transform hover:scale-105 ${
             duration === 3 ? "bg-blue-500 text-white" : "bg-gray-100"
           }`}
         >
@@ -47,7 +47,7 @@ export default function DepositCalculator() {
         </button>
         <button
           onClick={() => handleDurationChange(6, 18)}
-          className={`px-4 py-2 flex-grow rounded-xl text-lg font-medium text-center ${
+          className={`px-4 py-2 flex-grow rounded-xl text-lg font-medium text-center transition-all duration-300 ease-in-out transform hover:scale-105 ${
             duration === 6 ? "bg-blue-500 text-white" : "bg-gray-100"
           }`}
         >
@@ -55,7 +55,7 @@ export default function DepositCalculator() {
         </button>
         <button
           onClick={() => handleDurationChange(12, 24)}
-          className={`px-4 py-2 flex-grow rounded-xl text-lg font-medium text-center ${
+          className={`px-4 py-2 flex-grow rounded-xl text-lg font-medium text-center transition-all duration-300 ease-in-out transform hover:scale-105 ${
             duration === 12 ? "bg-blue-500 text-white" : "bg-gray-100"
           }`}
         >

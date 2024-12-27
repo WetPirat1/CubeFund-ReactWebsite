@@ -20,7 +20,11 @@ export default function Header() {
         }`}
       >
         <a className="h-14" href="/">
-          <img src="./src/assets/icons/LogoIcon.png" alt="Logo" className="h-full te-blue-600" />
+          <img
+            src="./src/assets/icons/LogoIcon.png"
+            alt="Logo"
+            className="h-full te-blue-600"
+          />
         </a>
         <div className="flex gap-10 items-center md:justify-start justify-center">
           {/* Переводимый текст */}
@@ -69,7 +73,9 @@ export default function Header() {
           {/* Смена языка (десктоп) */}
           <div className="flex items-center gap-2">
             <button
-              className={`text-sm text-gray-500 ${currentLanguage === "en" ? "font-semibold text-black" : ""}`}
+              className={`text-sm text-gray-500 ${
+                currentLanguage === "en" ? "font-semibold text-black" : ""
+              }`}
               onClick={() => changeLanguage("en")}
             >
               ENG
@@ -78,7 +84,9 @@ export default function Header() {
             <span>/</span>
 
             <button
-              className={`text-sm text-gray-500 ${currentLanguage === "ru" ? "font-semibold text-black" : ""}`}
+              className={`text-sm text-gray-500 ${
+                currentLanguage === "ru" ? "font-semibold text-black" : ""
+              }`}
               onClick={() => changeLanguage("ru")}
             >
               RU
@@ -90,7 +98,11 @@ export default function Header() {
       {/* Мобильная навигация */}
       <nav className="flex md:hidden justify-between items-center p-4 fixed top-0 left-[5%] w-[90%] bg-white z-50 shadow-xl rounded-3xl mt-6">
         <a href="/">
-          <img className="h-11" src="./src/assets/icons/LogoIcon.png" alt="Logo" />
+          <img
+            className="h-11"
+            src="./src/assets/icons/LogoIcon.png"
+            alt="Logo"
+          />
         </a>
         <button
           className="relative w-8 h-4 flex flex-col justify-between items-center group"
@@ -117,7 +129,9 @@ export default function Header() {
       {/* Мобильное выпадающее меню */}
       <div
         className={`flex flex-col items-center gap-4 p-4 bg-white shadow-xl rounded-b-3xl md:hidden fixed top-20 left-[5%] w-[90%] z-50 border-b-none transition-all duration-300 transform ${
-          menuOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
+          menuOpen
+            ? "opacity-100 scale-100"
+            : "opacity-0 scale-95 pointer-events-none"
         }`}
       >
         <a
@@ -165,7 +179,9 @@ export default function Header() {
         {/* Смена языка (мобильная версия) */}
         <div className="flex items-center gap-2 mt-6">
           <button
-            className={`text-sm text-gray-500 ${currentLanguage === "en" ? "font-semibold text-black" : ""}`}
+            className={`text-sm text-gray-500 ${
+              currentLanguage === "en" ? "font-semibold text-black" : ""
+            }`}
             onClick={() => changeLanguage("en")}
           >
             ENG
@@ -174,7 +190,9 @@ export default function Header() {
           <span>/</span>
 
           <button
-            className={`text-sm text-gray-500 ${currentLanguage === "ru" ? "font-semibold text-black" : ""}`}
+            className={`text-sm text-gray-500 ${
+              currentLanguage === "ru" ? "font-semibold text-black" : ""
+            }`}
             onClick={() => changeLanguage("ru")}
           >
             RU
