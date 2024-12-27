@@ -3,29 +3,29 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import FloatingSquares from "../ui/FloatingSquares";
 
+import { useTranslation } from "react-i18next"; // Импортируем i18next
 
 const sectionsData = [
   {
-    title: "Easy to use",
-    description:
-      "Easy to use app that helps you to invest right from your smartphone anywhere and anytime",
+    title: "advantagesSections.easyToUse.title", // Ключи для перевода
+    description: "advantagesSections.easyToUse.description",
     image: "./src/assets/sections/AdvantSectionWorksImg.png",
   },
   {
-    title: "Blockchain Based",
-    description:
-      "Secure and decentralized blockchain technology at your fingertips",
+    title: "advantagesSections.blockchainBased.title",
+    description: "advantagesSections.blockchainBased.description",
     image: "./src/assets/sections/BlockchainImg.png",
   },
   {
-    title: "Telegram integration",
-    description: "Stay connected with seamless Telegram integration",
+    title: "advantagesSections.telegramIntegration.title",
+    description: "advantagesSections.telegramIntegration.description",
     image: "./src/assets/sections/TelegramImg.png",
   },
 ];
 
 export default function AdvantagesSection() {
   const [currentSection, setCurrentSection] = useState(0);
+  const { t } = useTranslation(); // Хук для перевода
 
   const onScroll = (entry, index) => {
     if (entry.isIntersecting) {
@@ -64,10 +64,14 @@ export default function AdvantagesSection() {
                 <img
                   className="mb-10 max-w-52"
                   src={section.image}
-                  alt={section.title}
+                  alt={t(section.title)} // Перевод заголовка
                 />
-                <h2 className="text-4xl font-bold mb-4">{section.title}</h2>
-                <p className="text-2xl font-light max-w-lg">{section.description}</p>
+                <h2 className="text-4xl font-bold mb-4">
+                  {t(section.title)} {/* Перевод заголовка */}
+                </h2>
+                <p className="text-2xl max-w-lg">
+                  {t(section.description)} {/* Перевод описания */}
+                </p>
               </motion.div>
             )}
           </div>
