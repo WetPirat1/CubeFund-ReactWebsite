@@ -1,0 +1,82 @@
+{
+  "navFooter": {
+    "Blog": "Блог"
+  },
+  "hero": {
+    "heroSection.title": "Cube Fund Invest"
+  },
+  "telegram": {
+    "linkText": "Открыть в Telegram"
+  },
+  "sloganSection": {
+    "title": "Доверяйте. Инвестируйте. Развивайтесь.",
+    "description": "Доверьте свои активы профессионалам Инвестируйте в криптовалюту и цените свое время Развивайтесь вместе с CUBE"
+  },
+  "advantagesSections": {
+    "easyToUse": {
+      "title": "Просто в использовании",
+      "description": "Простое в использовании приложение, которое помогает инвестировать прямо со смартфона в любое время и в любом месте."
+    },
+    "blockchainBased": {
+      "title": "На базе блокчейна",
+      "description": "Безопасные и децентрализованные технологии блокчейна у вас под рукой."
+    },
+    "telegramIntegration": {
+      "title": "Интеграция с Telegram",
+      "description": "Оставайтесь на связи с помощью удобной интеграции с Telegram."
+    }
+  },
+  "howToInvest": {
+    "title": "Как инвестировать?",
+    "steps": [
+      {
+        "title": "Шаг 1",
+        "description": "Откройте бота в Telegram",
+        "image": "./src/assets/sections/placeholder.png"
+      },
+      {
+        "title": "Шаг 2",
+        "description": "Подключите кошелек",
+        "image": "./src/assets/sections/placeholder.png"
+      },
+      {
+        "title": "Шаг 3",
+        "description": "Выберите монету и сумму для инвестирования",
+        "image": "./src/assets/sections/placeholder.png"
+      },
+      {
+        "title": "Шаг 4",
+        "description": "Выберите период инвестирования",
+        "image": "./src/assets/sections/placeholder.png"
+      },
+      {
+        "title": "Шаг 5",
+        "description": "Нажмите кнопку Инвестировать",
+        "image": "./src/assets/sections/placeholder.png"
+      },
+      {
+        "title": "Шаг 6",
+        "description": "Подтвердите действие в кошельке",
+        "image": "./src/assets/sections/placeholder.png"
+      }
+    ]
+  },
+  "accordion": {
+    "panel1": {
+      "title": "Кто мы такие?",
+      "content": "Мы инвестиционная платформа, специализирующаяся на управлении криптоактивами. Стабильный доход обеспечивается нашими стратегиями, основанными на математических торговых моделях, эффективность которых подтверждена временем."
+    },
+    "panel2": {
+      "title": "Как работают выплаты?",
+      "content": "Вы можете вывести свои средства после завершения срока инвестирования через раздел 'История', нажав на кнопку 'Вывести'."
+    },
+    "panel3": {
+      "title": "Что происходит с деньгами?",
+      "content": "Ваши инвестиции диверсифицируются по портфелям с использованием смарт-контрактов. Возврат средств осуществляется автоматически после окончания инвестиционного периода."
+    },
+    "panel4": {
+      "title": "Как связаться с поддержкой?",
+      "content": "Служба поддержки доступна 24/7 через Telegram-чат <a href='https://t.me/CUBE_Fund_Support' className='underline hover:text-gray-700 transition-colors'>здесь</a>."
+    }
+  }
+}
