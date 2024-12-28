@@ -95,6 +95,5 @@ export default function DepositCalculator() {
             </a>
           </div>
       </section>
-    </div>
   );
 }
