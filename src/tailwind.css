@@ -10,4 +10,8 @@
   .max-section-screen {
     @apply max-w-screen-xl;
   }
+
+  .animate {
+    @apply hover:scale-110 transition-transform duration-300;
+  }
 }
