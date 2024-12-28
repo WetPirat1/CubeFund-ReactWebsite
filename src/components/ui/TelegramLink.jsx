@@ -3,11 +3,11 @@ import { useTranslation } from "react-i18next";
 export default function TelegramLink({
   href = "https://t.me/CUBE_Fund_bot",
   showIcon = true,
-  textKey = "telegram.linkText", // Use a key to reference translation
+  textKey = "telegram.linkText", 
   marginX = "mx-auto",
   maxW = "max-w-[250px]",
-  iconSize = "w-5 h-4", // Add icon size as a prop
-  animateOnHover = false, // New prop to control hover animations
+  iconSize = "w-5 h-4",
+  animateOnHover = false, 
 }) {
   const { t } = useTranslation();
 
@@ -15,7 +15,7 @@ export default function TelegramLink({
     <a
       className={`flex items-center justify-center ${maxW} py-3 
                   bg-[#1AB1F6] text-white hover:bg-[#1389c9] ${marginX} 
-                  rounded-3xl transition-all duration-300 ease-in-out ${animateOnHover ? "transform hover:scale-105" : ""}`} // Conditional animation
+                  rounded-3xl transition-all duration-300 ease-in-out ${animateOnHover ? "transform hover:scale-105" : ""}`} // Special animation for mobile
       href={href}
       target="_blank"
       rel="noopener noreferrer"

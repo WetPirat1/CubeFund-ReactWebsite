@@ -25,9 +25,8 @@ export default function DepositCalculator() {
   return (
     <div className="min-h-full flex items-center justify-center bg-gradient-to-br mb-20 p-4 relative">
       {/* FloatingSquares as background */}
-      <div className="absolute inset-0 z-0">
-      </div>
-      
+      <div className="absolute inset-0 z-0"></div>
+
       {/* Main content section */}
       <section className="relative p-8 rounded-3xl max-w-xl mx-auto sm:p-6 md:p-8 lg:p-10 shadow-2xl transform transition-all z-10">
         <h2 className="text-4xl md:text-5xl mb-12 text-center font-semibold text-black">
@@ -36,7 +35,9 @@ export default function DepositCalculator() {
 
         {/* Input Section */}
         <div className="mb-8">
-          <label className="block text-lg font-light mb-2 text-gray-700">You invest</label>
+          <label className="block text-lg font-light mb-2 text-gray-700">
+            You invest
+          </label>
           <input
             type="number"
             value={amount}
@@ -57,7 +58,7 @@ export default function DepositCalculator() {
             <button
               key={btnDuration}
               onClick={() => handleDurationChange(btnDuration, btnRate)}
-              className={`px-6 py-3 flex-grow rounded-xl text-lg font-medium text-center transition-all duration-300 ease-in-out transform hover:scale-110 shadow-md focus:ring-4 focus:ring-blue-300 focus:outline-none ${
+              className={`px-6 py-3 flex-grow rounded-xl text-lg font-medium text-center animate shadow-md focus:ring-4 focus:ring-blue-300 focus:outline-none ${
                 duration === btnDuration
                   ? "bg-blue-500 text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
@@ -72,28 +73,36 @@ export default function DepositCalculator() {
         <div className="text-center mt-3 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-6">
           <div>
             <div className="flex items-center gap-3 justify-center sm:justify-start mt-4">
-              <span className="bg-blue-500 rounded-full text-white py-3 px-4 text-xl">%</span>
+              <span className="bg-blue-500 rounded-full text-white py-3 px-4 text-xl">
+                %
+              </span>
               <p className="text-xl  text-gray-700 font-medium">Вы получите</p>
             </div>
             <p className="text-4xl font-bold text-black mt-4 mb-4 ">
-              +{(calculateTotal() - amount).toFixed(2)} <span className="text-xl font-medium">USDT</span>
+              +{(calculateTotal() - amount).toFixed(2)}{" "}
+              <span className="text-xl font-medium">USDT</span>
             </p>
           </div>
 
           <div>
             <p className="text-lg font-medium text-gray-700">
-              {amount} USDT = <span className="font-bold text-black">{calculateTotal()} USDT</span>
+              {amount} USDT ={" "}
+              <span className="font-bold text-black">
+                {calculateTotal()} USDT
+              </span>
             </p>
           </div>
         </div>
 
-          <div className="flex justify-center mt-8">
-            <a className="hover:bg-blue-600 transition-colors py-4 text-white text-xl bg-blue-500 flex w-full justify-center rounded-xl" 
-                href="https://t.me/CUBE_Fund_bot"
-                target="_blank">
-                  Invest
-            </a>
-          </div>
+        <div className="flex justify-center mt-8">
+          <a
+            className="hover:bg-blue-600 transition-colors py-4 text-white text-xl bg-blue-500 flex w-full justify-center rounded-xl"
+            href="https://t.me/CUBE_Fund_bot"
+            target="_blank"
+          >
+            Invest
+          </a>
+        </div>
       </section>
     </div>
   );

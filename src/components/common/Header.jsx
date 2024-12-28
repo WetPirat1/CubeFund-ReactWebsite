@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { useTranslation } from "react-i18next"; // Подключение i18next
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { t, i18n } = useTranslation(); // Инициализация перевода
+  const { t, i18n } = useTranslation();
 
   const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng); // Смена языка
+    i18n.changeLanguage(lng);
   };
 
-  const currentLanguage = i18n.language; // Текущий язык
+  const currentLanguage = i18n.language;
 
   return (
     <header className="px-2 sticky top-4 z-50">
@@ -19,7 +19,7 @@ export default function Header() {
           menuOpen ? "rounded-b-none" : "rounded-3xl"
         }`}
       >
-        <a className="h-14" href="/">
+        <a className="h-14 animate" href="/">
           <img
             src="./src/assets/icons/LogoIcon.png"
             alt="Logo"
@@ -27,57 +27,53 @@ export default function Header() {
           />
         </a>
         <div className="flex gap-10 items-center md:justify-start justify-center">
-          {/* Переводимый текст */}
           <a
-            className="text-xl md:block block mb-4 md:mb-0"
+            className="text-xl md:block block mb-4 md:mb-0 animate"
             href="https://t.me/cube_fund"
             target="_blank"
             rel="noopener noreferrer"
           >
             {t("navFooter.Blog")}
           </a>
-          
+          {/* Социальные сети */}
           <a
             href="https://t.me/cube_fund"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              className="social-Networks-Links"
+              className="social-Networks-Links animate"
               src="../src/assets/icons/telegramBlackIcon.png"
               alt="telegram icon"
             />
           </a>
-
           <a
             href="https://t.me/cube_fund"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              className="social-Networks-Links"
+              className="social-Networks-Links animate"
               src="../src/assets/icons/xLogoIcon.png"
               alt="X icon"
             />
           </a>
-
           <a
             href="https://t.me/cube_fund"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              className="social-Networks-Links"
+              className="social-Networks-Links animate"
               src="../src/assets/icons/supportIcon.png"
               alt="support icon"
             />
           </a>
 
-
           {/* Смена языка (десктоп) */}
           <div className="flex items-center gap-2">
             <button
-              className={`text-sm ${
+              className={`text-sm animate ${
                 currentLanguage === "en" ? "font-semibold text-black" : "text-gray-500"
               }`}
               onClick={() => changeLanguage("en")}
@@ -86,7 +82,7 @@ export default function Header() {
             </button>
             <span className="text-sm">/</span>
             <button
-              className={`text-sm ${
+              className={`text-sm animate ${
                 currentLanguage === "ru" ? "font-semibold text-black" : "text-gray-500"
               }`}
               onClick={() => changeLanguage("ru")}
@@ -96,111 +92,6 @@ export default function Header() {
           </div>
         </div>
       </nav>
-
-      {/* Мобильная навигация */}
-      <nav
-        className={`flex md:hidden justify-between items-center p-4 fixed top-0 left-[5%] w-[90%] bg-white z-50 shadow-xl rounded-3xl mt-6 transition-all duration-300 transform ${
-          menuOpen ? "rounded-b-none" : ""
-        }`}
-      >
-        <a href="/">
-          <img
-            className="h-11"
-            src="./src/assets/icons/LogoIcon.png"
-            alt="Logo"
-          />
-        </a>
-        <button
-          className="relative w-8 h-4 flex flex-col justify-between items-center group"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <span
-            className={`block w-6 h-0.5 bg-black transform transition-all duration-300 ${
-              menuOpen ? "-rotate-45 translate-y-2" : ""
-            }`}
-          ></span>
-          <span
-            className={`block w-6 h-0.5 bg-black transform transition-all duration-300 ${
-              menuOpen ? "opacity-0" : ""
-            }`}
-          ></span>
-          <span
-            className={`block w-6 h-0.5 bg-black transform transition-all duration-300 ${
-              menuOpen ? "rotate-45 -translate-y-2 " : ""
-            }`}
-          ></span>
-        </button>
-      </nav>
-
-      {/* Мобильное выпадающее меню */}
-      <div
-        className={`flex flex-col items-center gap-4 p-4 bg-white shadow-xl rounded-b-3xl md:hidden fixed top-24 left-[5%] w-[90%] z-50 border-b-none transition-all duration-300 transform ${
-          menuOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
-        }`}
-      >
-        <a
-          className="text-xl md:block block mb-4 md:mb-0"
-          href="https://t.me/cube_fund"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {t("navFooter.Blog")}
-        </a>
-        <a
-          href="https://t.me/cube_fund"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            className="social-Networks-Links"
-            src="../src/assets/icons/telegramBlackIcon.png"
-            alt="telegram icon"
-          />
-        </a>
-        <a
-          href="https://t.me/cube_fund"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            className="social-Networks-Links"
-            src="../src/assets/icons/supportIcon.png"
-            alt="support icon"
-          />
-        </a>
-        <a
-          href="https://t.me/cube_fund"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            className="social-Networks-Links"
-            src="../src/assets/icons/xLogoIcon.png"
-            alt="X icon"
-          />
-        </a>
-
-        {/* Смена языка (мобильная версия) */}
-        <div className="flex items-center gap-2 mt-6">
-          <button
-            className={`text-lg ${
-              currentLanguage === "en" ? "font-semibold text-black" : "text-gray-500"
-            }`}
-            onClick={() => changeLanguage("en")}
-          >
-            ENG
-          </button>
-          <span className="text-sm">/</span>
-          <button
-            className={`text-lg ${
-              currentLanguage === "ru" ? "font-semibold text-black" : "text-gray-500"
-            }`}
-            onClick={() => changeLanguage("ru")}
-          >
-            RU
-          </button>
-        </div>
-      </div>
     </header>
   );
 }
