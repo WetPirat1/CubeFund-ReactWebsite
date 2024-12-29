@@ -3,7 +3,7 @@ import TelegramLink from "./TelegramLink";
 
 export default function TelegramBotBanner() {
   return (
-    <div className="bg-[#222222] p-3  fixed bottom-7 right-10 rounded-3xl z-50 max-sm:right-6">
+    <div className="bg-[#222222] p-3  fixed bottom-7 right-3 rounded-3xl z-50 max-sm:right-6">
       <ul className="flex items-center gap-2">
         <li>
           <img

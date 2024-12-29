@@ -45,7 +45,10 @@ export default function CustomizedAccordions() {
   });
 
   return (
-    <div style={{ maxWidth: "600px", margin: "0 auto" }}>
+    <div style={{ maxWidth: "600px", margin: "0 auto", background: "rgba(255, 255, 255, 0.0)", // Прозрачный фон
+      backdropFilter: "blur(8px)", // Эффект размытия
+      borderRadius: "1px",}}
+    >
       {[1, 2, 3, 4].map((num) => (
         <div key={num} style={accordionStyle}>
           <div

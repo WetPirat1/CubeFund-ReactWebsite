@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import FloatingSquares from "../ui/FloatingSquares";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp } from "@fortawesome/free-regular-svg-icons"; 
+import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { faTelegram } from "@fortawesome/free-brands-svg-icons";
 import { faHexagonNodes } from "@fortawesome/free-solid-svg-icons";
 
@@ -41,11 +41,7 @@ export default function AdvantagesSection() {
   };
 
   return (
-    <section className="relative flex flex-col items-center gap-10">
-      <div className="absolute inset-0 pointer-events-none z-[-1]">
-        <FloatingSquares />
-      </div>
-
+    <section className="relative flex flex-col items-center gap-10 sectionSpacing">
       {sectionsData.map((section, index) => {
         const { ref } = useInView({
           threshold: 0.7, // Срабатывает, когда 70% секции в области видимости

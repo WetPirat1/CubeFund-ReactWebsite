@@ -24,11 +24,10 @@ export default function DepositCalculator() {
 
   return (
     <div className="min-h-full flex items-center justify-center bg-gradient-to-br mb-20 p-4 relative">
-      {/* FloatingSquares as background */}
-      <div className="absolute inset-0 z-0"></div>
+    
 
       {/* Main content section */}
-      <section className="relative p-8 rounded-3xl max-w-xl mx-auto sm:p-6 md:p-8 lg:p-10 shadow-2xl transform transition-all z-10">
+      <section className="relative p-8 rounded-3xl max-w-xl mx-auto sm:p-6 md:p-8 lg:p-10 shadow-2xl transform transition-all z-50 bg-white">  { /* BG white */}
         <h2 className="text-4xl md:text-5xl mb-12 text-center font-semibold text-black">
           Calculate Profit
         </h2>
@@ -104,5 +103,7 @@ export default function DepositCalculator() {
           </a>
         </div>
       </section>
+      <FloatingSquares />
+    </div>
   );
 }

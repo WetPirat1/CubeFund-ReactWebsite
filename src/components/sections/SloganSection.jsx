@@ -12,8 +12,8 @@ export default function SloganSection() {
       : "./src/assets/sections/SloganSection.png"; // Default (English) image
 
   return (
-    <section className="relative">
-      <div className="max-section-screen mx-auto flex justify-between gap-20 mb-60 max-lg:gap-10 max-md:flex-col max-md:gap-7">
+    <section className="relative sectionSpacing">
+      <div className="max-section-screen mx-auto flex justify-between gap-20 max-lg:gap-10 max-md:flex-col max-md:gap-7">
         {/* Image Section */}
         <div className="w-[50%] max-md:order-2 max-md:mx-auto max-md:w-[80%] max-sm:w-[90%]">
           <img
