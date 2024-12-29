@@ -19,7 +19,7 @@ export default function HowToInvest() {
   };
 
   return (
-    <div className="max-section-screen mx-auto relative bg-white py-16 px-4 sm:px-6 lg:px-8 ">
+    <div className="max-section-screen mx-auto relative bg-white sectionSpacing px-4 sm:px-6 lg:px-8 ">
       <motion.h2
         className="text-center font-light text-5xl mb-16"
         initial={{ opacity: 0 }}

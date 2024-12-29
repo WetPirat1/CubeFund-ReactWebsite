@@ -14,4 +14,8 @@
   .animate {
     @apply hover:scale-110 transition-transform duration-300;
   }
+
+  .sectionSpacing{
+    @apply py-32
+  }
 }
