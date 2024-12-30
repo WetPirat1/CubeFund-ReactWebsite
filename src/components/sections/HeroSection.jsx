@@ -1,7 +1,7 @@
 import React from "react";
 import TelegramLink from "../ui/TelegramLink";
 import FloatingSquares from "../ui/FloatingSquares";
-import Header from "../common/Header";
+
 
 export default function HeroSection() {
   return (
