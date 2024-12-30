@@ -7,9 +7,18 @@ export default function DepositCalculator() {
   const [rate, setRate] = useState(12);
 
   const handleAmountChange = (e) => {
-    const value = parseFloat(e.target.value);
-    if (!isNaN(value)) {
-      setAmount(value);
+    const value = e.target.value;
+
+    // Позволяем вводить пустое значение
+    if (value === "") {
+      setAmount(""); // Устанавливаем пустую строку
+      return;
+    }
+
+    // Если значение корректное число, обновляем состояние
+    const parsedValue = parseFloat(value);
+    if (!isNaN(parsedValue)) {
+      setAmount(parsedValue);
     }
   };
 
@@ -19,41 +28,35 @@ export default function DepositCalculator() {
   };
 
   const calculateTotal = () => {
-    return (amount + (amount * rate * duration) / (12 * 100)).toFixed(2);
+    // Используем 0, если поле пустое
+    const validAmount = amount === "" ? 0 : amount;
+    return (validAmount + (validAmount * rate * duration) / (12 * 100)).toFixed(2);
   };
 
   return (
     <div className="min-h-full flex items-center justify-center bg-gradient-to-br mb-20 p-4 relative">
-      {/* Main content section */}
-      <section className="relative p-8 rounded-3xl max-w-xl mx-auto sm:p-6 md:p-8 lg:p-10 shadow-2xl transform transition-all z-40 bg-white">
-        {/* BG white */}
-        <h2 className="text-4xl max-md:text-4xl mb-12 text-center font-semibold text-black">
+      <section className="relative p-6 rounded-3xl max-w-xl mx-auto max-sm:p-4 md:p-6 lg:p-8 shadow-2xl transform transition-all z-40 bg-white">
+        <h2 className="text-3xl max-sm:text-2xl mb-6 text-center font-semibold text-black">
           Calculate Profit
         </h2>
-        {/* Input Section */}
-        <div className="mb-8">
-          <label className="block text-lg font-light mb-2 text-gray-700">
+        <div className="mb-6">
+          <label className="block text-lg max-sm:text-base font-light mb-2 text-gray-700">
             You invest
           </label>
           <input
             type="number"
             value={amount}
             onChange={handleAmountChange}
-            className="w-full p-4 border border-gray-300 rounded-lg text-center text-lg focus:ring-4 focus:ring-blue-500 focus:outline-none transition-transform transform hover:scale-105 shadow-md"
+            className="w-full p-3 max-sm:p-2 border border-gray-300 rounded-lg text-center text-lg max-sm:text-base focus:ring-4 focus:ring-blue-500 focus:outline-none transition-transform transform hover:scale-105 shadow-md"
             min="0"
           />
         </div>
-        {/* Duration Buttons */}
-        <div className="flex flex-wrap justify-between gap-4 mb-8">
-          {[
-            { duration: 3, rate: 12, label: "3 мес - 12%" },
-            { duration: 6, rate: 18, label: "6 мес - 18%" },
-            { duration: 12, rate: 24, label: "12 мес - 24%" },
-          ].map(({ duration: btnDuration, rate: btnRate, label }) => (
+        <div className="flex flex-wrap justify-between gap-3 max-sm:gap-2 mb-6">
+          {[{ duration: 3, rate: 12, label: "3 мес - 12%" }, { duration: 6, rate: 18, label: "6 мес - 18%" }, { duration: 12, rate: 24, label: "12 мес - 24%" }].map(({ duration: btnDuration, rate: btnRate, label }) => (
             <button
               key={btnDuration}
               onClick={() => handleDurationChange(btnDuration, btnRate)}
-              className={`px-6 py-3 flex-grow rounded-xl text-lg font-medium text-center animate shadow-md focus:ring-4 focus:ring-blue-300 focus:outline-none ${
+              className={`px-5 py-2 max-sm:px-4 sm:py-1 flex-grow rounded-xl text-lg max-sm:text-base font-medium text-center animate shadow-md focus:ring-4 focus:ring-blue-300 focus:outline-none ${
                 duration === btnDuration
                   ? "bg-blue-500 text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
@@ -63,33 +66,31 @@ export default function DepositCalculator() {
             </button>
           ))}
         </div>
-        {/* Result Section */}
-        <div className="text-center mt-3 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-6">
+        <div className="text-center mt-3 flex flex-col sm:flex-row sm:justify-between max-sm:items-center gap-4">
           <div className="max-sm:flex max-sm:items-center max-sm:gap-2">
-            <div className="flex items-center gap-3 justify-center sm:justify-start mt-4 max-sm:mt-0">
-              <span className="bg-blue-500 rounded-full text-white py-3 px-4 text-xl max-sm:py-1 max-sm:px-2 max-sm:text-lg">
+            <div className="flex items-center gap-3 justify-center max-sm:justify-start mt-4 max-sm:mt-0">
+              <span className="bg-blue-500 rounded-full text-white py-2 max-sm:py-1 px-3 max-sm:px-2 text-xl max-sm:text-lg">
                 %
               </span>
-              <p className="text-xl  text-gray-700 font-medium">Вы получите</p>
+              <p className="text-xl max-sm:text-lg text-gray-700 font-medium">Вы получите</p>
             </div>
-            <p className="text-4xl font-bold text-black my-4 max-sm:text-2xl max-sm:my-0">
-              +{(calculateTotal() - amount).toFixed(2)}{" "}
-              <span className="text-xl font-medium">USDT</span>
+            <p className="text-3xl sm:text-2xl font-bold text-black my-4 max-sm:text-xl max-sm:my-2">
+              +{(calculateTotal() - (amount === "" ? 0 : amount)).toFixed(2)}{" "}
+              <span className="text-xl sm:text-lg font-medium">USDT</span>
             </p>
           </div>
-
           <div>
-            <p className="text-lg font-medium text-gray-700">
-              {amount} USDT ={" "}
+            <p className="text-lg max-sm:text-base font-medium text-gray-700">
+              {amount === "" ? 0 : amount} USDT ={" "}
               <span className="font-bold text-black">
                 {calculateTotal()} USDT
               </span>
             </p>
           </div>
         </div>
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center mt-6 max-sm:mt-4">
           <a
-            className="hover:bg-blue-600 transition-colors py-4 text-white text-xl bg-blue-500 flex w-full justify-center rounded-xl"
+            className="hover:bg-blue-600 transition-colors py-4 sm:py-3 text-white text-xl max-sm:text-lg bg-blue-500 flex w-full justify-center rounded-xl"
             href="https://t.me/CUBE_Fund_bot"
             target="_blank"
           >

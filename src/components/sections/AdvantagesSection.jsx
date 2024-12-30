@@ -42,10 +42,11 @@ export default function AdvantagesSection() {
 
   return (
     <section className="relative flex flex-col items-center gap-10 sectionSpacing">
+      <FloatingSquares />
       {sectionsData.map((section, index) => {
         const { ref } = useInView({
-          threshold: 0.7, // Срабатывает, когда 70% секции в области видимости
-          triggerOnce: false, // Срабатывает многократно, если нужно
+          threshold: 0.3, // Порог срабатывания 30%
+          triggerOnce: false, // Срабатывает многократно
           onChange: (inView) => onInViewChange(inView, index), // Обрабатываем изменение видимости
         });
 
@@ -57,16 +58,15 @@ export default function AdvantagesSection() {
           >
             {currentSection === index && (
               <motion.div
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 20 }} // Уменьшаем смещение до 20px
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -50 }}
-                transition={{ duration: 0.5 }}
+                exit={{ opacity: 0, y: -20 }} // Уменьшаем смещение при исчезновении до -20px
+                transition={{ duration: 0.5 }} // Оставляем скорость 0.5 сек
                 className="flex flex-col items-center text-center"
               >
-                {/* Применяем цвет с помощью CSS-класса */}
                 <FontAwesomeIcon
                   icon={section.image}
-                  className={`mb-10 h-[200px] w-[200px] max-sm:h-[100px] ${section.color}`} // Добавляем цвет
+                  className={`mb-10 h-[200px] w-[200px] max-sm:h-[100px] ${section.color}`}
                 />
                 <h2 className="text-4xl font-bold mb-4 max-sm:text-3xl max-sm:w-[90%]">
                   {t(section.title)} {/* Текст перевода для заголовка */}
