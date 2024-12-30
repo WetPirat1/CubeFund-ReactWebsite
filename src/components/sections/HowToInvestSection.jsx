@@ -19,7 +19,7 @@ export default function HowToInvest() {
   };
 
   return (
-    <div className="max-section-screen mx-auto relative bg-white sectionSpacing px-4 sm:px-6 lg:px-8 ">
+    <div className="max-section-screen mx-auto relative bg-white sectionSpacing px-4 sm:px-6 lg:px-8 overflow-hidden">
       <motion.h2
         className="text-center font-light text-5xl mb-16"
         initial={{ opacity: 0 }}
@@ -32,7 +32,13 @@ export default function HowToInvest() {
 
       <div className="relative z-0">
         <FloatingSquares />
+        
+        {/* Central Line - now visible on mobile */}
+        <div className="absolute top-0 left-1/2 w-[1px] bg-gray-200 h-full transform -translate-x-1/2 block md:hidden" />
+
+        {/* Line for large screens (md and up) */}
         <div className="absolute top-0 left-1/2 w-1 bg-gray-200 h-full transform -translate-x-1/2 hidden md:block" />
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-20 items-center relative">
           {steps.map((step, index) => {
             const fadeIn = index % 2 === 0 ? fadeInFromLeft : fadeInFromRight;
@@ -100,3 +106,4 @@ export default function HowToInvest() {
     </div>
   );
 }
+  

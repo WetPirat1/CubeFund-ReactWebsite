@@ -23,7 +23,6 @@ function App() {
           path="/"
           element={
             <>
-              <TelegramBotBanner />
               <Header />
               <HeroSection />
               <SloganSection />
@@ -33,6 +32,7 @@ function App() {
               <InvestmentSteps />
               <FAQSection />
               <Footer />
+              <TelegramBotBanner /> {/* ВАЖНО! Иначе не будет скрывать при скроле на футер */}
             </>
           }
         />

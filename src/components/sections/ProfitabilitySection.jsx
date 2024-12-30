@@ -96,7 +96,7 @@ export default function ProfitabilitySection() {
   };
 
   return (
-    <div className="relative flex flex-col lg:flex-row justify-center items-center min-h-screen sectionSpacing">
+    <div className="relative flex flex-col lg:flex-row justify-center items-center min-h-screen sectionSpacing max-w-full">
       {/* Text Block */}
       <div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:mb-0 lg:mr-8 max-w-lg">
         <FloatingSquares overflowEnabled={true} />

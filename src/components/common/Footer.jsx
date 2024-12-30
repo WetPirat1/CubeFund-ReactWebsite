@@ -6,8 +6,8 @@ export default function Footer() {
   const { t } = useTranslation();
 
   return (
-    <footer className="bg-white">
-      <div className="max-w-6xl mx-auto px-4 flex justify-between items-center max-md:flex-col gap-10 my-10">
+    <footer id="footer" className="bg-white z-50">
+      <div className="max-w-6xl mx-auto px-4 py-10 flex justify-between items-center max-md:flex-col gap-10 z-50">
         <div>
           <a
             className="flex items-center gap-2 text-center max-lg:flex-col animate"
