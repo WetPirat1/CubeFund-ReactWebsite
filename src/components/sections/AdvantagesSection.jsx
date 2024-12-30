@@ -66,12 +66,12 @@ export default function AdvantagesSection() {
                 {/* Применяем цвет с помощью CSS-класса */}
                 <FontAwesomeIcon
                   icon={section.image}
-                  className={`mb-10 h-[200px] w-[200px] ${section.color}`} // Добавляем цвет
+                  className={`mb-10 h-[200px] w-[200px] max-sm:h-[100px] ${section.color}`} // Добавляем цвет
                 />
-                <h2 className="text-4xl font-bold mb-4">
+                <h2 className="text-4xl font-bold mb-4 max-sm:text-3xl max-sm:w-[90%]">
                   {t(section.title)} {/* Текст перевода для заголовка */}
                 </h2>
-                <p className="text-2xl font-light max-w-lg">
+                <p className="text-2xl font-light max-sm:w-[95%] text-center">
                   {t(section.description)} {/* Текст перевода для описания */}
                 </p>
               </motion.div>

@@ -24,14 +24,12 @@ export default function DepositCalculator() {
 
   return (
     <div className="min-h-full flex items-center justify-center bg-gradient-to-br mb-20 p-4 relative">
-    
-
       {/* Main content section */}
-      <section className="relative p-8 rounded-3xl max-w-xl mx-auto sm:p-6 md:p-8 lg:p-10 shadow-2xl transform transition-all z-50 bg-white">  { /* BG white */}
-        <h2 className="text-4xl md:text-5xl mb-12 text-center font-semibold text-black">
+      <section className="relative p-8 rounded-3xl max-w-xl mx-auto sm:p-6 md:p-8 lg:p-10 shadow-2xl transform transition-all z-40 bg-white">
+        {/* BG white */}
+        <h2 className="text-4xl max-md:text-4xl mb-12 text-center font-semibold text-black">
           Calculate Profit
         </h2>
-
         {/* Input Section */}
         <div className="mb-8">
           <label className="block text-lg font-light mb-2 text-gray-700">
@@ -45,9 +43,7 @@ export default function DepositCalculator() {
             min="0"
           />
         </div>
-
         {/* Duration Buttons */}
-
         <div className="flex flex-wrap justify-between gap-4 mb-8">
           {[
             { duration: 3, rate: 12, label: "3 мес - 12%" },
@@ -67,17 +63,16 @@ export default function DepositCalculator() {
             </button>
           ))}
         </div>
-
         {/* Result Section */}
         <div className="text-center mt-3 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-6">
-          <div>
-            <div className="flex items-center gap-3 justify-center sm:justify-start mt-4">
-              <span className="bg-blue-500 rounded-full text-white py-3 px-4 text-xl">
+          <div className="max-sm:flex max-sm:items-center max-sm:gap-2">
+            <div className="flex items-center gap-3 justify-center sm:justify-start mt-4 max-sm:mt-0">
+              <span className="bg-blue-500 rounded-full text-white py-3 px-4 text-xl max-sm:py-1 max-sm:px-2 max-sm:text-lg">
                 %
               </span>
               <p className="text-xl  text-gray-700 font-medium">Вы получите</p>
             </div>
-            <p className="text-4xl font-bold text-black mt-4 mb-4 ">
+            <p className="text-4xl font-bold text-black my-4 max-sm:text-2xl max-sm:my-0">
               +{(calculateTotal() - amount).toFixed(2)}{" "}
               <span className="text-xl font-medium">USDT</span>
             </p>
@@ -92,7 +87,6 @@ export default function DepositCalculator() {
             </p>
           </div>
         </div>
-
         <div className="flex justify-center mt-8">
           <a
             className="hover:bg-blue-600 transition-colors py-4 text-white text-xl bg-blue-500 flex w-full justify-center rounded-xl"
