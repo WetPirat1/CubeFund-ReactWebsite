@@ -13,6 +13,7 @@ export default function SloganSection() {
 
   return (
     <section className="relative sectionSpacing">
+      <FloatingSquares />
       <div className="max-section-screen mx-auto flex justify-between gap-20 max-lg:gap-10 max-md:flex-col max-md:gap-7">
         {/* Image Section */}
         <div className="w-[50%] max-md:order-2 max-md:mx-auto max-md:w-[80%] max-sm:w-[90%]">
@@ -36,7 +37,6 @@ export default function SloganSection() {
           </p>
         </div>
       </div>
-      <FloatingSquares />
     </section>
   );
 }
