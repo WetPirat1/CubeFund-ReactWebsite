@@ -19,65 +19,67 @@ export default function HowToInvest() {
   };
 
   return (
-    <div className="max-section-screen mx-auto relative sectionSpacing px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Фоновая анимация */}
+    <div className="relative">
       <FloatingSquares />
+      <div className="max-section-screen mx-auto relative sectionSpacing px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Фоновая анимация */}
 
-      {/* Заголовок */}
-      <motion.h2
-        className="text-center font-light text-5xl mb-16"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 2 }}
-      >
-        {t("howToInvest.title")}
-      </motion.h2>
+        {/* Заголовок */}
+        <motion.h2
+          className="text-center font-light text-4xl sm:text-5xl mb-12 sm:mb-16"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 2 }}
+        >
+          {t("howToInvest.title")}
+        </motion.h2>
 
-      <div className="relative z-0 space-y-22">
-        {/* Центральная линия (видна на мобильных) */}
-        <div className="absolute inset-y-0 left-1/2 w-[1px] bg-gray-200 transform -translate-x-1/2  block" />
+        <div className="relative z-0 space-y-16 sm:space-y-22">
+          {/* Центральная линия (видна на мобильных) */}
+          <div className="absolute inset-y-0 left-1/2 w-[1px] bg-gray-200 transform -translate-x-1/2 block" />
 
-        {/* Список шагов */}
-        {steps.map((step, index) => (
-          <motion.div
-            key={index}
-            className={`relative flex flex-col items-center text-center ${
-              index % 2 === 0
-                ? "md:items-start md:text-left"
-                : "md:items-end md:text-right"
-            }`}
-            variants={index % 2 === 0 ? fadeInFromLeft : fadeInFromRight}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {/* Полоска от блока к центральной линии (скрыта на мобильных) */}
-            <div
-              className={`absolute top-1/2 h-[1px] bg-gray-200 transform -translate-y-1/2 hidden md:block ${
+          {/* Список шагов */}
+          {steps.map((step, index) => (
+            <motion.div
+              key={index}
+              className={`relative flex flex-col items-center text-center ${
                 index % 2 === 0
-                  ? "right-1/2 w-[calc(50%-2rem)]"
-                  : "left-1/2 w-[calc(50%-2rem)]"
+                  ? "md:items-start md:text-left"
+                  : "md:items-end md:text-right"
               }`}
-            />
-
-            <span className="text-gray-400 mb-4 text-lg sm:text-xl lg:text-2xl">
-              {step.title}
-            </span>
-            <p className="font-medium mb-4 text-lg sm:text-xl lg:text-2xl">
-              {step.description}
-            </p>
-            {index === 0 ? (
-              <TelegramLink marginX="mx-0" maxW="w-[200px]" />
-            ) : (
-              <img
-                src={step.image}
-                alt={step.description}
-                className="rounded-md z-40 max-w-[50%] md:w-auto"
+              variants={index % 2 === 0 ? fadeInFromLeft : fadeInFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              {/* Полоска от блока к центральной линии (скрыта на мобильных) */}
+              <div
+                className={`absolute top-1/2 h-[1px] bg-gray-200 transform -translate-y-1/2 hidden md:block ${
+                  index % 2 === 0
+                    ? "right-1/2 w-[calc(50%-2rem)]"
+                    : "left-1/2 w-[calc(50%-2rem)]"
+                }`}
               />
-            )}
-          </motion.div>
-        ))}
+
+              <span className="text-gray-400 mb-4 text-lg sm:text-xl lg:text-2xl">
+                {step.title}
+              </span>
+              <p className="font-medium mb-4 text-lg sm:text-xl lg:text-2xl">
+                {step.description}
+              </p>
+              {index === 0 ? (
+                <TelegramLink marginX="mx-0" maxW="w-[180px] sm:w-[200px]" />
+              ) : (
+                <img
+                  src={step.image}
+                  alt={step.description}
+                  className="rounded-md z-40 max-w-[70%] md:max-w-[50%] lg:max-w-[60%] xl:max-w-[35%]"
+                />
+              )}
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );
