@@ -78,5 +78,16 @@
       "title": "Как связаться с поддержкой?",
       "content": "Служба поддержки доступна 24/7 через Telegram-чат <a href='https://t.me/CUBE_Fund_Support' className='underline hover:text-gray-700 transition-colors'>здесь</a>."
     }
-  }
+  },
+  "calculator": {
+      "title": "Рассчитайте прибыль",
+      "investLabel": "Вы инвестируете",
+      "options": {
+        "option1": "3 месяца - 12%",
+        "option2": "6 месяцев - 18%",
+        "option3": "12 месяцев - 24%"
+      },
+      "resultLabel": "Вы получите",
+      "investButton": "Инвестировать"
+    }
 }

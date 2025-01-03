@@ -78,5 +78,16 @@
       "title": "How can I contact support?",
       "content": "Customer support is available 24/7 via the Telegram chat <a href='https://t.me/CUBE_Fund_Support' className='underline hover:text-gray-700 transition-colors'>here</a>."
     }
-  }
+  },
+  "calculator": {
+      "title": "Calculate Profit",
+      "investLabel": "You invest",
+      "options": {
+        "option1": "3 months - 12%",
+        "option2": "6 months - 18%",
+        "option3": "12 months - 24%"
+      },
+      "resultLabel": "You will receive",
+      "investButton": "Invest"
+    }
 }
