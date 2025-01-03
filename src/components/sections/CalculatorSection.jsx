@@ -1,7 +1,10 @@
+// Импортируем необходимые модули
 import React, { useState } from "react";
 import FloatingSquares from "../ui/FloatingSquares";
+import { useTranslation } from "react-i18next";
 
 export default function DepositCalculator() {
+  const { t } = useTranslation();
   const [amount, setAmount] = useState(1000);
   const [duration, setDuration] = useState(3);
   const [rate, setRate] = useState(12);
@@ -9,13 +12,11 @@ export default function DepositCalculator() {
   const handleAmountChange = (e) => {
     const value = e.target.value;
 
-    // Позволяем вводить пустое значение
     if (value === "") {
-      setAmount(""); // Устанавливаем пустую строку
+      setAmount("");
       return;
     }
 
-    // Если значение корректное число, обновляем состояние
     const parsedValue = parseFloat(value);
     if (!isNaN(parsedValue)) {
       setAmount(parsedValue);
@@ -28,7 +29,6 @@ export default function DepositCalculator() {
   };
 
   const calculateTotal = () => {
-    // Используем 0, если поле пустое
     const validAmount = amount === "" ? 0 : amount;
     return (validAmount + (validAmount * rate * duration) / (12 * 100)).toFixed(2);
   };
@@ -37,11 +37,11 @@ export default function DepositCalculator() {
     <div className="min-h-full flex items-center justify-center bg-gradient-to-br mb-20 p-4 relative">
       <section className="relative p-6 rounded-3xl max-w-xl mx-auto max-sm:p-4 md:p-6 lg:p-8 shadow-2xl transform transition-all z-40 bg-white">
         <h2 className="text-3xl max-sm:text-2xl mb-6 text-center font-semibold text-black">
-          Calculate Profit
+          {t('calculator.title')}
         </h2>
         <div className="mb-6">
           <label className="block text-lg max-sm:text-base font-light mb-2 text-gray-700">
-            You invest
+            {t('calculator.investLabel')}
           </label>
           <input
             type="number"
@@ -52,7 +52,11 @@ export default function DepositCalculator() {
           />
         </div>
         <div className="flex flex-wrap justify-between gap-3 max-sm:gap-2 mb-6">
-          {[{ duration: 3, rate: 12, label: "3 мес - 12%" }, { duration: 6, rate: 18, label: "6 мес - 18%" }, { duration: 12, rate: 24, label: "12 мес - 24%" }].map(({ duration: btnDuration, rate: btnRate, label }) => (
+          {[
+            { duration: 3, rate: 12, label: t('calculator.options.option1') },
+            { duration: 6, rate: 18, label: t('calculator.options.option2') },
+            { duration: 12, rate: 24, label: t('calculator.options.option3') }
+          ].map(({ duration: btnDuration, rate: btnRate, label }) => (
             <button
               key={btnDuration}
               onClick={() => handleDurationChange(btnDuration, btnRate)}
@@ -72,7 +76,9 @@ export default function DepositCalculator() {
               <span className="bg-blue-500 rounded-full text-white py-2 max-sm:py-1 px-3 max-sm:px-2 text-xl max-sm:text-lg">
                 %
               </span>
-              <p className="text-xl max-sm:text-lg text-gray-700 font-medium">Вы получите</p>
+              <p className="text-xl max-sm:text-lg text-gray-700 font-medium">
+                {t('calculator.resultLabel')}
+              </p>
             </div>
             <p className="text-3xl sm:text-2xl font-bold text-black my-4 max-sm:text-xl max-sm:my-2">
               +{(calculateTotal() - (amount === "" ? 0 : amount)).toFixed(2)}{" "}
@@ -94,7 +100,7 @@ export default function DepositCalculator() {
             href="https://t.me/CUBE_Fund_bot"
             target="_blank"
           >
-            Invest
+            {t('calculator.investButton')}
           </a>
         </div>
       </section>
