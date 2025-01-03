@@ -8,8 +8,8 @@ export default function SloganSection() {
   // Set image source based on language
   const imageSrc =
     currentLanguage === "ru"
-      ? "./src/assets/sections/SloganSection-ru.png" // Russian image
-      : "./src/assets/sections/SloganSection.png"; // Default (English) image
+      ? "./src/assets/sections/SloganSection.png" // Russian image
+      : "./src/assets/sections/SloganSectionEng.png"; // Default (English) image
 
   return (
     <section className="relative sectionSpacing">
