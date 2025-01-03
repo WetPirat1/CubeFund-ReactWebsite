@@ -31,33 +31,32 @@
     "steps": [
       {
         "title": "Шаг 1",
-        "description": "Откройте бота в Telegram",
-        "image": "./src/assets/sections/placeholder.png"
+        "description": "Откройте бота в Telegram"
       },
       {
         "title": "Шаг 2",
         "description": "Подключите кошелек",
-        "image": "./src/assets/sections/placeholder.png"
+        "image": "./src/assets/sections/InvestSectionConWalletImg.png"
       },
       {
         "title": "Шаг 3",
         "description": "Выберите монету и сумму для инвестирования",
-        "image": "./src/assets/sections/placeholder.png"
+        "image": "./src/assets/sections/InvestSectionSelectCoinImg.png"
       },
       {
         "title": "Шаг 4",
         "description": "Выберите период инвестирования",
-        "image": "./src/assets/sections/placeholder.png"
+        "image": "./src/assets/sections/InvestSectionSelectPeriodImg.png"
       },
       {
         "title": "Шаг 5",
         "description": "Нажмите кнопку Инвестировать",
-        "image": "./src/assets/sections/placeholder.png"
+        "image": "./src/assets/sections/InvestSectionInvestBtnImg.png"
       },
       {
         "title": "Шаг 6",
         "description": "Подтвердите действие в кошельке",
-        "image": "./src/assets/sections/placeholder.png"
+        "image": "./src/assets/sections/SloganSectionRu.png"
       }
     ]
   },
@@ -80,14 +79,14 @@
     }
   },
   "calculator": {
-      "title": "Рассчитайте прибыль",
-      "investLabel": "Вы инвестируете",
-      "options": {
-        "option1": "3 месяца - 12%",
-        "option2": "6 месяцев - 18%",
-        "option3": "12 месяцев - 24%"
-      },
-      "resultLabel": "Вы получите",
-      "investButton": "Инвестировать"
-    }
+    "title": "Рассчитайте прибыль",
+    "investLabel": "Вы инвестируете",
+    "options": {
+      "option1": "3 месяца - 12%",
+      "option2": "6 месяцев - 18%",
+      "option3": "12 месяцев - 24%"
+    },
+    "resultLabel": "Вы получите",
+    "investButton": "Инвестировать"
+  }
 }

@@ -31,28 +31,27 @@
     "steps": [
       {
         "title": "Step 1",
-        "description": "Open the bot in Telegram",
-        "image": "./src/assets/sections/InvestSectionConWalletImg.png"
+        "description": "Open the bot in Telegram"
       },
       {
         "title": "Step 2",
         "description": "Connect wallet",
-        "image": "./src/assets/sections/InvestSectionConWalletImg.png"
+        "image": "./src/assets/sections/InvestSectionConWalletImgEng.png"
       },
       {
         "title": "Step 3",
         "description": "Select a coin and the amount you want to invest",
-        "image": "./src/assets/sections/InvestSectionSelectCoinImg.png"
+        "image": "./src/assets/sections/InvestSectionSelectCoinImgEng.png"
       },
       {
         "title": "Step 4",
         "description": "Select investment period",
-        "image": "./src/assets/sections/InvestSectionSelectPeriodImg.png"
+        "image": "./src/assets/sections/InvestSectionSelectPeriodImgEng.png"
       },
       {
         "title": "Step 5",
         "description": "Click the Invest button",
-        "image": "./src/assets/sections/InvestSectionInvestBtnImg.png"
+        "image": "./src/assets/sections/InvestSectionInvestBtnImgEng.png"
       },
       {
         "title": "Step 6",
