@@ -1,9 +1,12 @@
 import { useTranslation } from "react-i18next";
 import FloatingSquares from "../ui/FloatingSquares";
+import { useLanguageTransition } from "../contexts/LanguageTransitionContext"; // Use context to get fade effect
 
 export default function SloganSection() {
   const { t, i18n } = useTranslation(); // Initialize the translation function and i18n
   const currentLanguage = i18n.language; // Get the current language
+
+  const { fade } = useLanguageTransition(); // Get fade state from context
 
   // Set image source based on language
   const imageSrc =
@@ -16,7 +19,11 @@ export default function SloganSection() {
       <FloatingSquares />
       <div className="max-section-screen mx-auto flex justify-between gap-20 max-lg:gap-10 max-md:flex-col max-md:gap-7">
         {/* Image Section */}
-        <div className="w-[50%] max-md:order-2 max-md:mx-auto max-md:w-[80%] max-sm:w-[90%]">
+        <div
+          className={`w-[50%] max-md:order-2 max-md:mx-auto max-md:w-[80%] max-sm:w-[90%] transition-opacity duration-500 ${
+            fade ? "opacity-0" : "opacity-100"
+          }`}
+        >
           <img
             className="max-w-lg max-lg:max-w-md max-md:max-w-sm max-sm:max-w-[80%] mx-auto"
             src={imageSrc}
@@ -25,7 +32,11 @@ export default function SloganSection() {
         </div>
 
         {/* Text Section */}
-        <div className="w-[50%] max-md:mx-auto max-md:w-[80%] max-sm:w-[90%] max-md:text-center">
+        <div
+          className={`w-[50%] max-md:mx-auto max-md:w-[80%] max-sm:w-[90%] max-md:text-center transition-opacity duration-500 ${
+            fade ? "opacity-0" : "opacity-100"
+          }`}
+        >
           <h2 className="text-5xl mb-5 mt-7 max-lg:text-4xl max-md:text-3xl max-sm:text-2xl">
             {t("sloganSection.title", "Trust. Invest. Grow.")}
           </h2>

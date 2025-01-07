@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { faTelegram } from "@fortawesome/free-brands-svg-icons";
 import { faHexagonNodes } from "@fortawesome/free-solid-svg-icons";
+import { useLanguageTransition } from "../contexts/LanguageTransitionContext"; // Import context for fade effect
 
 const sectionsData = [
   {
@@ -32,6 +33,7 @@ const sectionsData = [
 export default function AdvantagesSection() {
   const [currentSection, setCurrentSection] = useState(0);
   const { t } = useTranslation();
+  const { fade } = useLanguageTransition(); // Get fade state from context
 
   const onInViewChange = (inView, index) => {
     if (inView) {
@@ -40,7 +42,7 @@ export default function AdvantagesSection() {
   };
 
   return (
-    <section className="relative flex flex-col items-center gap-10 sectionSpacing my-28">
+    <section className="relative flex flex-col items-center gap-5 sectionSpacing my-2">
       <FloatingSquares />
       {sectionsData.map((section, index) => {
         const { ref } = useInView({
@@ -69,10 +71,22 @@ export default function AdvantagesSection() {
                     icon={section.image}
                     className={`mb-10 h-[200px] w-[200px] max-sm:h-[100px] ${section.color}`}
                   />
-                  <h2 className="text-4xl font-bold mb-4 max-sm:text-3xl max-sm:w-[90%]">
+
+                  {/* Title Section with fade effect */}
+                  <h2
+                    className={`text-4xl font-bold font-mono mb-4 max-sm:text-3xl max-sm:w-[90%] transition-opacity duration-500 ${
+                      fade ? "opacity-0" : "opacity-100"
+                    }`}
+                  >
                     {t(section.title)}
                   </h2>
-                  <p className="text-2xl font-light max-sm:w-[95%] text-center">
+
+                  {/* Description Section with fade effect */}
+                  <p
+                    className={`text-2xl font-light max-sm:w-[95%] text-center transition-opacity duration-500 ${
+                      fade ? "opacity-0" : "opacity-100"
+                    }`}
+                  >
                     {t(section.description)}
                   </p>
                 </motion.div>

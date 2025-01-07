@@ -96,14 +96,14 @@ export default function ProfitabilitySection() {
   };
 
   return (
-    <div className="relative flex flex-col lg:flex-row justify-center items-center min-h-screen sectionSpacing max-w-full">
+    <div className="relative flex flex-col lg:flex-row justify-center items-center min-h-full max-w-full px-2 py-2">
       {/* Text Block */}
-      <div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:mb-0 lg:mr-8 max-w-lg">
+      <div className="flex flex-col items-center text-center lg:items-start lg:text-left max-w-lg px-4">
         <FloatingSquares overflowEnabled={true} />
-        <div className="text-6xl ">
+        <div className="text-6xl mb-2">
           <div className="flex items-center justify-center lg:justify-start space-x-2">
             <span className="font-medium">CUBE</span>
-            <img src={CubeLogo} alt="Cube Logo" className="h-16 mb-2" />
+            <img src={CubeLogo} alt="Cube Logo" className="h-16 mb-1" />
           </div>
           <span className="font-light">Profitability</span>
         </div>
@@ -111,25 +111,24 @@ export default function ProfitabilitySection() {
         <a
           target='_blank'
           href='https://www.bybit.com/copyTrade/trade-center/detail?leaderMark=rwj0pR7CZoOs22QjgrHnCA%3D%3D&copyFrom=Search'
-          className='hover:underline border items-center flex justify-center border-black py-2 px-4 backdrop-blur-lg hover:text-slate-950 transition-colors ml-1 rounded-lg text-slate-700 text-md'>
+          className='hover:underline border items-center mt-2 flex justify-center border-black py-1 px-3 backdrop-blur-lg hover:text-slate-950 transition-colors ml-1 rounded-lg text-slate-700 text-md'>
           Learn more
-          <span className='text-md'> 
-            <FontAwesomeIcon icon={faArrowRight} className='ml-3 text-sm' />  
+          <span className='text-md'>
+            <FontAwesomeIcon icon={faArrowRight} className='ml-2 text-sm' />
           </span>
         </a>
       </div>
 
       {/* Chart Section */}
-      <div className="flex justify-center items-center w-full max-w-3xl lg:max-w-4xl relative">
+      <div className="flex justify-center items-center w-full max-w-3xl lg:max-w-4xl relative mt-2">
         <div 
           className="absolute inset-0 backdrop-blur-lg rounded-lg"
           style={{ zIndex: -1 }} 
         />
-        <div style={{ height: '100%', width: '100%' }}>
+        <div className="w-full h-full">
           <Line data={chartData} options={options} />
         </div>
       </div>
-
     </div>
   );
 }

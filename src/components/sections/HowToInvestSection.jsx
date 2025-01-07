@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import TelegramLink from "../ui/TelegramLink";
 import FloatingSquares from "../ui/FloatingSquares";
 
 export default function HowToInvest() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const steps = t("howToInvest.steps", { returnObjects: true });
 
   const fadeInFromLeft = {
@@ -18,18 +18,26 @@ export default function HowToInvest() {
     visible: { opacity: 1, x: 0, transition: { duration: 0.8, delay: 0.2 } },
   };
 
+  const [fade, setFade] = useState(false);
+
+  // Handle fade transition when the language changes
+  useEffect(() => {
+    setFade(true);
+    const timer = setTimeout(() => {
+      setFade(false);
+    }, 500); // Duration of fade effect
+    return () => clearTimeout(timer);
+  }, [i18n.language]);
+
   return (
     <div className="relative">
       <FloatingSquares />
       <div className="max-section-screen mx-auto relative sectionSpacing px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Фоновая анимация */}
-
-        {/* Заголовок */}
+        {/* Заголовок с анимацией фейда */}
         <motion.h2
           className="text-center font-light text-4xl sm:text-5xl mb-12 sm:mb-16"
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          animate={{ opacity: fade ? 0 : 1 }} // Fade out and in on language change
           transition={{ duration: 2 }}
         >
           {t("howToInvest.title")}
@@ -44,9 +52,7 @@ export default function HowToInvest() {
             <motion.div
               key={index}
               className={`relative flex flex-col items-center text-center ${
-                index % 2 === 0
-                  ? "md:items-start md:text-left"
-                  : "md:items-end md:text-right"
+                index % 2 === 0 ? "md:items-start md:text-left" : "md:items-end md:text-right"
               }`}
               variants={index % 2 === 0 ? fadeInFromLeft : fadeInFromRight}
               initial="hidden"
@@ -62,12 +68,27 @@ export default function HowToInvest() {
                 }`}
               />
 
-              <span className="text-gray-400 mb-4 text-lg sm:text-xl lg:text-2xl">
+              {/* Заголовок шага с анимацией фейда */}
+              <motion.span
+                className="text-gray-400 mb-4 text-lg sm:text-xl lg:text-2xl"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: fade ? 0 : 1 }} // Fade out and in on language change
+                transition={{ duration: 0.8 }}
+              >
                 {step.title}
-              </span>
-              <p className="font-medium mb-4 text-lg sm:text-xl lg:text-2xl">
+              </motion.span>
+
+              {/* Описание шага с анимацией фейда */}
+              <motion.p
+                className="font-medium mb-4 text-lg sm:text-xl lg:text-2xl"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: fade ? 0 : 1 }} // Fade out and in on language change
+                transition={{ duration: 0.8 }}
+              >
                 {step.description}
-              </p>
+              </motion.p>
+
+              {/* Контент шага */}
               {index === 0 ? (
                 <TelegramLink marginX="mx-0" maxW="w-[180px] sm:w-[200px]" />
               ) : (

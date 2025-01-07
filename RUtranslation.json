@@ -75,7 +75,7 @@
     },
     "panel4": {
       "title": "How can I contact support?",
-      "content": "Customer support is available 24/7 via the Telegram chat <a href='https://t.me/CUBE_Fund_Support' className='underline hover:text-gray-700 transition-colors'>here</a>."
+      "content": "Customer support is available 24/7 via the Telegram chat <a href='https://t.me/CUBE_Fund_Support' style='text-decoration:underline' target='_blank' className='font-mono underline hover:text-gray-700 transition-colors'>here</a>."
     }
   },
   "calculator": {

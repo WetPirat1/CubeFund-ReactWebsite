@@ -19,3 +19,27 @@
     @apply py-32
   }
 }
+
+/* Loader animation */
+
+@keyframes spinStop {
+  0% {
+    transform: rotate(0deg); /* Начальная позиция */
+  }
+  25% {
+    transform: rotate(90deg); /* Поворот на 90° */
+  }
+  50% {
+    transform: rotate(180deg); /* Поворот на 180° */
+  }
+  75% {
+    transform: rotate(270deg); /* Поворот на 270° */
+  }
+  100% {
+    transform: rotate(360deg); /* Поворот на 360° */
+  }
+}
+
+.animate-spin-stop {
+  animation: spinStop 2s ease-in-out infinite; /* Анимация с плавной остановкой */
+}

@@ -75,7 +75,7 @@
     },
     "panel4": {
       "title": "Как связаться с поддержкой?",
-      "content": "Служба поддержки доступна 24/7 через Telegram-чат <a href='https://t.me/CUBE_Fund_Support' className='underline hover:text-gray-700 transition-colors'>здесь</a>."
+      "content": "Служба поддержки доступна 24/7 через Telegram-чат <a href='https://t.me/CUBE_Fund_Support' target='_blank'  style='text-decoration:underline' className='underline hover:text-gray-700 transition-colors'>здесь</a>."
     }
   },
   "calculator": {

@@ -10,11 +10,11 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 py-10 flex justify-between items-center max-md:flex-col gap-10 z-50">
         <div>
           <a
-            className="flex items-center gap-2 text-center max-lg:flex-col animate"
+            className="flex items-center gap-2 text-center max-lg:flex-col"
             href="/"
           >
             <Logo_footer />
-            <h3 className="text-2xl text-gray-400 font-semibold">
+            <h3 className="text-xl text-gray-400 font-semibold">
               Cube Fund Invest
             </h3>
           </a>
