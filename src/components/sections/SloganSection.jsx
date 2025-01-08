@@ -20,7 +20,7 @@ export default function SloganSection() {
       <div className="max-section-screen mx-auto flex justify-between gap-20 max-lg:gap-10 max-md:flex-col max-md:gap-7">
         {/* Image Section */}
         <div
-          className={`w-[50%] max-md:order-2 max-md:mx-auto max-md:w-[80%] max-sm:w-[90%] transition-opacity duration-500 ${
+          className={`relative w-[50%] max-md:order-2 max-md:mx-auto max-md:w-[80%] max-sm:w-[90%] transition-opacity duration-500 ${
             fade ? "opacity-0" : "opacity-100"
           }`}
         >
@@ -29,6 +29,8 @@ export default function SloganSection() {
             src={imageSrc}
             alt="Slogan"
           />
+          {/* Stronger Gradient for Smooth Fade */}
+          <div className="absolute bottom-0 left-0 w-full h-[150px] bg-gradient-to-t from-white via-white/90 via-white/60 to-transparent pointer-events-none"></div>
         </div>
 
         {/* Text Section */}

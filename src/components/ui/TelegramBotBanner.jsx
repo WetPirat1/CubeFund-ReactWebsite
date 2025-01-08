@@ -51,18 +51,20 @@ export default function TelegramBotBanner() {
           isVisible && hasScrolled ? "opacity-100" : "opacity-0 pointer-events-none"
         } max-sm:left-1/2 max-sm:bottom-4 max-sm:w-[85%] max-sm:-translate-x-1/2`}
       >
-        <ul className="flex justify-around items-center gap-3">
-          <li>
+        <ul className="flex justify-between items-center ">
+          <li className="text-white flex items-center md:mr-10">
             <img
-              className="max-w-12 rounded-none max-sm:max-w-12" // Увеличили иконку на мобильных устройствах
+              className="max-w-12 rounded-none max-sm:max-w-12 mr-3" // Увеличили иконку на мобильных устройствах
               src="./src/assets/icons/BannerIcon.png"
               alt="footer logo"
             />
+        
+            <div>
+              <h4 className="text-md font-medium max-sm:text-md">Cube Fund</h4>
+              <p className="max-sm:text-[10px] lg:text-sm text-gray-400">Trust. Invest. Grow.</p>
+            </div>
           </li>
-          <li className="text-white">
-            <h4 className="text-md font-medium max-sm:text-md">Cube Fund</h4>
-            <p className="sm:text-xs max-sm:text-xs">Trust. Invest. Grow.</p>
-          </li>
+
           <li className="text-xs w-40">
             <TelegramLink showIcon={false} />
           </li>

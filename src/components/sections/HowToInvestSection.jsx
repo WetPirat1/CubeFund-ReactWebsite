@@ -35,7 +35,7 @@ export default function HowToInvest() {
       <div className="max-section-screen mx-auto relative sectionSpacing px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Заголовок с анимацией фейда */}
         <motion.h2
-          className="text-center font-light text-4xl sm:text-5xl mb-12 sm:mb-16"
+          className="text-center font-bold text-4xl sm:text-5xl mb-8 sm:mb-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: fade ? 0 : 1 }} // Fade out and in on language change
           transition={{ duration: 2 }}

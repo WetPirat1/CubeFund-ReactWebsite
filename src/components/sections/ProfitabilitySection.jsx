@@ -6,6 +6,7 @@ import CubeLogo from '../../assets/favicons/android-chrome-512x512.png';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -100,35 +101,96 @@ export default function ProfitabilitySection() {
       {/* Text Block */}
       <div className="flex flex-col items-center text-center lg:items-start lg:text-left max-w-lg px-4">
         <FloatingSquares overflowEnabled={true} />
-        <div className="text-6xl mb-2">
-          <div className="flex items-center justify-center lg:justify-start space-x-2">
-            <span className="font-medium">CUBE</span>
-            <img src={CubeLogo} alt="Cube Logo" className="h-16 mb-1" />
+        <img src={CubeLogo} alt="Cube Logo" className="h-20" />
+        <div className="flex mb-3">
+          <div className="text-center lg:text-start items-center justify-center lg:justify-start space-x-1">
+
+            <span className="font-bold text-xl  lg:text-5xl">CUBE 
+              
+              <br></br><span className='font-light text-5xl'>Profitability</span></span>
           </div>
-          <span className="font-light">Profitability</span>
         </div>
         {/* Link "Learn More" */}
         <a
           target='_blank'
           href='https://www.bybit.com/copyTrade/trade-center/detail?leaderMark=rwj0pR7CZoOs22QjgrHnCA%3D%3D&copyFrom=Search'
-          className='hover:underline border items-center mt-2 flex justify-center border-black py-1 px-3 backdrop-blur-lg hover:text-slate-950 transition-colors ml-1 rounded-lg text-slate-700 text-md'>
+          className='hover:underline border items-center lg:mt-2 flex justify-center border-black py-1 px-3 backdrop-blur-lg hover:text-slate-950 transition-colors lg:ml-1 rounded-lg text-slate-700 text-md'>
           Learn more
           <span className='text-md'>
-            <FontAwesomeIcon icon={faArrowRight} className='ml-2 text-sm' />
+            <FontAwesomeIcon icon={faArrowRight} className='max-lg:ml-2 text-sm' />
           </span>
         </a>
       </div>
 
-      {/* Chart Section */}
-      <div className="flex justify-center items-center w-full max-w-3xl lg:max-w-4xl relative mt-2">
-        <div 
-          className="absolute inset-0 backdrop-blur-lg rounded-lg"
-          style={{ zIndex: -1 }} 
-        />
-        <div className="w-full h-full">
-          <Line data={chartData} options={options} />
-        </div>
-      </div>
+{/* Chart Section */}
+<div className="flex justify-center items-center w-full max-w-3xl lg:max-w-4xl relative mt-8 mb-2 mr-6  px-4">
+  <div
+    className="absolute inset-0 backdrop-blur-lg rounded-lg"
+    style={{ zIndex: -1 }}
+  />
+  {/* Fixed height on chart container with more compact size */}
+  <div className="w-full h-[400px] sm:h-[100px] lg:h-[600px] flex justify-center items-center">
+    {/* Explicitly setting the height of the chart */}
+    <Line
+      data={chartData}
+      options={{
+        ...options,
+        responsive: true,
+        maintainAspectRatio: false,  // This prevents the aspect ratio from being maintained
+        layout: {
+          padding: {
+            left: 20,
+            right: 20,
+            top: 10,
+            bottom: 30, // Add some padding to the bottom to prevent overflow of labels
+          },
+        },
+        plugins: {
+          legend: {
+            display: false, // Hide the legend if it's causing overflow
+          },
+          tooltip: {
+            callbacks: {
+              label: (tooltipItem) => `${tooltipItem.raw}%`, // Ensure percentage is displayed neatly
+            },
+          },
+        },
+        scales: {
+          x: {
+            ticks: {
+              autoSkip: true, // Automatically skip ticks if they overflow
+              maxRotation: 45, // Rotate the X-axis labels to prevent overlap
+              minRotation: 45,
+            },
+            title: {
+              display: false, // No need for axis title
+            },
+          },
+          y: {
+            ticks: {
+              callback: (value) => `${value}%`, // Display percentage on the Y-axis
+            },
+            title: {
+              display: false, // No need for axis title
+            },
+          },
+        },
+        elements: {
+          point: {
+            radius: 8,  // Increased size of data points (default is 3)
+            hoverRadius: 15,  // Make the points bigger on hover for better interaction
+            backgroundColor: '#8884d8',  // Customize the color of the points
+            borderWidth: 2,  // Add border width to make points stand out
+          },
+        },
+      }}
+    />
+  </div>
+</div>
+
+
+
+
     </div>
   );
 }
