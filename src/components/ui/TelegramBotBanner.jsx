@@ -60,7 +60,7 @@ export default function TelegramBotBanner() {
             />
         
             <div>
-              <h4 className="text-md font-medium max-sm:text-md">Cube Fund</h4>
+              <h4 className="text-md font-medium max-sm:text-md">Cube Fund Invest</h4>
               <p className="max-sm:text-[10px] lg:text-sm text-gray-400">Trust. Invest. Grow.</p>
             </div>
           </li>

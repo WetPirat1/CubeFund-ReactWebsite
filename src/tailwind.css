@@ -43,3 +43,34 @@
 .animate-spin-stop {
   animation: spinStop 2s ease-in-out infinite; /* Анимация с плавной остановкой */
 }
+
+
+.slider-custom {
+  -webkit-appearance: none;
+  width: 100%;
+  background: #e0e0e0;
+  height: 6px;
+  border-radius: 4px;
+  outline: none;
+  position: relative;
+}
+
+.slider-custom::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: url("./src/assets/icons/LogoIcon.png") no-repeat center;
+  background-size: contain;
+  width: 32px;
+  height: 32px;
+  border: none;
+  cursor: pointer;
+}
+
+.slider-custom::-moz-range-thumb {
+  background: url("./src/assets/icons/LogoIcon.png") no-repeat center;
+  background-size: contain;
+  width: 32px;
+  height: 32px;
+  border: none;
+  cursor: pointer;
+}

@@ -10,7 +10,7 @@
   },
   "sloganSection": {
     "title": "Trust. Invest. Grow.",
-    "description": "Trust your assets to professionals Invest in crypto and value your time. Grow with CUBE"
+    "description": "Trust your assets to professionals Invest in crypto and value your time. Grow with CUBE Fund"
   },
   "advantagesSections": {
     "easyToUse": {
@@ -61,10 +61,7 @@
     ]
   },
   "accordion": {
-    "panel1": {
-      "title": "Who are we?",
-      "content": "We are an investment platform specializing in managing crypto assets. Stable income is ensured by our strategies based on mathematical trading models, whose efficiency has been proven over time."
-    },
+
     "panel2": {
       "title": "How do the payments work?",
       "content": "You can withdraw your funds upon the completion of the investment term through the 'History' section by clicking the 'Withdraw' button."

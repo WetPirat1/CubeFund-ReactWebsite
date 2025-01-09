@@ -105,21 +105,12 @@ export default function ProfitabilitySection() {
         <div className="flex mb-3">
           <div className="text-center lg:text-start items-center justify-center lg:justify-start space-x-1">
 
-            <span className="font-bold text-xl  lg:text-5xl">CUBE 
+            <span className="font-bold text-xl  lg:text-5xl">CUBE Fund
               
               <br></br><span className='font-light text-5xl'>Profitability</span></span>
           </div>
         </div>
         {/* Link "Learn More" */}
-        <a
-          target='_blank'
-          href='https://www.bybit.com/copyTrade/trade-center/detail?leaderMark=rwj0pR7CZoOs22QjgrHnCA%3D%3D&copyFrom=Search'
-          className='hover:underline border items-center lg:mt-2 flex justify-center border-black py-1 px-3 backdrop-blur-lg hover:text-slate-950 transition-colors lg:ml-1 rounded-lg text-slate-700 text-md'>
-          Learn more
-          <span className='text-md'>
-            <FontAwesomeIcon icon={faArrowRight} className='max-lg:ml-2 text-sm' />
-          </span>
-        </a>
       </div>
 
 {/* Chart Section */}

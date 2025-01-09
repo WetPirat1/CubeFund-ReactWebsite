@@ -1,114 +1,212 @@
-import React, { useState, useEffect } from "react";
-import FloatingSquares from "../ui/FloatingSquares";
-import { useTranslation } from "react-i18next";
+import React, { useState } from "react";
+import { Bar } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default function DepositCalculator() {
-  const { t } = useTranslation();
-  const [amount, setAmount] = useState(1000);
-  const [duration, setDuration] = useState(3);
-  const [rate, setRate] = useState(12);
-  const [fadeKey, setFadeKey] = useState(0);  // Состояние для обновления текста с фейдом
+  const [initialDeposit, setInitialDeposit] = useState(100);
+  const [contribution, setContribution] = useState(5);
+  const [contributionFrequency, setContributionFrequency] = useState("daily");
+  const [yearsToGrow, setYearsToGrow] = useState(5);
+  const [annualReturn, setAnnualReturn] = useState(25);
 
-  const handleAmountChange = (e) => {
-    const value = e.target.value;
+  const [chartData, setChartData] = useState(null); // Храним данные для графика
 
-    // Ограничиваем ввод только числами и до 9 символов
-    if (value === "" || /^[0-9]{1,9}$/.test(value)) {
-      setAmount(value);
+  const calculateFutureBalance = () => {
+    const frequency = {
+      daily: 365,
+      weekly: 52,
+      monthly: 12,
+      annual: 1,
+    }[contributionFrequency];
+
+    let balance = parseFloat(initialDeposit);
+    let totalContributions = parseFloat(initialDeposit);
+    const contributions = parseFloat(contribution);
+    const ratePerPeriod = (annualReturn / 100) / frequency;
+
+    const totalData = [];
+    for (let year = 1; year <= yearsToGrow; year++) {
+      for (let period = 1; period <= frequency; period++) {
+        balance += contributions;
+        totalContributions += contributions;
+        balance += balance * ratePerPeriod;
+      }
+      totalData.push({
+        year: new Date().getFullYear() + year,
+        investment: totalContributions.toFixed(2),
+        profit: (balance - totalContributions).toFixed(2),
+      });
     }
+    return totalData;
   };
 
-  const handleDurationChange = (duration, rate) => {
-    setDuration(duration);
-    setRate(rate);
+  const handleCalculate = () => {
+    const data = calculateFutureBalance();
+    const labels = data.map((d) => d.year);
+
+    const updatedChartData = {
+      labels,
+      datasets: [
+        {
+          label: "Investment",
+          data: data.map((d) => d.investment),
+          backgroundColor: "rgba(54, 162, 235, 0.6)",
+          borderColor: "rgba(54, 162, 235, 1)",
+          borderWidth: 1,
+        },
+        {
+          label: "Profit",
+          data: data.map((d) => d.profit),
+          backgroundColor: "rgba(75, 192, 192, 0.6)",
+          borderColor: "rgba(75, 192, 192, 1)",
+          borderWidth: 1,
+        },
+      ],
+    };
+
+    setChartData(updatedChartData);
   };
 
-  const calculateTotal = () => {
-    const validAmount = amount === "" ? 0 : parseFloat(amount);
-    return (validAmount + (validAmount * rate * duration) / (12 * 100)).toFixed(2);
+  const chartOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top",
+        labels: {
+          font: {
+            size: 14,
+            family: "Arial, sans-serif",
+          },
+          color: "#4A5568",
+        },
+      },
+      title: {
+        display: true,
+        text: "Investment and Profit Growth Over Time",
+        font: {
+          size: 18,
+          family: "Arial, sans-serif",
+        },
+        color: "#2D3748",
+      },
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Year",
+          font: {
+            size: 14,
+          },
+          color: "#4A5568",
+        },
+        grid: {
+          color: "#E2E8F0",
+        },
+        stacked: true,
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Amount (USD)",
+          font: {
+            size: 14,
+          },
+          color: "#4A5568",
+        },
+        grid: {
+          color: "#E2E8F0",
+        },
+        stacked: true,
+      },
+    },
   };
-
-  useEffect(() => {
-    // Перезапуск анимации при каждом изменении текста
-    setFadeKey(prev => prev + 1);
-  }, [t, amount, duration, rate]);
 
   return (
-    <div>
-          <span
-            key={fadeKey} // Меняется каждый раз при обновлении
-            className="transition-opacity duration-500 text-4xl flex justify-center font-bold font-bold opacity-0 opacity-100"
-          >
-            {t('calculator.title')}
-          </span>
-
-    <div className="min-h-full flex w-full items-center justify-center bg-gradient-to-br mb-12 p-4 relative">
-    <section className="relative bg-white p-5 rounded-2xl shadow-xl w-full max-w-lg transform transition-all">
+    <div className="flex flex-col lg:flex-row items-start lg:items-center lg:justify-between gap-6 p-4 sm:p-6 lg:p-12 bg-gray-50 min-h-screen">
+      {/* Калькулятор */}
+      <div className="w-full lg:w-1/3 bg-white p-6 rounded-2xl shadow-lg">
+        <h1 className="text-4xl font-bold text-blue-600 mb-6">Deposit Calculator</h1>
         <div className="mb-4">
-          <label className="block text-lg max-sm:text-base font-medium text-gray-700 mb-2">
-            {t("calculator.investLabel")}
-          </label>
-          <div className="relative">
-            <input
-              type="text"
-              value={amount}
-              onChange={handleAmountChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-lg max-sm:text-base focus:ring-2 focus:ring-blue-500 focus:outline-none"
-              maxLength={9}
-            />
-            <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-700 text-lg max-sm:text-base">
-              USDT
-            </span>
-          </div>
+          <label className="block text-sm font-medium text-gray-700">Initial Deposit</label>
+          <input
+            type="number"
+            value={initialDeposit}
+            onChange={(e) => setInitialDeposit(e.target.value)}
+            className="w-full px-4 py-2 border-b-2 border-blue-500 focus:ring-0 focus:outline-none"
+          />
         </div>
-        <div className="flex flex-wrap justify-between gap-2 mb-6">
-          {[
-            { duration: 3, rate: 12, label: t("calculator.options.option1") },
-            { duration: 6, rate: 18, label: t("calculator.options.option2") },
-            { duration: 12, rate: 24, label: t("calculator.options.option3") },
-          ].map(({ duration: btnDuration, rate: btnRate, label }) => (
-            <button
-              key={btnDuration}
-              onClick={() => handleDurationChange(btnDuration, btnRate)}
-              className={`flex-1 px-3 py-2 text-sm max-sm:text-xs font-medium rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-300 transition-colors ${
-                duration === btnDuration
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
-            >
-              {label}
-            </button>
-          ))}
+
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">Contribution</label>
+          <input
+            type="number"
+            value={contribution}
+            onChange={(e) => setContribution(e.target.value)}
+            className="w-full px-4 py-2 border-b-2 border-blue-500 focus:ring-0 focus:outline-none"
+          />
         </div>
-        <div className="text-center">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="bg-blue-500 text-white rounded-full p-3 text-lg max-sm:text-base">
-              %
-            </div>
-            <p className="text-lg max-sm:text-base font-medium text-gray-700">
-              {t("calculator.resultLabel")}
-            </p>
-          </div>
-          <p className="text-2xl max-sm:text-xl font-bold text-black">
-            +{(calculateTotal() - (amount === "" ? 0 : amount)).toFixed(2)} USDT
-          </p>
-          <p className="text-lg max-sm:text-base font-medium text-gray-700 mt-2">
-            {amount === "" ? 0 : amount} USDT = <span className="font-bold">{calculateTotal()} USDT</span>
-          </p>
-        </div>
-        <div className="mt-6">
-          <a
-            href="https://t.me/CUBE_Fund_bot"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full bg-blue-500 text-white text-center py-3 rounded-lg text-lg max-sm:text-base hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">Frequency</label>
+          <select
+            value={contributionFrequency}
+            onChange={(e) => setContributionFrequency(e.target.value)}
+            className="w-full px-4 py-2 border-b-2 border-blue-500 focus:ring-0 focus:outline-none"
           >
-            {t("calculator.investButton")}
-          </a>
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+            <option value="annual">Annual</option>
+          </select>
         </div>
-      </section>
-      <FloatingSquares />
-    </div>
+
+        <div className="mb-4 flex items-center gap-4">
+          <label className="block text-sm font-medium text-gray-700">Years to Grow</label>
+          <input
+            type="range"
+            min="1"
+            max="30"
+            value={yearsToGrow}
+            onChange={(e) => setYearsToGrow(e.target.value)}
+            className="slider-custom"
+          />
+        </div>
+
+        <div className="mb-4 flex items-center gap-4">
+          <label className="block text-sm font-medium text-gray-700">Annual Return (%)</label>
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value={annualReturn}
+            onChange={(e) => setAnnualReturn(e.target.value)}
+            className="slider-custom"
+          />
+        </div>
+
+        <button
+          onClick={handleCalculate}
+          className="w-full bg-blue-600 text-white py-3 rounded-lg text-lg font-bold hover:bg-blue-700 transition duration-300"
+        >
+          Calculate
+        </button>
+      </div>
+
+      {/* График */}
+      <div className="w-full lg:w-2/3 bg-white p-6 rounded-3xl shadow-lg">
+        {chartData ? <Bar data={chartData} options={chartOptions} /> : <p className="text-center text-gray-500">Enter data and click calculate to see the chart.</p>}
+      </div>
     </div>
   );
 }

@@ -35,7 +35,7 @@ export default function CustomizedAccordions() {
         boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)", // Тень
       }}
     >
-      {[1, 2, 3, 4].map((num) => (
+      {[2, 3, 4].map((num) => (
         <div
           key={num}
           style={{

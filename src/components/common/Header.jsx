@@ -84,7 +84,7 @@ export default function Header() {
             />
           </a>
           <a
-            href="https://t.me/cube_fund"
+            href="https://t.me/CUBE_Fund_Support"
             target="_blank"
             rel="noopener noreferrer"
           >
