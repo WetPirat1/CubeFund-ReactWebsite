@@ -47,9 +47,9 @@ export default function TelegramBotBanner() {
         id="footer-tracker"
       ></div>
       <div
-        className={`bg-[#222222] p-3 fixed bottom-7 right-3 rounded-3xl z-50 transition-opacity duration-500 ${
-          isVisible && hasScrolled ? "opacity-100" : "opacity-0 pointer-events-none"
-        } max-sm:left-1/2 max-sm:bottom-4 max-sm:w-[85%] max-sm:-translate-x-1/2`}
+        className={`bg-[#222222] p-3 fixed bottom-7 right-3 rounded-3xl z-50 backdrop-blur-md transition-opacity duration-500 ${
+          isVisible && hasScrolled ? "bg-opacity-[90%]" : "opacity-0 pointer-events-none"
+        } max-sm:left-1/2 max-sm:bottom-4 max-sm:w-[90%] max-sm:-translate-x-1/2`}
       >
         <ul className="flex justify-between items-center ">
           <li className="text-white flex items-center md:mr-10">
@@ -60,8 +60,8 @@ export default function TelegramBotBanner() {
             />
         
             <div>
-              <h4 className="text-md font-medium max-sm:text-md">Cube Fund Invest</h4>
-              <p className="max-sm:text-[10px] lg:text-sm text-gray-400">Trust. Invest. Grow.</p>
+              <h4 className="text-md font-medium max-sm:text-xs">Cube Fund Invest</h4>
+              <p className="max-sm:text-[10px] lg:text-xs text-gray-400">Trust. Invest. Grow.</p>
             </div>
           </li>
 
