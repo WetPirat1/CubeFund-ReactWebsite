@@ -1,34 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { Bar } from "react-chartjs-2";
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
   Tooltip,
   Legend,
-} from "chart.js";
-
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+  ResponsiveContainer,
+} from "recharts";
+import FloatingSquares from "../ui/FloatingSquares"; // Импортируем FloatingSquares
 
 export default function DepositCalculator() {
-  // Устанавливаем начальные значения для первого расчёта
   const initialDepositValue = 1000;
   const contributionValue = 50;
   const contributionFrequencyValue = "monthly";
-  const yearsToGrowValue = 5;
-  const annualReturnValue = 10;
+  const yearsToGrowValue = 10;
+  const annualReturnValue = 25;
 
   const [initialDeposit, setInitialDeposit] = useState(initialDepositValue);
   const [contribution, setContribution] = useState(contributionValue);
   const [contributionFrequency, setContributionFrequency] = useState(contributionFrequencyValue);
   const [yearsToGrow, setYearsToGrow] = useState(yearsToGrowValue);
   const [annualReturn, setAnnualReturn] = useState(annualReturnValue);
-  const [chartData, setChartData] = useState(null);
-  const [futureBalance, setFutureBalance] = useState(null); // Новая переменная для итогового баланса
+  const [chartData, setChartData] = useState([]);
+  const [futureBalance, setFutureBalance] = useState(null);
 
-  // Функция для расчета будущего баланса
   const calculateFutureBalance = () => {
     const frequency = {
       daily: 365,
@@ -51,119 +48,39 @@ export default function DepositCalculator() {
       }
       totalData.push({
         year: new Date().getFullYear() + year,
-        investment: totalContributions.toFixed(2),
-        profit: (balance - totalContributions).toFixed(2),
+        investment: parseFloat(totalContributions.toFixed(2)),
+        profit: parseFloat((balance - totalContributions).toFixed(2)),
       });
     }
 
-    setFutureBalance(balance.toFixed(2)); // Устанавливаем итоговый баланс
+    setFutureBalance(balance.toFixed(2));
     return totalData;
   };
 
-  // Функция для установки данных графика
   const handleCalculate = () => {
     const data = calculateFutureBalance();
-    const labels = data.map((d) => d.year);
-
-    const updatedChartData = {
-      labels,
-      datasets: [
-        {
-          label: "Investment",
-          data: data.map((d) => d.investment),
-          backgroundColor: "rgba(54, 162, 235, 0.6)",
-          borderColor: "rgba(54, 162, 235, 1)",
-          borderWidth: 1,
-          borderRadius: 10, // Добавляем закругление углов столбцов
-        },
-        {
-          label: "Profit",
-          data: data.map((d) => d.profit),
-          backgroundColor: "rgba(75, 192, 192, 0.6)",
-          borderColor: "rgba(75, 192, 192, 1)",
-          borderWidth: 1,
-          borderRadius: 10, // Добавляем закругление углов столбцов
-        },
-      ],
-    };
-
-    setChartData(updatedChartData);
+    setChartData(data);
   };
 
-  // Эффект для предварительного расчета при загрузке компонента
   useEffect(() => {
-    handleCalculate(); // Раннее вычисление при первой загрузке
+    handleCalculate();
   }, []);
 
-  const chartOptions = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "top",
-        labels: {
-          font: {
-            size: 14,
-            family: "Arial, sans-serif",
-          },
-          color: "#4A5568",
-        },
-      },
-      title: {
-        display: true,
-        text: "Investment and Profit Growth Over Time",
-        font: {
-          size: 18,
-          family: "Arial, sans-serif",
-        },
-        color: "#2D3748",
-      },
-    },
-    scales: {
-      x: {
-        title: {
-          display: true,
-          text: "Year",
-          font: {
-            size: 14,
-          },
-          color: "#4A5568",
-        },
-        grid: {
-          color: "#E2E8F0",
-        },
-        stacked: true,
-      },
-      y: {
-        title: {
-          display: true,
-          text: "Amount (USD)",
-          font: {
-            size: 14,
-          },
-          color: "#4A5568",
-        },
-        grid: {
-          color: "#E2E8F0",
-        },
-        stacked: true,
-      },
-    },
-  };
-
-  // Функция для обработки только числового ввода
   const handleNumberInput = (e, setter) => {
     const value = e.target.value;
-    if (/^\d*\.?\d*$/.test(value)) {  // Позволяет только числа с возможной десятичной точкой
+    if (/^\d*\.?\d*$/.test(value)) {
       setter(value);
     }
   };
 
   return (
-    <div className="flex flex-col lg:flex-row items-start lg:items-center lg:justify-between gap-6 p-6 sm:p-8 lg:p-12 min-h-screen">
-      {/* Калькулятор */}
-      <div className="w-full lg:w-1/3 bg-white p-8 rounded-3xl shadow-xl">
-        <h1 className="text-3xl font-bold text-black mb-6 text-center">Deposit Calculator</h1>
-        
+    <div className="relative flex flex-col lg:flex-row items-start lg:items-center lg:justify-center gap-6 p-6 sm:p-8 sm:justify-center lg:p-12 min-h-screen">
+      <FloatingSquares overflowEnabled={true} />
+
+      {/* Calculator */}
+      <div className="block text-center self-center sm:w-90 p-8 rounded-3xl z-10 backdrop-blur-lg pb-7 shadow-md bg-white bg-opacity-30  sm:mr-20">
+        <h1 className="text-4xl font-bold text-black mb-6 text-center">Calculate Profit</h1>
+
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700 mb-2">Initial Deposit</label>
           <div className="relative">
@@ -171,7 +88,7 @@ export default function DepositCalculator() {
             <input
               type="text"
               value={initialDeposit}
-              onChange={(e) => handleNumberInput(e, setInitialDeposit)} // Применение функции обработки ввода
+              onChange={(e) => handleNumberInput(e, setInitialDeposit)}
               className="w-full pl-10 pr-4 py-3 border border-gray-500 rounded-full text-lg focus:ring-0 focus:outline-none"
             />
           </div>
@@ -184,7 +101,7 @@ export default function DepositCalculator() {
             <input
               type="text"
               value={contribution}
-              onChange={(e) => handleNumberInput(e, setContribution)} // Применение функции обработки ввода
+              onChange={(e) => handleNumberInput(e, setContribution)}
               className="w-full pl-10 pr-4 py-3 border border-gray-500 rounded-full text-lg focus:ring-0 focus:outline-none"
             />
           </div>
@@ -197,7 +114,7 @@ export default function DepositCalculator() {
               <button
                 key={option}
                 onClick={() => setContributionFrequency(option)}
-                className={`px-3 py-2 rounded-full text-base font-medium shadow-sm focus:outline-none transition-all transform ${
+                className={`px-3 py-2 rounded-full text-base font-semibold shadow-sm focus:outline-none transition-all transform ${
                   contributionFrequency === option
                     ? "bg-blue-600 text-white scale-105"
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105"
@@ -211,51 +128,78 @@ export default function DepositCalculator() {
 
         <div className="mb-6">
           <div className="flex items-center justify-between mb-2">
-            <label className="block text-sm font-medium text-gray-700">Years to Grow</label>
-            <span className="text-blue-600 font-bold">{yearsToGrow} years</span>
+            <label className="block text-md font-medium text-gray-700">Years to Grow</label>
+            <span className="text-blue-600 font-mono">{yearsToGrow} years</span>
           </div>
-          <input
-            type="range"
-            min="1"
-            max="30"
-            value={yearsToGrow}
-            onChange={(e) => setYearsToGrow(e.target.value)}
-            className="slider-custom"
-          />
+          <div className="relative bg-gray-100 bg-opacity-50 backdrop-blur-md rounded-xl p-4 pb-5">
+            <input
+              type="range"
+              min="1"
+              max="30"
+              value={yearsToGrow}
+              onChange={(e) => setYearsToGrow(e.target.value)}
+              className="slider-custom w-full"
+            />
+          </div>
         </div>
 
         <div className="mb-6">
           <div className="flex items-center justify-between mb-2">
-            <label className="block text-sm font-medium text-gray-700">Annual Return (%)</label>
-            <span className="text-blue-600 font-bold">{annualReturn}%</span>
+            <label className="block text-md font-medium text-gray-700">Annual Return (%)</label>
+            <span className="text-blue-600 font-mono">{annualReturn}%</span>
           </div>
-          <input
-            type="range"
-            min="1"
-            max="100"
-            value={annualReturn}
-            onChange={(e) => setAnnualReturn(e.target.value)}
-            className="slider-custom"
-          />
+          <div className="relative bg-gray-100 bg-opacity-50 backdrop-blur-md rounded-xl p-4 pb-5">
+            <input
+              type="range"
+              min="1"
+              max="99"
+              value={annualReturn}
+              onChange={(e) => setAnnualReturn(e.target.value)}
+              className="slider-custom w-full"
+            />
+          </div>
         </div>
 
         <button
           onClick={handleCalculate}
-          className="w-full bg-blue-600 text-white py-3 rounded-lg text-lg font-bold hover:bg-blue-700 transition duration-300"
+          className="w-full bg-blue-600 text-white py-3 rounded-2xl text-lg font-semibold hover:bg-blue-700 transition duration-300"
         >
           Calculate
         </button>
       </div>
 
-      {/* График */}
-      <div className="w-full lg:w-2/3 bg-white p-8 rounded-3xl shadow-xl border border-gray-200">
-        {chartData ? (
+      {/* Chart */}
+      <div className="w-full lg:w-1/2 p-8 rounded-3xl shadow-md backdrop-blur-lg shadow-md bg-gray-100 bg-opacity-20 border border-gray-200 z-10">
+        {chartData.length > 0 ? (
           <>
-            <div className="mb-6 text-center">
-              <h2 className="text-xl font-light ">Potential Future Balance:</h2>
-              <p className="text-4xl font-bold text-blue-500">${futureBalance}</p>
+            <div className="mb-6 text-center ">
+              <h2 className="text-xl font-light">Potential Future Balance:</h2>
+              <p className="text-4xl font-mono text-black">${futureBalance}</p>
             </div>
-            <Bar data={chartData} options={chartOptions} />
+            <ResponsiveContainer width="100%" height={400}>
+            <BarChart
+              data={chartData}
+              margin={{ top: 20, right: 0, left: 20, bottom: 5 }}
+              className="rounded-t-3xl overflow-hidden"
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="year" />
+              <YAxis tickFormatter={(value) => `$${value}`} />
+
+              <Tooltip />
+              <Legend
+                wrapperStyle={{
+                  color: "rgba(0, 0, 0, 0.6)",
+                  fontSize: "14px",
+                }}
+              />
+              {/* Столбец Investment без округления */}
+              <Bar dataKey="investment" stackId="a" fill="rgba(54, 162, 235, 0.6)" radius={[0, 0, 0, 0]} />
+              {/* Столбец Profit с округленной верхушкой */}
+              <Bar dataKey="profit" stackId="a" fill="rgba(75, 192, 192, 0.6)" radius={[10, 10, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+
           </>
         ) : (
           <p className="text-center text-gray-500">Enter data and click calculate to see the chart.</p>
