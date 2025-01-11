@@ -1,6 +1,5 @@
 import TelegramLink from "../ui/TelegramLink";
 import FloatingSquares from "../ui/FloatingSquares";
-import WalletBalance from "../ui/WalletBalance";
 
 export default function HeroSection() {
   return (

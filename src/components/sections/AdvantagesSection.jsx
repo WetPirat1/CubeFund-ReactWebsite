@@ -66,7 +66,7 @@ export default function AdvantagesSection() {
   };
 
   return (
-    <section className="relative flex flex-col items-center gap-5 sectionSpacing my-2">
+    <section className="relative flex flex-col items-center gap-5  my-2">
       <FloatingSquares />
       {sectionsData.map((section, index) => {
         const { ref } = useInView({

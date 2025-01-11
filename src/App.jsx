@@ -18,6 +18,7 @@ const InvestmentSteps = lazy(() => import("./components/sections/HowToInvestSect
 const FAQSection = lazy(() => import("./components/sections/FAQSection"));
 const ProfitabilitySection = lazy(() => import("./components/sections/ProfitabilitySection"));
 const DepositCalculator = lazy(() => import("./components/sections/CalculatorSection"));
+const AboutUsTablesSection = lazy(() => import("./components/sections/AboutUsTablesSection"));
 
 import "./tailwind.css";
 import "./components/i18n"; // Import i18n configuration
@@ -40,6 +41,7 @@ function App() {
                   <Header />
                   <HeroSection />
                   <SloganSection />
+                  <AboutUsTablesSection />
                   <ProfitabilitySection />
                   <AdvantagesSection />
                   <DepositCalculator />
