@@ -10,8 +10,10 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import FloatingSquares from "../ui/FloatingSquares"; // Импортируем FloatingSquares
+import { useTranslation } from "react-i18next"; // Импортируем для перевода
 
 export default function DepositCalculator() {
+  const { t } = useTranslation(); // Инициализация перевода
   const initialDepositValue = 1000;
   const contributionValue = 50;
   const contributionFrequencyValue = "monthly";
@@ -20,7 +22,9 @@ export default function DepositCalculator() {
 
   const [initialDeposit, setInitialDeposit] = useState(initialDepositValue);
   const [contribution, setContribution] = useState(contributionValue);
-  const [contributionFrequency, setContributionFrequency] = useState(contributionFrequencyValue);
+  const [contributionFrequency, setContributionFrequency] = useState(
+    contributionFrequencyValue
+  );
   const [yearsToGrow, setYearsToGrow] = useState(yearsToGrowValue);
   const [annualReturn, setAnnualReturn] = useState(annualReturnValue);
   const [chartData, setChartData] = useState([]);
@@ -37,7 +41,7 @@ export default function DepositCalculator() {
     let balance = parseFloat(initialDeposit);
     let totalContributions = parseFloat(initialDeposit);
     const contributions = parseFloat(contribution);
-    const ratePerPeriod = (annualReturn / 100) / frequency;
+    const ratePerPeriod = annualReturn / 100 / frequency;
 
     const totalData = [];
     for (let year = 1; year <= yearsToGrow; year++) {
@@ -78,13 +82,19 @@ export default function DepositCalculator() {
       <FloatingSquares overflowEnabled={true} />
 
       {/* Calculator */}
-      <div className="block text-center self-center sm:w-90 p-8 rounded-3xl z-10 backdrop-blur-lg pb-7 shadow-md bg-white bg-opacity-30  sm:mr-20">
-        <h1 className="text-4xl font-bold text-black mb-6 text-center">Calculate Profit</h1>
+      <div className="block text-center self-center sm:w-90 p-8 rounded-3xl z-10 backdrop-blur-lg pb-7 shadow-md bg-white bg-opacity-30 sm:mr-20">
+        <h1 className="text-4xl font-bold text-black mb-6 text-center">
+          {t("calculator.title")}
+        </h1>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-2">Initial Deposit</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            {t("calculator.initialDeposit")}
+          </label>
           <div className="relative">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500 text-lg">$</span>
+            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500 text-lg">
+              $
+            </span>
             <input
               type="text"
               value={initialDeposit}
@@ -95,9 +105,13 @@ export default function DepositCalculator() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-2">Contribution</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            {t("calculator.contribution")}
+          </label>
           <div className="relative">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500 text-lg">$</span>
+            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500 text-lg">
+              $
+            </span>
             <input
               type="text"
               value={contribution}
@@ -108,7 +122,9 @@ export default function DepositCalculator() {
         </div>
 
         <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">Frequency</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            {t("calculator.frequency")}
+          </label>
           <div className="grid grid-cols-2 gap-4">
             {["daily", "weekly", "monthly", "annual"].map((option) => (
               <button
@@ -120,7 +136,7 @@ export default function DepositCalculator() {
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105"
                 }`}
               >
-                {option.charAt(0).toUpperCase() + option.slice(1)}
+                {t(`calculator.frequencyPeriod.${option}`)}
               </button>
             ))}
           </div>
@@ -128,8 +144,12 @@ export default function DepositCalculator() {
 
         <div className="mb-6">
           <div className="flex items-center justify-between mb-2">
-            <label className="block text-md font-medium text-gray-700">Years to Grow</label>
-            <span className="text-blue-600 font-mono">{yearsToGrow} years</span>
+            <label className="block text-md font-medium text-gray-700">
+              {t("calculator.yearsToGrow")}
+            </label>
+            <span className="text-blue-600 font-mono">
+              {yearsToGrow} {t("calculator.years")}
+            </span>
           </div>
           <div className="relative bg-gray-100 bg-opacity-50 backdrop-blur-md rounded-xl p-4 pb-5">
             <input
@@ -145,7 +165,9 @@ export default function DepositCalculator() {
 
         <div className="mb-6">
           <div className="flex items-center justify-between mb-2">
-            <label className="block text-md font-medium text-gray-700">Annual Return (%)</label>
+            <label className="block text-md font-medium text-gray-700">
+              {t("calculator.annualReturn")}
+            </label>
             <span className="text-blue-600 font-mono">{annualReturn}%</span>
           </div>
           <div className="relative bg-gray-100 bg-opacity-50 backdrop-blur-md rounded-xl p-4 pb-5">
@@ -164,7 +186,7 @@ export default function DepositCalculator() {
           onClick={handleCalculate}
           className="w-full bg-blue-600 text-white py-3 rounded-2xl text-lg font-semibold hover:bg-blue-700 transition duration-300"
         >
-          Calculate
+          {t("calculator.calculate")}
         </button>
       </div>
 
@@ -172,37 +194,47 @@ export default function DepositCalculator() {
       <div className="w-full lg:w-1/2 p-8 rounded-3xl shadow-md backdrop-blur-lg shadow-md bg-gray-100 bg-opacity-20 border border-gray-200 z-10">
         {chartData.length > 0 ? (
           <>
-            <div className="mb-6 text-center ">
-              <h2 className="text-xl font-light">Potential Future Balance:</h2>
+            <div className="mb-6 text-center">
+              <h2 className="text-xl font-light">
+                {t("calculator.futureBalance")}
+              </h2>
               <p className="text-4xl font-mono text-black">${futureBalance}</p>
             </div>
             <ResponsiveContainer width="100%" height={400}>
-            <BarChart
-              data={chartData}
-              margin={{ top: 20, right: 0, left: 20, bottom: 5 }}
-              className="rounded-t-3xl overflow-hidden"
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="year" />
-              <YAxis tickFormatter={(value) => `$${value}`} />
-
-              <Tooltip />
-              <Legend
-                wrapperStyle={{
-                  color: "rgba(0, 0, 0, 0.6)",
-                  fontSize: "14px",
-                }}
-              />
-              {/* Столбец Investment без округления */}
-              <Bar dataKey="investment" stackId="a" fill="rgba(54, 162, 235, 0.6)" radius={[0, 0, 0, 0]} />
-              {/* Столбец Profit с округленной верхушкой */}
-              <Bar dataKey="profit" stackId="a" fill="rgba(75, 192, 192, 0.6)" radius={[10, 10, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
-
+              <BarChart
+                data={chartData}
+                margin={{ top: 20, right: 0, left: 20, bottom: 5 }}
+                className="rounded-t-3xl overflow-hidden"
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="year" />
+                <YAxis tickFormatter={(value) => `$${value}`} />
+                <Tooltip />
+                <Legend
+                  wrapperStyle={{
+                    color: "rgba(0, 0, 0, 0.6)",
+                    fontSize: "14px",
+                  }}
+                />
+                <Bar
+                  dataKey="investment"
+                  stackId="a"
+                  fill="rgba(54, 162, 235, 0.6)"
+                  radius={[0, 0, 0, 0]}
+                />
+                <Bar
+                  dataKey="profit"
+                  stackId="a"
+                  fill="rgba(75, 192, 192, 0.6)"
+                  radius={[10, 10, 0, 0]}
+                />
+              </BarChart>
+            </ResponsiveContainer>
           </>
         ) : (
-          <p className="text-center text-gray-500">Enter data and click calculate to see the chart.</p>
+          <p className="text-center text-gray-500">
+            {t("calculator.chartInstruction")}
+          </p>
         )}
       </div>
     </div>
