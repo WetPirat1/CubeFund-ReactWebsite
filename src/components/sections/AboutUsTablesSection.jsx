@@ -2,41 +2,44 @@ import FloatingSquares from "../ui/FloatingSquares";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoins, faArrowUpRightDots, faPercent, faMoneyBills, faSeedling, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const benefits = [
   {
-    title: "Диверсификация портфеля",
-    description: "Распределение инвестиций между различными криптовалютами и активами для снижения рисков",
+    title: "benefits.diversification.title",
+    description: "benefits.diversification.description",
     icon: faCoins,
   },
   {
-    title: "Выборка качественных активов",
-    description: "Инвестирование в криптовалюты с сильной фундаментальной базой и перспективой роста",
+    title: "benefits.qualityAssets.title",
+    description: "benefits.qualityAssets.description",
     icon: faArrowUpRightDots,
   },
   {
-    title: "Управление рисками",
-    description: "Использование инструментов управления рисками, таких как хеджирование, стоп-лосс и другие стратегии для минимизации потерь",
+    title: "benefits.riskManagement.title",
+    description: "benefits.riskManagement.description",
     icon: faPercent,
   },
   {
-    title: "Низкий входной барьер",
-    description: "Фонд имеет более низкие входные барьеры, чем прямые инвестиции в отдельные активы",
+    title: "benefits.lowEntryBarrier.title",
+    description: "benefits.lowEntryBarrier.description",
     icon: faMoneyBills,
   },
   {
-    title: "Долгосрочный горизонт",
-    description: "Сосредоточение внимания на долгосрочных инвестициях, а не на краткосрочных спекуляциях",
+    title: "benefits.longTermFocus.title",
+    description: "benefits.longTermFocus.description",
     icon: faSeedling,
   },
   {
-    title: "Прозрачность и отчетность",
-    description: "Предоставление регулярных отчетов об инвестиционных результатах и управлении рисками",
+    title: "benefits.transparency.title",
+    description: "benefits.transparency.description",
     icon: faCircleCheck,
   },
 ];
 
 export default function BenefitsSection() {
+  const { t } = useTranslation();
+
   return (
     <div className="relative py-16">
       <FloatingSquares overflowEnabled={true} />
@@ -46,7 +49,7 @@ export default function BenefitsSection() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        Наши преимущества
+        {t("benefitsSection.title")}
       </motion.h2>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 sm:px-8 lg:px-16 max-sm:w-2/3">
@@ -62,8 +65,8 @@ export default function BenefitsSection() {
             <div className="w-30 h-30 mb-4 flex items-center justify-center text-3xl text-blue-500">
               <FontAwesomeIcon icon={benefit.icon} className="text-5xl mt-5" />
             </div>
-            <h3 className="text-xl font-mono mb-2">{benefit.title}</h3>
-            <p className="text-gray-600 font-light  px-2">{benefit.description}</p>
+            <h3 className="text-xl font-mono mb-2">{t(benefit.title)}</h3>
+            <p className="text-gray-600 font-light px-2">{t(benefit.description)}</p>
           </motion.div>
         ))}
       </div>

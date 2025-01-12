@@ -10,7 +10,9 @@
   },
   "sloganSection": {
     "title": "Trust. Invest. Grow.",
-    "description": "Trust your assets to professionals Invest in crypto and value your time. Grow with CUBE Fund"
+    "description": "Trust your assets to professionals Invest in crypto and value your time. Grow with CUBE Fund",
+    "additionalText1": "Cube Fund is a conservative investor in the cryptocurrency market",
+    "additionalText2": "The fund uses a more cautious and traditional approach to investing, focusing on preserving the value of assets and minimizing risks, rather than on aggressive growth and speculation"
   },
   "advantagesSections": {
     "easyToUse": {
@@ -61,7 +63,6 @@
     ]
   },
   "accordion": {
-
     "panel2": {
       "title": "How do the payments work?",
       "content": "You can withdraw your funds upon the completion of the investment term through the 'History' section by clicking the 'Withdraw' button."
@@ -76,14 +77,50 @@
     }
   },
   "calculator": {
-      "title": "Calculate Profit",
-      "investLabel": "You invest",
-      "options": {
-        "option1": "3 months - 12%",
-        "option2": "6 months - 18%",
-        "option3": "12 months - 24%"
-      },
-      "resultLabel": "You will receive",
-      "investButton": "Invest"
+    "title": "Calculate Profit",
+    "initialDeposit": "Initial Deposit",
+    "contribution": "Contribution",
+    "frequency": "Frequency",
+    "frequencyPeriod": {
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "monthly": "Monthly",
+      "annual": "Annually"
+    },
+    "yearsToGrow": "Years to Grow",
+    "years": "years",
+    "annualReturn": "Annual Return (%)",
+    "calculate": "Calculate",
+    "futureBalance": "Potential Future Balance:",
+    "chartInstruction": "Enter data and click calculate to see the chart."
+  },
+  "benefitsSection": {
+    "title": "Our Benefits"
+  },
+  "benefits": {
+    "diversification": {
+      "title": "Portfolio Diversification",
+      "description": "Distributing investments across various cryptocurrencies and assets to reduce risks."
+    },
+    "qualityAssets": {
+      "title": "Selection of Quality Assets",
+      "description": "Investing in cryptocurrencies with a strong fundamental base and growth potential."
+    },
+    "riskManagement": {
+      "title": "Risk Management",
+      "description": "Using risk management tools such as hedging, stop-loss, and other strategies to minimize losses."
+    },
+    "lowEntryBarrier": {
+      "title": "Low Entry Barrier",
+      "description": "The fund has lower entry barriers than direct investments in individual assets."
+    },
+    "longTermFocus": {
+      "title": "Long-Term Focus",
+      "description": "Focusing on long-term investments rather than short-term speculation."
+    },
+    "transparency": {
+      "title": "Transparency and Reporting",
+      "description": "Providing regular reports on investment results and risk management."
     }
+  }
 }
