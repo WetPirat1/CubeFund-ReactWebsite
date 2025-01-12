@@ -147,7 +147,7 @@ export default function DepositCalculator() {
             <label className="block text-md font-medium text-gray-700">
               {t("calculator.yearsToGrow")}
             </label>
-            <span className="text-blue-600 font-mono">
+            <span className="text-blue-100 font-mono">
               {yearsToGrow} {t("calculator.years")}
             </span>
           </div>

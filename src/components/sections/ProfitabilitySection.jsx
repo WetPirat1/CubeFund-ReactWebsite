@@ -1,47 +1,54 @@
 import { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Title,
+  Tooltip,
+  Legend
+} from 'chart.js';
 import FloatingSquares from "../ui/FloatingSquares";
 import CubeLogo from '../../assets/favicons/android-chrome-512x512.png';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fetchDailyPnL } from '../../api/supabaseClient';
 
-
+// Регистрация модулей Chart.js
 ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
+  Filler,
   Title,
   Tooltip,
   Legend
 );
 
 export default function ProfitabilitySection() {
-  const mockData = [
-    { date: '2024-01-01', dailyReturn: 1.2 },
-    { date: '2024-01-02', dailyReturn: -0.5 },
-    { date: '2024-01-03', dailyReturn: 2.3 },
-    { date: '2024-01-04', dailyReturn: -0.8 },
-    { date: '2024-01-05', dailyReturn: 1.5 },
-    { date: '2024-01-06', dailyReturn: 0.3 },
-    { date: '2024-01-07', dailyReturn: 1.8 },
-    { date: '2024-01-08', dailyReturn: -0.4 },
-    { date: '2024-01-09', dailyReturn: 2.5 },
-    { date: '2024-01-10', dailyReturn: 1.0 },
-    { date: '2024-01-11', dailyReturn: -0.2 }
-  ];
-
   const [data, setData] = useState([]);
+  const [timeframe, setTimeframe] = useState(1); // Таймфрейм в месяцах
 
+  // Загружаем данные из Supabase при монтировании компонента
   useEffect(() => {
-    // Function to select 7 random entries from the mock data
-    const getRandomEntries = (data, count) => {
-      const shuffled = [...data].sort(() => 0.5 - Math.random());
-      return shuffled.slice(0, count);
+    const loadData = async () => {
+      try {
+        const pnlData = await fetchDailyPnL();
+        if (pnlData) {
+          const formattedData = pnlData.map((item) => ({
+            date: item.date,
+            dailyReturn: parseFloat(item.daily_pnl) // Приведение значений PnL к числовому типу
+          }));
+          setData(formattedData);
+        }
+      } catch (error) {
+        console.error('Ошибка при загрузке данных:', error);
+      }
     };
 
-    setData(getRandomEntries(mockData, 7));
+    loadData();
   }, []);
 
   const formatDate = (dateString) => {
@@ -52,48 +59,96 @@ export default function ProfitabilitySection() {
     return `${day}.${month}.${year}`;
   };
 
+  // Фильтруем данные по текущему таймфрейму
+  const filteredData = data.filter((item) => {
+    const date = new Date(item.date);
+    const today = new Date();
+    const timeframeStart = new Date(
+      today.getFullYear(),
+      today.getMonth() - timeframe,
+      today.getDate()
+    );
+    return date >= timeframeStart;
+  });
+
   const chartData = {
-    labels: data.map(item => formatDate(item.date)),
+    labels: filteredData.map(item => formatDate(item.date)),
     datasets: [
       {
-        label: 'Daily Return (%)',
-        data: data.map(item => item.dailyReturn),
-        fill: false,
+        label: 'Daily Profit Return (%)',
+        data: filteredData.map(item => item.dailyReturn),
+        fill: true,  // Включаем заливку
         borderColor: '#8884d8',
+        backgroundColor: (context) => {
+          const { chart } = context;
+          const { ctx, chartArea } = chart;
+          if (!chartArea) {
+            return;
+          }
+          const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+          gradient.addColorStop(0, 'rgba(136, 132, 216, 0.3)');  // Начальный цвет
+          gradient.addColorStop(1, 'rgba(136, 132, 216, 0.1)');  // Конечный цвет
+          return gradient;
+        },
         tension: 0.1
       }
     ]
   };
 
   const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      tooltip: {
-        callbacks: {
-          label: (tooltipItem) => `${tooltipItem.raw}%`
-        }
-      }
-    },
-    scales: {
-      x: {
-        title: {
-          display: true,
-          text: ''
-        }
-      },
-      y: {
-        title: {
-          display: true,
-          text: ''
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
         },
-        ticks: {
-          callback: (value) => `${value}%`
+        tooltip: {
+          callbacks: {
+            label: (tooltipItem) => `${tooltipItem.raw}%`
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: {
+            autoSkip: true,
+            maxRotation: 45,
+            minRotation: 45,
+          },
+          title: {
+            display: false,
+          }
+        },
+        y: {
+          ticks: {
+            callback: (value) => `${value}%`
+          },
+          title: {
+            display: false,
+          }
+        }
+      },
+      elements: {
+        point: {
+          radius: 8,
+          hoverRadius: 15,
+          backgroundColor: '#8884d8',
+          borderWidth: 1,
+        }
+      },
+      layout: {
+        padding: {
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0
+        },
+        margin: {
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0
         }
       }
-    }
   };
 
   return (
@@ -104,83 +159,46 @@ export default function ProfitabilitySection() {
         <img src={CubeLogo} alt="Cube Logo" className="h-20" />
         <div className="flex mb-3">
           <div className="text-center lg:text-start items-center justify-center lg:justify-start space-x-1">
-
-            <span className="font-bold text-xl  lg:text-5xl">CUBE Fund
-              
-              <br></br><span className='font-light text-5xl'>Profitability</span></span>
+            <span className="font-bold text-xl lg:text-5xl">
+              CUBE Fund
+              <br />
+              <span className="font-light text-5xl">Profitability</span>
+            </span>
           </div>
         </div>
-        {/* Link "Learn More" */}
+        {/* Кнопки для выбора таймфрейма */}
+        <div className="flex space-x-2 mt-4">
+          <button
+            onClick={() => setTimeframe(1)}
+            className={` px-5 py-2 rounded-xl transition-all duration-300 ease-in-out transform ${timeframe === 1 ? 'bg-blue-500 text-white scale-110' : 'bg-gray-200 text-gray-700 hover:bg-blue-100'}`}
+          >
+            1 Month
+          </button>
+          <button
+            onClick={() => setTimeframe(2)}
+            className={` px-5 py-2 rounded-xl transition-all duration-300 ease-in-out transform ${timeframe === 2 ? 'bg-blue-500 text-white scale-110' : 'bg-gray-200 text-gray-700 hover:bg-blue-100'}`}
+          >
+            2 Months
+          </button>
+          <button
+            onClick={() => setTimeframe(3)}
+            className={` px-5 py-2 rounded-xl transition-all duration-300 ease-in-out transform ${timeframe === 3 ? 'bg-blue-500 text-white scale-110' : 'bg-gray-200 text-gray-700 hover:bg-blue-100'}`}
+          >
+            3 Months
+          </button>
+        </div>
       </div>
 
-{/* Chart Section */}
-<div className="flex justify-center items-center w-full max-w-3xl lg:max-w-4xl relative mt-8 mb-2 mr-6  px-4">
-  <div
-    className="absolute inset-0 backdrop-blur-lg rounded-lg"
-    style={{ zIndex: -1 }}
-  />
-  {/* Fixed height on chart container with more compact size */}
-  <div className="w-full h-[400px] sm:h-[100px] lg:h-[600px] flex justify-center items-center">
-    {/* Explicitly setting the height of the chart */}
-    <Line
-      data={chartData}
-      options={{
-        ...options,
-        responsive: true,
-        maintainAspectRatio: false,  // This prevents the aspect ratio from being maintained
-        layout: {
-          padding: {
-            left: 20,
-            right: 20,
-            top: 10,
-            bottom: 30, // Add some padding to the bottom to prevent overflow of labels
-          },
-        },
-        plugins: {
-          legend: {
-            display: false, // Hide the legend if it's causing overflow
-          },
-          tooltip: {
-            callbacks: {
-              label: (tooltipItem) => `${tooltipItem.raw}%`, // Ensure percentage is displayed neatly
-            },
-          },
-        },
-        scales: {
-          x: {
-            ticks: {
-              autoSkip: true, // Automatically skip ticks if they overflow
-              maxRotation: 45, // Rotate the X-axis labels to prevent overlap
-              minRotation: 45,
-            },
-            title: {
-              display: false, // No need for axis title
-            },
-          },
-          y: {
-            ticks: {
-              callback: (value) => `${value}%`, // Display percentage on the Y-axis
-            },
-            title: {
-              display: false, // No need for axis title
-            },
-          },
-        },
-        elements: {
-          point: {
-            radius: 8,  // Increased size of data points (default is 3)
-            hoverRadius: 15,  // Make the points bigger on hover for better interaction
-            backgroundColor: '#8884d8',  // Customize the color of the points
-            borderWidth: 2,  // Add border width to make points stand out
-          },
-        },
-      }}
-    />
-  </div>
-</div>
-
-
-
+      {/* Chart Section */}
+      <div className="flex justify-center items-center w-full max-w-3xl lg:max-w-4xl relative mt-8 mb-2 p-2">
+        <div
+          className="absolute inset-0 backdrop-blur-lg rounded-lg"
+          style={{ zIndex: -1 }}
+        />
+        <div className="w-full lg:h-[600px] flex justify-center items-center rounded-xl">
+          <Line data={chartData} options={options} />
+        </div>
+      </div>
 
     </div>
   );
