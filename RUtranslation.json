@@ -122,5 +122,26 @@
       "title": "Transparency and Reporting",
       "description": "Providing regular reports on investment results and risk management."
     }
+  },
+
+  "profitability": {
+    "title": {
+      "cubeFund": "Cube Fund",
+      "profitability": "Profitability"
+    },
+    "alt": {
+      "cubeLogo": "Cube Fund Logo"
+    },
+    "timeframes": {
+      "1": "1 month",
+      "2": "2 months",
+      "3": "3 months"
+    },
+    "chart": {
+      "dailyProfitReturn": "Daily Profit Return"
+    },
+    "errors": {
+      "loadDataError": "Failed to load data"
+    }
   }
 }

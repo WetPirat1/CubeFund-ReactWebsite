@@ -22,6 +22,6 @@ export const fetchDailyPnL = async () => {
   }));
 
   // console.log('Success: ', roundedData);
-  
+
   return roundedData;
 };
