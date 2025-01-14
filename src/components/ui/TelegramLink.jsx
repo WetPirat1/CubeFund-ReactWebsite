@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import TelegramIcon from "../../../public/assets/icons/telegramLightIcon.png";
 
 export default function TelegramLink({
   href = "https://t.me/CUBE_Fund_bot",
@@ -58,7 +59,7 @@ export default function TelegramLink({
         <img
           className={`ml-1 ${iconSize} transition-all duration-500
             ${isFading ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}
-          src="../src/assets/icons/telegramLightIcon.png"
+          src={TelegramIcon}
           alt="telegram icon"
         />
       )}

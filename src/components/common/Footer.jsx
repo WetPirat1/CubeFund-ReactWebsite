@@ -1,5 +1,8 @@
 import { useTranslation } from "react-i18next";
-import Logo_footer from "../../assets/icons/LogoFooterIcon";
+import Logo_footer from "../../../public/assets/icons/LogoFooterIcon";
+import TelegramIcon from "../../../public/assets/icons/telegramGrayIcon.png";
+import SupportIcon from "../../../public/assets/icons/supportGrayIcon.png";
+import XIcon from "../../../public/assets/icons/xGrayIcon.png"; 
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -42,7 +45,7 @@ export default function Footer() {
             >
               <img
                 className="w-6 h-6 object-contain animate"
-                src="../src/assets/icons/telegramGrayIcon.png"
+                src={TelegramIcon}
                 alt="telegram icon"
               />
             </a>
@@ -54,7 +57,7 @@ export default function Footer() {
             >
               <img
                 className="w-6 h-6 object-contain animate"
-                src="../src/assets/icons/supportGrayIcon.png"
+                src={SupportIcon}
                 alt="support icon"
               />
             </a>
@@ -66,7 +69,7 @@ export default function Footer() {
             >
               <img
                 className="w-6 h-6 object-contain animate"
-                src="../src/assets/icons/xGrayIcon.png"
+                src={XIcon}
                 alt="X icon"
               />
             </a>

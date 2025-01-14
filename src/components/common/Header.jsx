@@ -1,7 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import LogoNav from "../../../public/assets/icons/LogoIcon.png";
 import LanguageSwitcher from "../ui/LanguageSwitcher"; // Importing the LanguageSwitcher component
 import { useLanguageTransition } from "../contexts/LanguageTransitionContext"; // Import context
+import TelegramIcon from "../../../public/assets/icons/telegramBlackIcon.png";
+import SupportIcon from "../../../public/assets/icons/supportIcon.png";
+import XIcon from "../../../public/assets/icons/xLogoIcon.png"; 
 
 
 export default function Header() {
@@ -56,7 +60,7 @@ export default function Header() {
       >
         <a className="h-14" href="/">
           <img
-            src="./src/assets/icons/LogoIcon.png"
+            src={LogoNav}
             alt="Logo"
             className="h-full te-blue-600"
           />
@@ -80,7 +84,7 @@ export default function Header() {
           >
             <img
               className="social-Networks-Links size-7"
-              src="../src/assets/icons/telegramBlackIcon.png"
+              src={TelegramIcon}
               alt="telegram icon"
             />
           </a>
@@ -91,7 +95,7 @@ export default function Header() {
           >
             <img
               className="social-Networks-Links size-7"
-              src="../src/assets/icons/supportIcon.png"
+              src={SupportIcon}
               alt="support icon"
             />
           </a>
@@ -102,7 +106,7 @@ export default function Header() {
           >
             <img
               className="social-Networks-Links size-6"
-              src="../src/assets/icons/xLogoIcon.png"
+              src={XIcon}
               alt="X icon"
             />
           </a>
@@ -122,7 +126,7 @@ export default function Header() {
         <a href="/">
           <img
             className="h-11"
-            src="./src/assets/icons/LogoIcon.png"
+            src={LogoNav}
             alt="Logo"
           />
         </a>
@@ -171,7 +175,7 @@ export default function Header() {
         >
           <img
             className="social-Networks-Links"
-            src="../src/assets/icons/telegramBlackIcon.png"
+            src={TelegramIcon}
             alt="telegram icon"
           />
         </a>
@@ -182,7 +186,7 @@ export default function Header() {
         >
           <img
             className="social-Networks-Links"
-            src="../src/assets/icons/supportIcon.png"
+            src={SupportIcon}
             alt="support icon"
           />
         </a>
@@ -193,7 +197,7 @@ export default function Header() {
         >
           <img
             className="social-Networks-Links mb-8"
-            src="../src/assets/icons/xLogoIcon.png"
+            src={XIcon}
             alt="X icon"
           />
         </a>

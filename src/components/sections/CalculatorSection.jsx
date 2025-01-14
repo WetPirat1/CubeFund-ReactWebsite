@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   BarChart,
   Bar,
@@ -11,6 +11,7 @@ import {
 } from "recharts";
 import FloatingSquares from "../ui/FloatingSquares"; // Импортируем FloatingSquares
 import { useTranslation } from "react-i18next"; // Импортируем для перевода
+import LogoRatio from "../../../public/assets/icons/LogoIcon.png"
 
 export default function DepositCalculator() {
   const { t } = useTranslation(); // Инициализация перевода
@@ -147,7 +148,7 @@ export default function DepositCalculator() {
             <label className="block text-md font-medium text-gray-700">
               {t("calculator.yearsToGrow")}
             </label>
-            <span className="text-blue-100 font-mono">
+            <span className="text-blue-600 font-mono">
               {yearsToGrow} {t("calculator.years")}
             </span>
           </div>
@@ -159,6 +160,9 @@ export default function DepositCalculator() {
               value={yearsToGrow}
               onChange={(e) => setYearsToGrow(e.target.value)}
               className="slider-custom w-full"
+              style={{
+                "--thumb-image": `url(${LogoRatio})`,
+              }}
             />
           </div>
         </div>
@@ -178,6 +182,9 @@ export default function DepositCalculator() {
               value={annualReturn}
               onChange={(e) => setAnnualReturn(e.target.value)}
               className="slider-custom w-full"
+              style={{
+                "--thumb-image": `url(${LogoRatio})`,
+              }}
             />
           </div>
         </div>

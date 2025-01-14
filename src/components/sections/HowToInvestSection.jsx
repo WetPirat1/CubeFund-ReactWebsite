@@ -1,8 +1,24 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import TelegramLink from "../ui/TelegramLink";
 import FloatingSquares from "../ui/FloatingSquares";
+
+// Импорты путей изображений
+import RuConfirmActionImg from "../../../public/assets/sections/InvestSectionConfirmActionImg.png";
+import EnConfirmActionImg from "../../../public/assets/sections/InvestSectionConfirmActionImg.png";
+
+import RuConWalletImg from "../../../public/assets/sections/InvestSectionConWalletImg.png";
+import EnConWalletImg from "../../../public/assets/sections/InvestSectionConWalletImgEng.png";
+
+import RuInvestBtnImg from "../../../public/assets/sections/InvestSectionInvestBtnImg.png";
+import EnInvestBtnImg from "../../../public/assets/sections/InvestSectionInvestBtnImgEng.png";
+
+import RuSelectCoinImg from "../../../public/assets/sections/InvestSectionSelectCoinImg.png";
+import EnSelectCoinImgEng from "../../../public/assets/sections/InvestSectionSelectCoinImgEng.png";
+
+import RuSelectPeriodImg from "../../../public/assets/sections/InvestSectionSelectPeriodImg.png";
+import EnSelectPeriodImgEng from "../../../public/assets/sections/InvestSectionSelectPeriodImgEng.png";
 
 export default function HowToInvest() {
   const { t, i18n } = useTranslation();
@@ -28,6 +44,34 @@ export default function HowToInvest() {
     }, 500); // Duration of fade effect
     return () => clearTimeout(timer);
   }, [i18n.language]);
+
+  // Массив шагов с изображениями для каждого языка
+  const stepImages = [
+    {
+      ru: RuConfirmActionImg,
+      en: RuConfirmActionImg,
+    },
+    {
+      ru: RuConWalletImg,
+      en: EnConWalletImg, 
+    },
+    {
+      ru: RuSelectCoinImg,
+      en: EnSelectCoinImgEng,
+    },
+    {
+      ru: RuSelectPeriodImg,
+      en: EnSelectPeriodImgEng,
+    },
+    {
+      ru: RuInvestBtnImg,
+      en: EnInvestBtnImg,
+    },
+    {
+      ru: RuConfirmActionImg,
+      en: RuConfirmActionImg,
+    },
+  ];
 
   return (
     <div className="relative">
@@ -93,7 +137,7 @@ export default function HowToInvest() {
                 <TelegramLink marginX="mx-0" maxW="w-[180px] sm:w-[200px]" />
               ) : (
                 <img
-                  src={step.image}
+                  src={i18n.language === "en" ? stepImages[index].en : stepImages[index].ru} // Используем изображение на основе языка
                   alt={step.description}
                   className="rounded-md z-40 max-w-[70%] md:max-w-[50%] lg:max-w-[60%] xl:max-w-[35%]"
                 />

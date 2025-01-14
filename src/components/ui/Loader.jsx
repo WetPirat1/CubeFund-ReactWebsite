@@ -1,7 +1,7 @@
 // src/components/ui/Loader.jsx
 
 import { useState, useEffect } from "react";
-import LogoSpin from "../../assets/icons/LogoFooterIcon"; // Импорт логотипа
+import LogoSpin from "../../../public/assets/icons/LogoFooterIcon"; // Импорт логотипа
 
 const Loader = () => {
   const [isLoaded, setIsLoaded] = useState(false);

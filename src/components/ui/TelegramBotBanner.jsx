@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import TelegramLink from "./TelegramLink";
+import BannerIcon from '../../../public/assets/icons/BannerIcon.png';
 
 export default function TelegramBotBanner() {
   const [isVisible, setIsVisible] = useState(false);
@@ -55,7 +56,7 @@ export default function TelegramBotBanner() {
           <li className="text-white flex items-center md:mr-10">
             <img
               className="max-w-12 rounded-none max-sm:max-w-12 mr-3" // Увеличили иконку на мобильных устройствах
-              src="./src/assets/icons/BannerIcon.png"
+              src={BannerIcon}
               alt="footer logo"
             />
         

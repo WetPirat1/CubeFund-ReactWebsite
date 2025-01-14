@@ -3,6 +3,9 @@ import FloatingSquares from "../ui/FloatingSquares";
 import { useLanguageTransition } from "../contexts/LanguageTransitionContext"; // Use context to get fade effect
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
+import RuSloganImage from '../../../public/assets/sections/SloganSection.png';
+import EnSloganImage from '../../../public/assets/sections/SloganSectionEng.png';
+
 
 export default function SloganSection() {
   const { t, i18n } = useTranslation(); // Initialize the translation function and i18n
@@ -33,8 +36,8 @@ export default function SloganSection() {
   // Set image source based on language
   const imageSrc =
     currentLanguage === "ru"
-      ? "./src/assets/sections/SloganSection.png" // Russian image
-      : "./src/assets/sections/SloganSectionEng.png"; // Default (English) image
+      ? RuSloganImage
+      : EnSloganImage
 
   return (
     <section className="relative sectionSpacing">

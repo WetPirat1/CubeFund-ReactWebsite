@@ -14,7 +14,7 @@ import {
 } from 'chart.js';
 import { useTranslation } from 'react-i18next';
 import FloatingSquares from "../ui/FloatingSquares";
-import CubeLogo from '../../assets/favicons/android-chrome-512x512.png';
+import CubeLogo from '../../../public/assets/favicons/android-chrome-512x512.png';
 import { fetchDailyPnL } from '../../api/supabaseClient';
 
 // Регистрация модулей Chart.js
