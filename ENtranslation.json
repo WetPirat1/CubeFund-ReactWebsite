@@ -1,0 +1,144 @@
+{
+  "navFooter": {
+    "Blog": "Блог"
+  },
+  "hero": {
+    "heroSection.title": "Cube Fund Invest"
+  },
+  "telegram": {
+    "linkText": "Открыть в Telegram"
+  },
+  "sloganSection": {
+    "title": "Доверяйте. Инвестируйте. Развивайтесь.",
+    "description": "Доверьте свои активы профессионалам Инвестируйте в криптовалюту и цените свое время Развивайтесь вместе с CUBE Fund",
+    "additionalText1": "Cube Fund - консервативный инвестор на рынке криптовалют",
+    "additionalText2": "Фонд, использует более осторожный и традиционный подход к инвестированию, акцентированный на сохранении стоимости активов и минимизации рисков, а не на агрессивном росте и спекуляциях"
+  },
+  "advantagesSections": {
+    "easyToUse": {
+      "title": "Просто в использовании",
+      "description": "Приложение, которое помогает инвестировать прямо со смартфона в любое время и в любом месте"
+    },
+    "blockchainBased": {
+      "title": "На базе блокчейна",
+      "description": "Безопасные и прозрачные сделки следуя нашей собственной стратегией"
+    },
+    "telegramIntegration": {
+      "title": "Интеграция с Telegram",
+      "description": "Обеспечивает вам безупречную функциональность в инновационном мессенджере Telegram"
+    }
+  },
+  "howToInvest": {
+    "title": "Как инвестировать?",
+    "steps": [
+      {
+        "title": "Шаг 1",
+        "description": "Откройте бота в Telegram"
+      },
+      {
+        "title": "Шаг 2",
+        "description": "Подключите кошелек",
+        "image": "./src/assets/sections/InvestSectionConWalletImg.png"
+      },
+      {
+        "title": "Шаг 3",
+        "description": "Выберите монету и сумму для инвестирования",
+        "image": "./src/assets/sections/InvestSectionSelectCoinImg.png"
+      },
+      {
+        "title": "Шаг 4",
+        "description": "Выберите период инвестирования",
+        "image": "./src/assets/sections/InvestSectionSelectPeriodImg.png"
+      },
+      {
+        "title": "Шаг 5",
+        "description": "Нажмите кнопку Инвестировать",
+        "image": "./src/assets/sections/InvestSectionInvestBtnImg.png"
+      },
+      {
+        "title": "Шаг 6",
+        "description": "Подтвердите действие в кошельке",
+        "image": "./src/assets/sections/SloganSectionRu.png"
+      }
+    ]
+  },
+  "accordion": {
+    "panel2": {
+      "title": "Как работают выплаты?",
+      "content": "Вы можете вывести свои средства после завершения срока инвестирования через раздел 'История', нажав на кнопку 'Вывести'."
+    },
+    "panel3": {
+      "title": "Что происходит с деньгами?",
+      "content": "Ваши инвестиции диверсифицируются по портфелям с использованием смарт-контрактов. Возврат средств осуществляется автоматически после окончания инвестиционного периода."
+    },
+    "panel4": {
+      "title": "Как связаться с поддержкой?",
+      "content": "Служба поддержки доступна 24/7 через Telegram-чат <a href='https://t.me/CUBE_Fund_Support' target='_blank'  style='text-decoration:underline' className='underline hover:text-gray-700 transition-colors'>здесь</a>."
+    }
+  },
+  "calculator": {
+    "title": "Рассчитать прибыль",
+    "initialDeposit": "Начальный вклад",
+    "contribution": "Вклад",
+    "frequency": "Частота",
+    "frequencyPeriod": {
+      "daily": "Ежедневно",
+      "weekly": "Еженедельно",
+      "monthly": "Ежемесячно",
+      "annual": "Ежегодно"
+    },
+    "yearsToGrow": "Годы роста",
+    "years": "лет",
+    "annualReturn": "Годовая доходность (%)",
+    "calculate": "Рассчитать",
+    "futureBalance": "Потенциальный будущий баланс:",
+    "chartInstruction": "Введите данные и нажмите рассчитать, чтобы увидеть график."
+  },
+  "benefitsSection": {
+    "title": "Наши преимущества"
+  },
+  "benefits": {
+    "diversification": {
+      "title": "Диверсификация портфеля",
+      "description": "Распределение инвестиций между различными криптовалютами и активами для снижения рисков."
+    },
+    "qualityAssets": {
+      "title": "Выборка качественных активов",
+      "description": "Инвестирование в криптовалюты с сильной фундаментальной базой и перспективой роста."
+    },
+    "riskManagement": {
+      "title": "Управление рисками",
+      "description": "Использование инструментов управления рисками, таких как хеджирование, стоп-лосс и другие стратегии для минимизации потерь."
+    },
+    "lowEntryBarrier": {
+      "title": "Низкий входной барьер",
+      "description": "Фонд имеет более низкие входные барьеры, чем прямые инвестиции в отдельные активы."
+    },
+    "longTermFocus": {
+      "title": "Долгосрочный горизонт",
+      "description": "Сосредоточение внимания на долгосрочных инвестициях, а не на краткосрочных спекуляциях."
+    },
+    "transparency": {
+      "title": "Прозрачность и отчетность",
+      "description": "Предоставление регулярных отчетов об инвестиционных результатах и управлении рисками."
+    }
+  },
+  "profitability": {
+    "title": {
+      "profitability": "Прибыльность"
+    },
+    "alt": {
+    },
+    "timeframes": {
+      "1": "1 месяц",
+      "2": "2 месяца",
+      "3": "3 месяца"
+    },
+    "chart": {
+      "dailyProfitReturn": "Ежедневная доходность"
+    },
+    "errors": {
+      "loadDataError": "Ошибка загрузки данных"
+    }
+  }
+}

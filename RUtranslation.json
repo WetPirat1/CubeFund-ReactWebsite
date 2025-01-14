@@ -1,0 +1,147 @@
+{
+  "navFooter": {
+    "Blog": "Blog"
+  },
+  "hero": {
+    "heroSection.title": "Cube Fund Invest"
+  },
+  "telegram": {
+    "linkText": "Launch on Telegram"
+  },
+  "sloganSection": {
+    "title": "Trust. Invest. Grow.",
+    "description": "Trust your assets to professionals Invest in crypto and value your time. Grow with CUBE Fund",
+    "additionalText1": "Cube Fund is a conservative investor in the cryptocurrency market",
+    "additionalText2": "The fund uses a more cautious and traditional approach to investing, focusing on preserving the value of assets and minimizing risks, rather than on aggressive growth and speculation"
+  },
+  "advantagesSections": {
+    "easyToUse": {
+      "title": "Easy To Use",
+      "description": "App that helps you to invest right from your smartphone anywhere and anytime"
+    },
+    "blockchainBased": {
+      "title": "Blockchain Based",
+      "description": "Secure and decentralized blockchain trades with our own strategy"
+    },
+    "telegramIntegration": {
+      "title": "Telegram Integration",
+      "description": "That provides you with flawless functionality in the innovative Telegram messenger"
+    }
+  },
+  "howToInvest": {
+    "title": "How to invest?",
+    "steps": [
+      {
+        "title": "Step 1",
+        "description": "Open the bot in Telegram"
+      },
+      {
+        "title": "Step 2",
+        "description": "Connect wallet",
+        "image": "./src/assets/sections/InvestSectionConWalletImgEng.png"
+      },
+      {
+        "title": "Step 3",
+        "description": "Select a coin and the amount you want to invest",
+        "image": "./src/assets/sections/InvestSectionSelectCoinImgEng.png"
+      },
+      {
+        "title": "Step 4",
+        "description": "Select investment period",
+        "image": "./src/assets/sections/InvestSectionSelectPeriodImgEng.png"
+      },
+      {
+        "title": "Step 5",
+        "description": "Click the Invest button",
+        "image": "./src/assets/sections/InvestSectionInvestBtnImgEng.png"
+      },
+      {
+        "title": "Step 6",
+        "description": "Confirm the action in the wallet",
+        "image": "./src/assets/sections/InvestSectionConfirmActionImg.png"
+      }
+    ]
+  },
+  "accordion": {
+    "panel2": {
+      "title": "How do the payments work?",
+      "content": "You can withdraw your funds upon the completion of the investment term through the 'History' section by clicking the 'Withdraw' button."
+    },
+    "panel3": {
+      "title": "What happens to the money?",
+      "content": "Your investments are diversified across portfolios through smart contracts. Fund returns are automatically processed upon the expiration of the investment period."
+    },
+    "panel4": {
+      "title": "How can I contact support?",
+      "content": "Customer support is available 24/7 via the Telegram chat <a href='https://t.me/CUBE_Fund_Support' style='text-decoration:underline' target='_blank' className='font-mono underline hover:text-gray-700 transition-colors'>here</a>."
+    }
+  },
+  "calculator": {
+    "title": "Calculate Profit",
+    "initialDeposit": "Initial Deposit",
+    "contribution": "Contribution",
+    "frequency": "Frequency",
+    "frequencyPeriod": {
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "monthly": "Monthly",
+      "annual": "Annually"
+    },
+    "yearsToGrow": "Years to Grow",
+    "years": "years",
+    "annualReturn": "Annual Return (%)",
+    "calculate": "Calculate",
+    "futureBalance": "Potential Future Balance:",
+    "chartInstruction": "Enter data and click calculate to see the chart."
+  },
+  "benefitsSection": {
+    "title": "Our Benefits"
+  },
+  "benefits": {
+    "diversification": {
+      "title": "Portfolio Diversification",
+      "description": "Distributing investments across various cryptocurrencies and assets to reduce risks."
+    },
+    "qualityAssets": {
+      "title": "Selection of Quality Assets",
+      "description": "Investing in cryptocurrencies with a strong fundamental base and growth potential."
+    },
+    "riskManagement": {
+      "title": "Risk Management",
+      "description": "Using risk management tools such as hedging, stop-loss, and other strategies to minimize losses."
+    },
+    "lowEntryBarrier": {
+      "title": "Low Entry Barrier",
+      "description": "The fund has lower entry barriers than direct investments in individual assets."
+    },
+    "longTermFocus": {
+      "title": "Long-Term Focus",
+      "description": "Focusing on long-term investments rather than short-term speculation."
+    },
+    "transparency": {
+      "title": "Transparency and Reporting",
+      "description": "Providing regular reports on investment results and risk management."
+    }
+  },
+
+  "profitability": {
+    "title": {
+      "cubeFund": "Cube Fund",
+      "profitability": "Profitability"
+    },
+    "alt": {
+      "cubeLogo": "Cube Fund Logo"
+    },
+    "timeframes": {
+      "1": "1 month",
+      "2": "2 months",
+      "3": "3 months"
+    },
+    "chart": {
+      "dailyProfitReturn": "Daily Profit Return"
+    },
+    "errors": {
+      "loadDataError": "Failed to load data"
+    }
+  }
+}
