@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { LanguageTransitionProvider } from "./components/contexts/LanguageTransitionContext"; // Import the context provider
 
 import { Suspense, lazy, useState } from "react";
-import Loader from "./components/ui/Loader"; // Импортируем Loader
+import Loader from "./components/ui/Loader"; 
 
 // Ленивые компоненты
 const Footer = lazy(() => import("./components/common/Footer"));
@@ -17,6 +17,7 @@ const FAQSection = lazy(() => import("./components/sections/FAQSection"));
 const ProfitabilitySection = lazy(() => import("./components/sections/ProfitabilitySection"));
 const DepositCalculator = lazy(() => import("./components/sections/CalculatorSection"));
 const AboutUsTablesSection = lazy(() => import("./components/sections/AboutUsTablesSection"));
+const RewardedSection = lazy(() => import("./components/sections/rewardedSection"));
 
 import "./tailwind.css";
 import "./components/i18n"; // Import i18n configuration
@@ -41,6 +42,7 @@ function App() {
                   <SloganSection />
                   <AboutUsTablesSection />
                   <ProfitabilitySection />
+                  <RewardedSection />
                   <AdvantagesSection />
                   <DepositCalculator />
                   <InvestmentSteps />

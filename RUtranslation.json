@@ -124,24 +124,25 @@
     }
   },
 
-  "profitability": {
-    "title": {
-      "cubeFund": "Cube Fund",
-      "profitability": "Profitability"
-    },
-    "alt": {
-      "cubeLogo": "Cube Fund Logo"
-    },
-    "timeframes": {
-      "1": "1 month",
-      "2": "2 months",
-      "3": "3 months"
-    },
-    "chart": {
-      "dailyProfitReturn": "Daily Profit Return"
-    },
-    "errors": {
-      "loadDataError": "Failed to load data"
+    "profitability": {
+      "title": {
+        "cubeFund": "Cube Fund",
+        "profitability": "Profitability"
+      },
+      "alt": {
+        "cubeLogo": "Cube Fund Logo"
+      },
+      "timeframes": {
+        "threeMonths": "3 months",
+        "sixMonths": "6 months",
+        "oneYear": "1 year"
+      },
+      "chart": {
+        "dailyProfitReturn": "Daily Profit Return"
+      },
+      "errors": {
+        "loadDataError": "Failed to load data"
+      }
     }
-  }
+
 }

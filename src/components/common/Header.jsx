@@ -100,12 +100,12 @@ export default function Header() {
             />
           </a>
           <a
-            href="https://t.me/cube_fund"
+            href="https://x.com/cube_fund1"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              className="social-Networks-Links size-6"
+              className="social-Networks-Links size-5"
               src={XIcon}
               alt="X icon"
             />
@@ -180,7 +180,7 @@ export default function Header() {
           />
         </a>
         <a
-          href="https://t.me/cube_fund"
+          href="https://t.me/CUBE_Fund_Support"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -191,9 +191,10 @@ export default function Header() {
           />
         </a>
         <a
-          href="https://t.me/cube_fund"
+          href="https://x.com/cube_fund1"
           target="_blank"
           rel="noopener noreferrer"
+          className="mt-2"
         >
           <img
             className="social-Networks-Links mb-8"

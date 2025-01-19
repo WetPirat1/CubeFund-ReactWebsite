@@ -1,4 +1,3 @@
-// ProfitabilitySection.js
 import { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import {
@@ -15,7 +14,8 @@ import {
 import { useTranslation } from 'react-i18next';
 import FloatingSquares from "../ui/FloatingSquares";
 import CubeLogo from '../../../public/assets/favicons/android-chrome-512x512.png';
-import { fetchDailyPnL } from '../../api/supabaseClient';
+import { fetchMonthlyPnL } from '../../api/supabaseClient';
+import { useInView } from 'react-intersection-observer'; // Import Intersection Observer hook
 
 // Регистрация модулей Chart.js
 ChartJS.register(
@@ -32,17 +32,19 @@ ChartJS.register(
 export default function ProfitabilitySection() {
   const { t } = useTranslation();
   const [data, setData] = useState([]);
-  const [timeframe, setTimeframe] = useState(1); // Таймфрейм в месяцах
+  const [timeframe, setTimeframe] = useState(3); // Таймфрейм по умолчанию — 3 месяца
+
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 }); // Observe the component visibility
 
   // Загружаем данные из Supabase при монтировании компонента
   useEffect(() => {
     const loadData = async () => {
       try {
-        const pnlData = await fetchDailyPnL();
+        const pnlData = await fetchMonthlyPnL();
         if (pnlData) {
           const formattedData = pnlData.map((item) => ({
-            date: item.date,
-            dailyReturn: parseFloat(item.daily_pnl) // Приведение значений PnL к числовому типу
+            month: item.month,
+            monthlyReturn: parseFloat(item.monthly_pnl) // Приведение значений PnL к числовому типу
           }));
           setData(formattedData);
         }
@@ -54,32 +56,30 @@ export default function ProfitabilitySection() {
     loadData();
   }, [t]);
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const year = date.getFullYear();
-    return `${day}.${month}.${year}`;
+  const formatMonth = (monthString) => {
+    const [year, month] = monthString.split('-'); // month приходит в формате YYYY-MM
+    return `${month}.${year}`;
   };
 
   // Фильтруем данные по текущему таймфрейму
   const filteredData = data.filter((item) => {
-    const date = new Date(item.date);
+    const [year, month] = item.month.split('-').map(Number);
     const today = new Date();
     const timeframeStart = new Date(
       today.getFullYear(),
       today.getMonth() - timeframe,
-      today.getDate()
+      1
     );
-    return date >= timeframeStart;
+    const itemDate = new Date(year, month - 1, 1);
+    return itemDate >= timeframeStart;
   });
 
   const chartData = {
-    labels: filteredData.map(item => formatDate(item.date)),
+    labels: filteredData.map(item => formatMonth(item.month)),
     datasets: [
       {
-        label: t('profitability.chart.dailyProfitReturn'),
-        data: filteredData.map(item => item.dailyReturn),
+        label: t('profitability.chart.monthlyProfitReturn'),
+        data: filteredData.map(item => item.monthlyReturn),
         fill: true,
         borderColor: '#8884d8',
         backgroundColor: (context) => {
@@ -155,7 +155,7 @@ export default function ProfitabilitySection() {
   };
 
   return (
-    <div className="relative flex flex-col lg:flex-row justify-center items-center min-h-full max-w-full px-2 py-2">
+    <div className="relative flex flex-col lg:flex-row mb-22 justify-center items-center min-h-full max-w-full px-2 py-2">
       {/* Text Block */}
       <div className="flex flex-col items-center text-center lg:items-start lg:text-left max-w-lg px-4">
         <FloatingSquares overflowEnabled={true} />
@@ -171,7 +171,7 @@ export default function ProfitabilitySection() {
         </div>
         {/* Кнопки для выбора таймфрейма */}
         <div className="flex space-x-2 mt-4">
-          {[1, 2, 3].map((month) => (
+          {[3, 6, 12].map((month) => (
             <button
               key={month}
               onClick={() => setTimeframe(month)}
@@ -179,16 +179,21 @@ export default function ProfitabilitySection() {
                 timeframe === month ? 'bg-blue-500 text-white scale-110' : 'bg-gray-200 text-gray-700 hover:bg-blue-100'
               }`}
             >
-              {t(`profitability.timeframes.${month}`)}
+              {month === 3 ? t('profitability.timeframes.threeMonths') :
+               month === 6 ? t('profitability.timeframes.sixMonths') :
+               t('profitability.timeframes.oneYear')}
             </button>
           ))}
         </div>
       </div>
 
       {/* Chart Section */}
-      <div className="flex justify-center items-center w-full max-w-3xl lg:max-w-4xl relative mt-8 mb-2 p-2">
+      <div
+        ref={ref} // Set reference for observing the chart section
+        className={`flex justify-center items-center w-full max-w-3xl lg:max-w-4xl relative mt-8 mb-2 p-2 transition-opacity duration-1000 ${inView ? "opacity-100" : "opacity-0"}`}
+      >
         <div
-          className="absolute inset-0 backdrop-blur-lg rounded-lg"
+          className={`absolute inset-0 backdrop-blur-lg rounded-lg transition-opacity duration-1000 ${inView ? "opacity-100" : "opacity-0"}`}
           style={{ zIndex: -1 }}
         />
         <div className="w-full lg:h-[600px] flex justify-center items-center rounded-xl">

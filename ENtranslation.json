@@ -130,9 +130,9 @@
     "alt": {
     },
     "timeframes": {
-      "1": "1 месяц",
-      "2": "2 месяца",
-      "3": "3 месяца"
+      "threeMonths": "3 Месяца",
+      "sixMonths": "6 Месяцев",
+      "oneYear": "Год"
     },
     "chart": {
       "dailyProfitReturn": "Ежедневная доходность"

@@ -9,12 +9,13 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import FloatingSquares from "../ui/FloatingSquares"; // Импортируем FloatingSquares
-import { useTranslation } from "react-i18next"; // Импортируем для перевода
-import LogoRatio from "../../../public/assets/icons/LogoIcon.png"
+import FloatingSquares from "../ui/FloatingSquares"; // Import FloatingSquares
+import { useTranslation } from "react-i18next"; // Import for translation
+import { useInView } from "react-intersection-observer"; // Importing Intersection Observer hook
+import LogoRatio from "../../../public/assets/icons/LogoIcon.png";
 
 export default function DepositCalculator() {
-  const { t } = useTranslation(); // Инициализация перевода
+  const { t } = useTranslation(); // Initialize translation
   const initialDepositValue = 1000;
   const contributionValue = 50;
   const contributionFrequencyValue = "monthly";
@@ -23,13 +24,13 @@ export default function DepositCalculator() {
 
   const [initialDeposit, setInitialDeposit] = useState(initialDepositValue);
   const [contribution, setContribution] = useState(contributionValue);
-  const [contributionFrequency, setContributionFrequency] = useState(
-    contributionFrequencyValue
-  );
+  const [contributionFrequency, setContributionFrequency] = useState(contributionFrequencyValue);
   const [yearsToGrow, setYearsToGrow] = useState(yearsToGrowValue);
   const [annualReturn, setAnnualReturn] = useState(annualReturnValue);
   const [chartData, setChartData] = useState([]);
   const [futureBalance, setFutureBalance] = useState(null);
+
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 }); // Observe the component visibility
 
   const calculateFutureBalance = () => {
     const frequency = {
@@ -80,10 +81,16 @@ export default function DepositCalculator() {
 
   return (
     <div className="relative flex flex-col lg:flex-row items-start lg:items-center lg:justify-center gap-6 p-6 sm:p-8 sm:justify-center lg:p-12 min-h-screen">
+      {/* FloatingSquares remain unaffected */}
       <FloatingSquares overflowEnabled={true} />
 
-      {/* Calculator */}
-      <div className="block text-center self-center sm:w-90 p-8 rounded-3xl z-10 backdrop-blur-lg pb-7 shadow-md bg-white bg-opacity-30 sm:mr-20">
+      {/* Calculator (with transition effect) */}
+      <div
+        ref={ref}
+        className={`block text-center self-center sm:w-90 p-8 rounded-3xl z-10 backdrop-blur-lg pb-7 shadow-md bg-white bg-opacity-30 sm:mr-20 transition-opacity duration-1000 ${
+          inView ? "opacity-100" : "opacity-0"
+        }`}
+      >
         <h1 className="text-4xl font-bold text-black mb-6 text-center">
           {t("calculator.title")}
         </h1>
@@ -198,7 +205,12 @@ export default function DepositCalculator() {
       </div>
 
       {/* Chart */}
-      <div className="w-full lg:w-1/2 p-8 rounded-3xl shadow-md backdrop-blur-lg shadow-md bg-gray-100 bg-opacity-20 border border-gray-200 z-10">
+      <div
+        ref={ref}
+        className={`w-full lg:w-1/2 p-8 rounded-3xl shadow-md backdrop-blur-lg shadow-md bg-gray-100 bg-opacity-20 border border-gray-200 z-10 transition-opacity duration-1000 ${
+          inView ? "opacity-100" : "opacity-0"
+        }`}
+      >
         {chartData.length > 0 ? (
           <>
             <div className="mb-6 text-center">

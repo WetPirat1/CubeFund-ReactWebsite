@@ -50,7 +50,7 @@ export default function Footer() {
               />
             </a>
             <a
-              href="https://t.me/cube_fund"
+              href="https://t.me/CUBE_Fund_Support"
               target="_blank"
               rel="noopener noreferrer"
               className="animate"
@@ -62,13 +62,13 @@ export default function Footer() {
               />
             </a>
             <a
-              href="https://t.me/cube_fund"
+              href="https://x.com/cube_fund1"
               target="_blank"
               rel="noopener noreferrer"
               className="animate"
             >
               <img
-                className="w-6 h-6 object-contain animate"
+                className="w-5 h-5 object-contain animate"
                 src={XIcon}
                 alt="X icon"
               />
